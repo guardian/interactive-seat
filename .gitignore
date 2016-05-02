@@ -1,7 +1,24 @@
+# OS or Editor folders
+.DS_Store
+._*
+Thumbs.db
+.cache
+.project
+.settings
+.tmproj
+*.esproj
+nbproject
+*.sublime-project
+*.sublime-workspace
+.idea
+
+# Directories
 tmp
 node_modules
 jspm_packages
 bower_components
 build
 deploy
+
+# Secrets
 cfg/aws-keys.json
