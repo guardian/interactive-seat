@@ -5,8 +5,6 @@ class Header extends Component {
     init() {
         super.init();
 
-        this.$el.css({ color: 'red' });
-
         return this;
     }
 }

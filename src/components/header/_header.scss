@@ -1,3 +1,73 @@
 .c-header {
-    // styles go here
+    position: relative;
+    padding-top: 42px;
+    background: colour(news-support-3);
+
+    @include mq($until: tablet, $and: '(min-height: 360px)') {
+        min-height: 100%;
+
+        &__description {
+            position: absolute;
+            bottom: 0;
+        }
+    }
+
+    @include mq($from: tablet, $and: '(min-height: 768px)') {
+        min-height: 90%;
+
+        &__inner {
+            position: absolute;
+            bottom: 0;
+        }
+    }
+
+    &__subtitle,
+    &__headline,
+    &__description {
+        @include mq($from: tablet) {
+            @include fs-headline(9, $size-only: true);
+            padding-left: gs-span(6);
+        }
+    }
+
+    &__subtitle {
+        @extend %o-container;
+        @include fs-header(2);
+        margin: 0;
+        color: colour(news-support-4);
+
+        @include mq($from: tablet) {
+            @include fs-header(4, $size-only: true);
+
+        }
+    }
+
+    &__headline {
+        @extend %o-container;
+        @include fs-headline(6);
+        margin: 4px 0 16px;
+        color: colour(white);
+
+        @include mq($from: tablet) {
+            @include fs-headline(10, $size-only: true);
+            margin: 20px 0 30px;
+        }
+    }
+
+    &__description {
+        @extend %o-container;
+        @include fs-header(2);
+        margin: 0;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        color: transparentize(colour(white), 0.4);
+        background: transparentize(colour(news-support-4), 0.4);
+
+        @include mq($from: tablet) {
+            @include fs-header(4, $size-only: true);
+            position: static;
+            padding-top: 30px;
+            padding-bottom: 50px;
+        }
+    }
 }

@@ -1,6 +1,7 @@
 <header class="c-header">
-    <h1>{{ content.headline }}</h1>
-    {{#if content.copy}}
-        <p>{{ content.copy }}</p>
-    {{/if}}
+    <div class="c-header__inner">
+        <h2 class="c-header__subtitle">{{content.subtitle}}</h2>
+        <h1 class="c-header__headline">{{content.headline}}</h1>
+        <p class="c-header__description">{{content.description}}</p>
+    </div>
 </header>
