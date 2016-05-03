@@ -4,6 +4,7 @@ import fetchJSON from './lib/fetch';
 import cleanData from './lib/cleanData';
 import isMobile from './lib/isMobile';
 import Header from '../components/header/header';
+import { CONTENT_URL } from './modules/variables';
 
 const BLOCKS = {
     header: Header
@@ -17,15 +18,21 @@ const APP = {
         this.$el = bonzo(el);
         this.isMobile = isMobile();
 
-        fetchJSON('http://interactive.guim.co.uk/docsdata-test/1ukLv0mLRiysvsraIUv-izI4BFEsv42_OrwNGxQIOGwY.json')
+        this.fetchContent()
             .then((data) => cleanData(data))
-            .then((data) => this.initBlocks(data))
-            .then(() => {
+            .then((data) => {
                 this.bindEvents()
+                    .initBlocks(data)
                     .render();
+
+                console.log(data);
             });
 
         return this;
+    },
+
+    fetchContent() {
+        return fetchJSON(CONTENT_URL);
     },
 
     bindEvents() {

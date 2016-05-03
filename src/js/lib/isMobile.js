@@ -1,6 +1,6 @@
 import bowser from 'ded/bowser';
 
-import MOBILE_THRESHOLD from '../modules/variables';
+import { MOBILE_THRESHOLD } from '../modules/variables';
 
 // NOTE: could be modularised later if needed elsewhere
 const bodyEl = document.getElementsByTagName('body')[0];
