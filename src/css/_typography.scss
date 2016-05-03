@@ -1,0 +1,14 @@
+@import 'bower_components/guss-typography/_typography.scss';
+
+// NOTE: this extends the guss typography type scale to keep things somewhat DRY
+$font-scale: map-merge(
+    $font-scale,
+    (
+        headline: map-merge(
+            map-get($font-scale, headline),
+            (
+                10: (font-size: 62, line-height: 66)
+            )
+        )
+    )
+);
