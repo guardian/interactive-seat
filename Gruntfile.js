@@ -1,5 +1,3 @@
-var fs = require('fs');
-
 module.exports = function(grunt) {
 
     require('jit-grunt')(grunt);
@@ -10,12 +8,12 @@ module.exports = function(grunt) {
 
         watch: {
             js: {
-                files: ['src/js/**/*'],
-                tasks: ['shell:interactive', 'shell:embed'],
+                files: ['src/**/*.js'],
+                tasks: ['shell:interactive', 'shell:embed']
             },
             css: {
                 files: ['src/css/**/*'],
-                tasks: ['sass'],
+                tasks: ['sass']
             },
             assets: {
                 files: ['src/assets/**/*'],
@@ -24,6 +22,10 @@ module.exports = function(grunt) {
             harness: {
                 files: ['harness/**/*'],
                 tasks: ['harness']
+            },
+            templates: {
+                files: ['src/**/*.hbs'],
+                tasks: ['handlebars']
             }
         },
 
@@ -66,20 +68,39 @@ module.exports = function(grunt) {
             }
         },
 
-        'template': {
-            'options': {
-                'data': {
-                    'assetPath': '<%= visuals.assetPath %>',
+        template: {
+            options: {
+                data: {
+                    assetPath: '<%= visuals.assetPath %>'
                 }
             },
-            'bootjs': {
-                'files': {
-                    'build/boot.js': ['src/js/boot.js.tpl'],
+            bootjs: {
+                files: {
+                    'build/boot.js': ['src/js/boot.js.tpl']
                 }
             },
-            'embed': {
-                'files': {
+            embed: {
+                files: {
                     'build/embed.html': ['src/embed.html']
+                }
+            }
+        },
+
+        handlebars: {
+            compile: {
+                options: {
+                    namespace: 'templates',
+                    // commonjs: true,
+                    amd: ['handlebars'],
+                    processName: function (filename) {
+                        var split = filename.split('/'),
+                            length = split.length;
+
+                        return split[length - 1].toLowerCase().replace('.hbs', '');
+                    }
+                },
+                files: {
+                    'src/js/templates.js': 'src/**/*.hbs'
                 }
             }
         },
@@ -87,12 +108,12 @@ module.exports = function(grunt) {
         copy: {
             harness: {
                 files: [
-                    {expand: true, cwd: 'harness/', src: ['curl.js', 'index.html', 'immersive.html', 'interactive.html'], dest: 'build'},
+                    {expand: true, cwd: 'harness/', src: ['curl.js', 'index.html', 'immersive.html', 'interactive.html'], dest: 'build'}
                 ]
             },
             assets: {
                 files: [
-                    {expand: true, cwd: 'src/', src: ['assets/**/*'], dest: 'build'},
+                    {expand: true, cwd: 'src/', src: ['assets/**/*'], dest: 'build'}
                 ]
             },
             deploy: {
@@ -148,7 +169,7 @@ module.exports = function(grunt) {
                         }
                     }
                 }
-            },
+            }
         },
 
         aws_s3: {
@@ -226,7 +247,7 @@ module.exports = function(grunt) {
     })
 
     grunt.registerTask('embed', ['shell:embed', 'template:embed', 'sass:embed']);
-    grunt.registerTask('interactive', ['shell:interactive', 'template:bootjs', 'sass:interactive']);
+    grunt.registerTask('interactive', ['handlebars', 'shell:interactive', 'template:bootjs', 'sass:interactive']);
     grunt.registerTask('all', ['interactive', 'embed', 'copy:assets'])
     grunt.registerTask('default', ['clean', 'copy:harness', 'all', 'connect', 'watch']);
     grunt.registerTask('build', ['clean', 'all']);

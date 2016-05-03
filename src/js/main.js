@@ -1,21 +1,60 @@
-import reqwest from 'reqwest'
-import mainHTML from './text/main.html!text'
-import share from './lib/share'
+import bonzo from 'ded/bonzo';
 
-var shareFn = share('Interactive title', 'http://gu.com/p/URL', '#Interactive');
+import fetchJSON from './lib/fetch';
+import cleanData from './lib/cleanData';
+import isMobile from './lib/isMobile';
+import Header from '../components/header/header';
 
-export function init(el, context, config, mediator) {
-    el.innerHTML = mainHTML.replace(/%assetPath%/g, config.assetPath);
+const BLOCKS = {
+    header: Header
+};
 
-    reqwest({
-        url: 'http://ip.jsontest.com/',
-        type: 'json',
-        crossOrigin: true,
-        success: (resp) => el.querySelector('.test-msg').innerHTML = `Your IP address is ${resp.ip}`
-    });
+const APP = {
+    blocks: [],
 
-    [].slice.apply(el.querySelectorAll('.interactive-share')).forEach(shareEl => {
-        var network = shareEl.getAttribute('data-network');
-        shareEl.addEventListener('click',() => shareFn(network));
-    });
-}
+    init(el) {
+        this.el = el;
+        this.$el = bonzo(el);
+        this.isMobile = isMobile();
+
+        fetchJSON('http://interactive.guim.co.uk/docsdata-test/1ukLv0mLRiysvsraIUv-izI4BFEsv42_OrwNGxQIOGwY.json')
+            .then((data) => cleanData(data))
+            .then((data) => this.initBlocks(data))
+            .then(() => {
+                this.bindEvents()
+                    .render();
+            });
+
+        return this;
+    },
+
+    bindEvents() {
+        return this;
+    },
+
+    initBlocks(data) {
+        data.blocks.forEach((block) => {
+            if (BLOCKS.hasOwnProperty(block.block)) {
+                this.blocks.push(new BLOCKS[block.block](block, data.config, this.isMobile).init());
+            }
+        });
+
+        return this;
+    },
+
+    render() {
+        let fragment = document.createDocumentFragment();
+
+        this.blocks.reduce((fragment, block) => {
+            fragment.appendChild(block.el);
+
+            return fragment;
+        }, fragment);
+
+        this.$el.html(fragment);
+
+        return this;
+    }
+};
+
+export let init = APP.init.bind(APP);
