@@ -1,4 +1,12 @@
-@import '../../bower_components/pasteup-palette/src/_palette.scss';
+@import 'bower_components/pasteup-palette/src/_palette.scss';
+
+$pasteup-palette: map-merge(
+    $pasteup-palette,
+    (
+        white: #fff,
+        black: #000
+    )
+);
 
 @function colour($name) {
     @return map-get($pasteup-palette, $name);
