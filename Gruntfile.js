@@ -12,7 +12,7 @@ module.exports = function(grunt) {
                 tasks: ['shell:interactive', 'shell:embed']
             },
             css: {
-                files: ['src/css/**/*'],
+                files: ['src/**/*.scss'],
                 tasks: ['sass']
             },
             assets: {
