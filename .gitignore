@@ -22,3 +22,6 @@ deploy
 
 # Secrets
 cfg/aws-keys.json
+
+# Compiled files
+src/js/templates.js
