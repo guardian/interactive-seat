@@ -22,6 +22,10 @@ module.exports = function(grunt) {
             harness: {
                 files: ['harness/**/*'],
                 tasks: ['harness']
+            },
+            templates: {
+                files: ['src/**/*.hbs'],
+                tasks: ['handlebars']
             }
         },
 
@@ -78,6 +82,25 @@ module.exports = function(grunt) {
             embed: {
                 files: {
                     'build/embed.html': ['src/embed.html']
+                }
+            }
+        },
+
+        handlebars: {
+            compile: {
+                options: {
+                    namespace: 'templates',
+                    // commonjs: true,
+                    amd: ['handlebars'],
+                    processName: function (filename) {
+                        var split = filename.split('/'),
+                            length = split.length;
+
+                        return split[length - 1].toLowerCase().replace('.hbs', '');
+                    }
+                },
+                files: {
+                    'src/js/templates.js': 'src/**/*.hbs'
                 }
             }
         },
@@ -224,7 +247,7 @@ module.exports = function(grunt) {
     })
 
     grunt.registerTask('embed', ['shell:embed', 'template:embed', 'sass:embed']);
-    grunt.registerTask('interactive', ['shell:interactive', 'template:bootjs', 'sass:interactive']);
+    grunt.registerTask('interactive', ['handlebars', 'shell:interactive', 'template:bootjs', 'sass:interactive']);
     grunt.registerTask('all', ['interactive', 'embed', 'copy:assets'])
     grunt.registerTask('default', ['clean', 'copy:harness', 'all', 'connect', 'watch']);
     grunt.registerTask('build', ['clean', 'all']);
