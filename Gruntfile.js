@@ -64,19 +64,19 @@ module.exports = function(grunt) {
             }
         },
 
-        'template': {
-            'options': {
-                'data': {
-                    'assetPath': '<%= visuals.assetPath %>'
+        template: {
+            options: {
+                data: {
+                    assetPath: '<%= visuals.assetPath %>'
                 }
             },
-            'bootjs': {
-                'files': {
+            bootjs: {
+                files: {
                     'build/boot.js': ['src/js/boot.js.tpl']
                 }
             },
-            'embed': {
-                'files': {
+            embed: {
+                files: {
                     'build/embed.html': ['src/embed.html']
                 }
             }
