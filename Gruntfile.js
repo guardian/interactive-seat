@@ -1,5 +1,3 @@
-var fs = require('fs');
-
 module.exports = function(grunt) {
 
     require('jit-grunt')(grunt);
@@ -10,12 +8,12 @@ module.exports = function(grunt) {
 
         watch: {
             js: {
-                files: ['src/js/**/*'],
-                tasks: ['shell:interactive', 'shell:embed'],
+                files: ['src/**/*.js'],
+                tasks: ['shell:interactive', 'shell:embed']
             },
             css: {
                 files: ['src/css/**/*'],
-                tasks: ['sass'],
+                tasks: ['sass']
             },
             assets: {
                 files: ['src/assets/**/*'],
@@ -69,12 +67,12 @@ module.exports = function(grunt) {
         'template': {
             'options': {
                 'data': {
-                    'assetPath': '<%= visuals.assetPath %>',
+                    'assetPath': '<%= visuals.assetPath %>'
                 }
             },
             'bootjs': {
                 'files': {
-                    'build/boot.js': ['src/js/boot.js.tpl'],
+                    'build/boot.js': ['src/js/boot.js.tpl']
                 }
             },
             'embed': {
@@ -87,12 +85,12 @@ module.exports = function(grunt) {
         copy: {
             harness: {
                 files: [
-                    {expand: true, cwd: 'harness/', src: ['curl.js', 'index.html', 'immersive.html', 'interactive.html'], dest: 'build'},
+                    {expand: true, cwd: 'harness/', src: ['curl.js', 'index.html', 'immersive.html', 'interactive.html'], dest: 'build'}
                 ]
             },
             assets: {
                 files: [
-                    {expand: true, cwd: 'src/', src: ['assets/**/*'], dest: 'build'},
+                    {expand: true, cwd: 'src/', src: ['assets/**/*'], dest: 'build'}
                 ]
             },
             deploy: {
@@ -148,7 +146,7 @@ module.exports = function(grunt) {
                         }
                     }
                 }
-            },
+            }
         },
 
         aws_s3: {
