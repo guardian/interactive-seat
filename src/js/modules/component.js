@@ -6,11 +6,11 @@ export default class Component {
         this.isMobile = isMobile;
         this.config = config;
 
-        if(this.content.src_sizes) {
+        if (this.content.src_sizes) {
             this.sizes = this.content.src_sizes.slice(1,-1).split(',');
         }
 
-        if(this.content.images && this.content.images[0].src_sizes) {
+        if (this.content.images && this.content.images[0].src_sizes) {
             this.sizes = this.content.images[0].src_sizes.slice(1,-1).split(',');
         }
 
