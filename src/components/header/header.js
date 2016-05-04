@@ -1,16 +1,8 @@
 import Component from '../../js/modules/component';
 import Templates from '../../js/templates';
 
-class Header extends Component {
-    init() {
-        super.init();
+class Header extends Component {}
 
-        return this;
-    }
-}
-
-Object.assign(Header.prototype, {
-    template: Templates.header
-});
+Header.prototype.template = Templates.header;
 
 export default Header;
