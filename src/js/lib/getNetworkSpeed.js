@@ -1,7 +1,7 @@
 import loadScript from './loadScript';
 
-const SMALL_FILE_URL = 'http://cdn.theguardian.tv/interactive/speedtest/testfilesmall.dat';
-const LARGE_FILE_URL =  'http://cdn.theguardian.tv/interactive/speedtest/testfile.dat';
+const SMALL_FILE_URL = 'https://cdn.theguardian.tv/interactive/speedtest/testfilesmall.dat';
+const LARGE_FILE_URL =  'https://cdn.theguardian.tv/interactive/speedtest/testfile.dat';
 const SMALL_FILE_SIZE = 1024 * 8;
 const LARGE_FILE_SIZE = 102400 * 8;
 const FILE_SIZE_DELTA = LARGE_FILE_SIZE - SMALL_FILE_SIZE;
