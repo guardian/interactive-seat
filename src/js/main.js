@@ -5,11 +5,13 @@ import cleanData from './lib/cleanData';
 import isMobile from './lib/isMobile';
 import Header from '../components/header/header';
 import Navigation from '../components/navigation/navigation';
+import Tracking from '../components/tracking/tracking';
 import { CONTENT_URL } from './modules/variables';
 
 const BLOCKS = {
     header: Header,
-    navigation: Navigation
+    navigation: Navigation,
+    tracking: Tracking
 };
 
 const APP = {
