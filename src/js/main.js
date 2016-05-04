@@ -4,10 +4,12 @@ import fetchJSON from './lib/fetch';
 import cleanData from './lib/cleanData';
 import isMobile from './lib/isMobile';
 import Header from '../components/header/header';
+import Navigation from '../components/navigation/navigation';
 import { CONTENT_URL } from './modules/variables';
 
 const BLOCKS = {
-    header: Header
+    header: Header,
+    navigation: Navigation
 };
 
 const APP = {

@@ -1,0 +1,9 @@
+<nav class="c-navigation">
+    <ul class="c-navigation__list">
+        <li class="c-navigation__item c-navigation__item--jump-to-story">
+            <a class="c-navigation__link" href="{{url}}">Jump to story</a>
+        </li>{{#each content.items}}<li class="c-navigation__item">
+                <a class="c-navigation__link{{#if isActive}} is-active{{/if}}" href="{{url}}">{{title}}</a>
+        </li>{{/each}}
+    </ul>
+</nav>
