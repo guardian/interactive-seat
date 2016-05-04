@@ -9,13 +9,3 @@
         }
     }
 }
-
-.o-text-container {
-    @include mq($from: tablet) {
-        width: 660px;
-    }
-
-    @include mq($from: desktop) {
-        padding-left: 240px;
-    }
-}
