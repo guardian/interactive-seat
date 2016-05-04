@@ -3,10 +3,13 @@ import bonzo from 'ded/bonzo';
 import fetchJSON from './lib/fetch';
 import cleanData from './lib/cleanData';
 import isMobile from './lib/isMobile';
+import getNetworkSpeed from './lib/getNetworkSpeed';
+
+import { CONTENT_URL } from './modules/variables';
+
 import Header from '../components/header/header';
 import Navigation from '../components/navigation/navigation';
 import Tracking from '../components/tracking/tracking';
-import { CONTENT_URL } from './modules/variables';
 
 const BLOCKS = {
     header: Header,
@@ -22,15 +25,37 @@ const APP = {
         this.$el = bonzo(el);
         this.isMobile = isMobile();
 
-        this.fetchContent()
-            .then((data) => cleanData(data))
-            .then((data) => {
-                this.bindEvents()
-                    .initBlocks(data)
-                    .render();
+        if (this.isMobile) {
+            this.fetchContent()
+                .then((data) => cleanData(data))
+                .then((data) => {
+                    console.log(500);
 
-                console.log(data);
+                    data.config.bandwidth = 500;
+
+                    this.bindEvents()
+                        .initBlocks(data)
+                        .render();
+
+                    console.log(data);
+                });
+        } else {
+            getNetworkSpeed((bandwidth) => {
+                console.log(bandwidth);
+
+                this.fetchContent()
+                    .then((data) => cleanData(data))
+                    .then((data) => {
+                        data.config.bandwidth = bandwidth;
+
+                        this.bindEvents()
+                            .initBlocks(data)
+                            .render();
+
+                        console.log(data);
+                    });
             });
+        }
 
         return this;
     },
