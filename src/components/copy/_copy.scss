@@ -1,0 +1,30 @@
+.c-copy {
+    background: colour(white);
+
+    &--first {
+        padding-top: 24px;
+
+        &__text:first-child::first-letter {
+            @include fs-headline(11);
+            float: left;
+            padding-right: 10px;
+            color: colour(news-support-3);
+        }
+    }
+
+    &__content {
+        @include fs-bodyCopy(2);
+        box-sizing: initial;
+        margin: 0 auto;
+
+        @include mq($from: tablet) {
+            @include fs-bodyCopy(3, $size-only: true);
+            width: gs-span(7) + $gs-gutter;
+        }
+    }
+
+    &__text {
+        margin: 0;
+        padding-bottom: 40px;
+    }
+}

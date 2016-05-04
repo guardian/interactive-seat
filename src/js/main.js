@@ -7,11 +7,13 @@ import getNetworkSpeed from './lib/getNetworkSpeed';
 
 import { CONTENT_URL } from './modules/variables';
 
+import Copy from '../components/copy/copy';
 import Header from '../components/header/header';
 import Navigation from '../components/navigation/navigation';
 import Tracking from '../components/tracking/tracking';
 
 const BLOCKS = {
+    copy: Copy,
     header: Header,
     navigation: Navigation,
     tracking: Tracking
