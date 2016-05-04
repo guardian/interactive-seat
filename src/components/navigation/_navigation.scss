@@ -4,7 +4,7 @@
     background: colour(news-support-7);
 
     &__list {
-        @extend %o-container;
+        @extend .o-container;
         position: relative;
         margin: 0 auto;
         padding-top: 10px;

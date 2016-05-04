@@ -18,12 +18,16 @@
         &__inner {
             position: absolute;
             bottom: 0;
+            width: 100%;
         }
     }
 
     &__subtitle,
     &__headline,
-    &__description {
+    &__description-text {
+        margin-top: 0;
+        margin-bottom: 0;
+
         @include mq($from: tablet) {
             @include fs-headline(9, $size-only: true);
             padding-left: gs-span(6);
@@ -31,9 +35,7 @@
     }
 
     &__subtitle {
-        @extend %o-container;
         @include fs-header(2);
-        margin: 0;
         color: colour(news-support-4);
 
         @include mq($from: tablet) {
@@ -42,27 +44,27 @@
     }
 
     &__headline {
-        @extend %o-container;
         @include fs-headline(6);
-        margin: 0;
         padding-top: 4px;
         padding-bottom: 16px;
         color: colour(white);
 
         @include mq($from: tablet) {
             @include fs-headline(10, $size-only: true);
-            margin: 20px 0 30px;
+            margin-top: 20px;
+            margin-bottom: 30px;
         }
     }
 
     &__description {
-        @extend %o-container;
+        background: transparentize(colour(news-support-4), 0.4);
+    }
+
+    &__description-text {
         @include fs-header(2);
-        margin: 0;
         padding-top: 20px;
         padding-bottom: 20px;
         color: transparentize(colour(white), 0.4);
-        background: transparentize(colour(news-support-4), 0.4);
 
         @include mq($from: tablet) {
             @include fs-header(4, $size-only: true);

@@ -1,4 +1,21 @@
-%o-container {
+.o-container {
+    margin: 0 auto;
     padding-right: 20px;
     padding-left: 20px;
+
+    @each $breakpoint in (tablet desktop leftCol wide) {
+        @include mq($from: $breakpoint) {
+            max-width: map-get($mq-breakpoints, $breakpoint);
+        }
+    }
+}
+
+.o-text-container {
+    @include mq($from: tablet) {
+        width: 660px;
+    }
+
+    @include mq($from: desktop) {
+        padding-left: 240px;
+    }
 }
