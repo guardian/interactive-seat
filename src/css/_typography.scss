@@ -7,7 +7,8 @@ $font-scale: map-merge(
         headline: map-merge(
             map-get($font-scale, headline),
             (
-                10: (font-size: 62, line-height: 66)
+                10: (font-size: 62, line-height: 66),
+                11: (font-size: 96, line-height: 96)
             )
         )
     )
