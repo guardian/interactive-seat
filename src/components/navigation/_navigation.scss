@@ -4,7 +4,6 @@
     background: colour(news-support-7);
 
     &__list {
-        @extend .o-container;
         position: relative;
         margin: 0 auto;
         padding-top: 10px;
@@ -38,9 +37,9 @@
             width: gs-span(1);
             text-align: right;
 
-            @include mq($from: tablet) {
-                display: inline;
-            }
+            // @include mq($from: tablet) {
+            //     display: inline;
+            // }
         }
     }
 
