@@ -43,7 +43,7 @@ const APP = {
 
     initBlocks(data) {
         data.blocks.forEach((block) => {
-            if (BLOCKS.hasOwnProperty(block.block)) {
+            if (block.active !== 'false' && BLOCKS.hasOwnProperty(block.block)) {
                 this.blocks.push(new BLOCKS[block.block](block, data.config, this.isMobile).init());
             }
         });
