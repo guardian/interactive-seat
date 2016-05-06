@@ -1,8 +1,10 @@
-import Component from '../../js/modules/component';
-import Templates from '../../js/templates';
+import component from '../../js/modules/component';
+import templates from '../../js/templates';
 
-class Copy extends Component {}
+let copy = Object.create(component);
 
-Copy.prototype.template = Templates.copy;
+Object.assign(copy, {
+    template: templates.copy
+});
 
-export default Copy;
+export default copy;

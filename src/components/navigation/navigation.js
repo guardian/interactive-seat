@@ -1,8 +1,10 @@
-import Component from '../../js/modules/component';
-import Templates from '../../js/templates';
+import component from '../../js/modules/component';
+import templates from '../../js/templates';
 
-class Navigation extends Component {}
+let navigation = Object.create(component);
 
-Navigation.prototype.template = Templates.navigation;
+Object.assign(navigation, {
+    template: templates.navigation
+});
 
-export default Navigation;
+export default navigation;

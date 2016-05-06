@@ -7,16 +7,16 @@ import getNetworkSpeed from './lib/getNetworkSpeed';
 
 import { CONTENT_URL } from './modules/variables';
 
-import Copy from '../components/copy/copy';
-import Header from '../components/header/header';
-import Navigation from '../components/navigation/navigation';
-import Tracking from '../components/tracking/tracking';
+import copy from '../components/copy/copy';
+import header from '../components/header/header';
+import navigation from '../components/navigation/navigation';
+import tracking from '../components/tracking/tracking';
 
 const BLOCKS = {
-    copy: Copy,
-    header: Header,
-    navigation: Navigation,
-    tracking: Tracking
+    copy,
+    header,
+    navigation,
+    tracking
 };
 
 const APP = {
@@ -73,7 +73,7 @@ const APP = {
     initBlocks(data) {
         data.blocks.forEach((block) => {
             if (block.active !== 'false' && BLOCKS.hasOwnProperty(block.block)) {
-                this.blocks.push(new BLOCKS[block.block](block, data.config, this.isMobile).init());
+                this.blocks.push(Object.create(BLOCKS[block.block]).init(block, data.config, this.isMobile));
             }
         });
 

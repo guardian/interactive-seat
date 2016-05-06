@@ -1,7 +1,7 @@
 import bonzo from 'ded/bonzo';
 
-export default class Component {
-    constructor(content, config, isMobile) {
+let component = {
+    init(content, config, isMobile) {
         this.content = content;
         this.isMobile = isMobile;
         this.config = config;
@@ -16,16 +16,12 @@ export default class Component {
 
         this.bindEvents();
 
-        return this;
-    }
-
-    init() {
         return this.render();
-    }
+    },
 
     bindEvents() {
         return this;
-    }
+    },
 
     render() {
         let el = document.createElement('div');
@@ -41,4 +37,6 @@ export default class Component {
 
         return this;
     }
-}
+};
+
+export default component;

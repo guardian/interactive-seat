@@ -1,8 +1,10 @@
-import Component from '../../js/modules/component';
-import Templates from '../../js/templates';
+import component from '../../js/modules/component';
+import templates from '../../js/templates';
 
-class Header extends Component {}
+let header = Object.create(component);
 
-Header.prototype.template = Templates.header;
+Object.assign(header, {
+    template: templates.header
+});
 
-export default Header;
+export default header;
