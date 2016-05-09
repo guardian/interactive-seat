@@ -26,6 +26,12 @@ module.exports = function(grunt) {
             templates: {
                 files: ['src/**/*.hbs'],
                 tasks: ['handlebars']
+            },
+            livereload: {
+                options: {
+                    livereload: true
+                },
+                files: ['build/**/*']
             }
         },
 
@@ -217,11 +223,16 @@ module.exports = function(grunt) {
                     base: 'build',
                     middleware: function (connect, options, middlewares) {
                         // inject a custom middleware http://stackoverflow.com/a/24508523
-                        middlewares.unshift(function (req, res, next) {
-                            res.setHeader('Access-Control-Allow-Origin', '*');
-                            res.setHeader('Access-Control-Allow-Methods', '*');
-                            return next();
-                        });
+
+                        middlewares.unshift(
+                            require('connect-livereload')(),
+                            function (req, res, next) {
+                                res.setHeader('Access-Control-Allow-Origin', '*');
+                                res.setHeader('Access-Control-Allow-Methods', '*');
+                                return next();
+                            }
+                        );
+
                         return middlewares;
                     }
                 }
