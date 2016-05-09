@@ -39,6 +39,19 @@ module.exports = function(grunt) {
             build: ['build']
         },
 
+        stripDebug: {
+            interactive: {
+                files: {
+                    'build/main.js': 'build/main.js'
+                }
+            },
+            embed: {
+                files: {
+                    'build/embed.js': 'build/embed.js'
+                }
+            }
+        },
+
         sass: {
             options: {
                 sourceMap: true
@@ -262,7 +275,7 @@ module.exports = function(grunt) {
     grunt.registerTask('all', ['interactive', 'embed', 'copy:assets'])
     grunt.registerTask('default', ['clean', 'copy:harness', 'all', 'connect', 'watch']);
     grunt.registerTask('build', ['clean', 'all']);
-    grunt.registerTask('deploy', ['loadDeployConfig', 'prompt:visuals', 'build', 'copy:deploy', 'aws_s3', 'boot_url']);
+    grunt.registerTask('deploy', ['loadDeployConfig', 'prompt:visuals', 'build', 'stripDebug', 'copy:deploy', 'aws_s3', 'boot_url']);
 
     grunt.loadNpmTasks('grunt-aws');
 
