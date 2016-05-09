@@ -13,7 +13,7 @@ module.exports = function(grunt) {
             },
             css: {
                 files: ['src/**/*.scss'],
-                tasks: ['sass']
+                tasks: ['sass', 'postcss:autoprefixer']
             },
             assets: {
                 files: ['src/assets/**/*'],
@@ -58,13 +58,52 @@ module.exports = function(grunt) {
             },
             interactive: {
                 files: {
-                    'build/main.css': 'src/css/main.scss'
+                    'tmp/main.css': 'src/css/main.scss'
                 }
             },
             embed: {
                 files: {
-                    'build/embed.css': 'src/css/embed.scss'
+                    'tmp/embed.css': 'src/css/embed.scss'
                 }
+            }
+        },
+
+        postcss: {
+            options: {
+                map: {
+                    inline: false,
+                    annotation: 'build/'
+                }
+            },
+            autoprefixer: {
+                options: {
+                    processors: [
+                        require('autoprefixer')()
+                    ]
+                },
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'tmp/',
+                        src: '*.css',
+                        dest: 'build/'
+                    }
+                ]
+            },
+            minify: {
+                options: {
+                    processors: [
+                        require('cssnano')()
+                    ]
+                },
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'build/',
+                        src: '*.css',
+                        dest: 'build/'
+                    }
+                ]
             }
         },
 
@@ -272,10 +311,10 @@ module.exports = function(grunt) {
 
     grunt.registerTask('embed', ['shell:embed', 'template:embed', 'sass:embed']);
     grunt.registerTask('interactive', ['handlebars', 'shell:interactive', 'template:bootjs', 'sass:interactive']);
-    grunt.registerTask('all', ['interactive', 'embed', 'copy:assets'])
+    grunt.registerTask('all', ['interactive', 'embed', 'postcss:autoprefixer', 'copy:assets'])
     grunt.registerTask('default', ['clean', 'copy:harness', 'all', 'connect', 'watch']);
-    grunt.registerTask('build', ['clean', 'all']);
-    grunt.registerTask('deploy', ['loadDeployConfig', 'prompt:visuals', 'build', 'stripDebug', 'copy:deploy', 'aws_s3', 'boot_url']);
+    grunt.registerTask('build', ['clean', 'all', 'stripDebug', 'postcss:minify']);
+    grunt.registerTask('deploy', ['loadDeployConfig', 'prompt:visuals', 'build', 'copy:deploy', 'aws_s3', 'boot_url']);
 
     grunt.loadNpmTasks('grunt-aws');
 
