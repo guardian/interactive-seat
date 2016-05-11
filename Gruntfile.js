@@ -15,6 +15,10 @@ module.exports = function(grunt) {
                 files: ['src/**/*.scss'],
                 tasks: ['sass', 'postcss:autoprefixer']
             },
+            sass: {
+                files: 'src/**/*.svg',
+                tasks: ['svgmin']
+            },
             assets: {
                 files: ['src/assets/**/*'],
                 tasks: ['copy:assets']
@@ -123,6 +127,24 @@ module.exports = function(grunt) {
                         cwd: '.'
                     }
                 }
+            }
+        },
+
+        svgmin: {
+            personas: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'src/assets/img/personas/',
+                        src: '*.svg',
+                        dest: 'src/components/interactive/partials/',
+                        ext: '.hbs',
+                        rename: function (dest, src) {
+                            // append filesnames with an underscore to mark as partial
+                            return dest + '_' + src;
+                        }
+                    }
+                ]
             }
         },
 
@@ -310,7 +332,7 @@ module.exports = function(grunt) {
     })
 
     grunt.registerTask('embed', ['shell:embed', 'template:embed', 'sass:embed']);
-    grunt.registerTask('interactive', ['handlebars', 'shell:interactive', 'template:bootjs', 'sass:interactive']);
+    grunt.registerTask('interactive', ['svgmin', 'handlebars', 'shell:interactive', 'template:bootjs', 'sass:interactive']);
     grunt.registerTask('all', ['interactive', 'embed', 'postcss:autoprefixer', 'copy:assets'])
     grunt.registerTask('default', ['clean', 'copy:harness', 'all', 'connect', 'watch']);
     grunt.registerTask('build', ['clean', 'all', 'stripDebug', 'postcss:minify']);
