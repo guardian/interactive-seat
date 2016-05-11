@@ -1,4 +1,5 @@
 import bonzo from 'ded/bonzo';
+import fastClick from 'fastclick/lib/fastclick';
 
 import fetchJSON from './lib/fetch';
 import cleanData from './lib/cleanData';
@@ -30,6 +31,8 @@ const APP = {
         this.el = el;
         this.$el = bonzo(el);
         this.isMobile = isMobile();
+
+        fastClick(document.body);
 
         if (this.isMobile) {
             this.fetchContent()

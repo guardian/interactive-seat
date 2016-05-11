@@ -37,6 +37,7 @@
     "dependencies": {
       "ded/bonzo": "github:ded/bonzo@^2.0.0",
       "ded/bowser": "github:ded/bowser@^1.0.0",
+      "fastclick": "npm:fastclick@^1.0.6",
       "guardian/iframe-messenger": "github:guardian/iframe-messenger@master",
       "handlebars": "github:components/handlebars.js@^4.0.5",
       "json": "github:systemjs/plugin-json@^0.1.0",
