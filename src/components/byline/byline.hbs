@@ -1,0 +1,13 @@
+<div class="c-byline o-container">
+    {{#each byline_photos}}<img class="c-byline__photo" src="{{this}}">{{/each}}
+
+    <p class="c-byline__authors">By {{#each content.authors}}{{#if @index}} and {{/if}}<a href="{{link}}">{{name}}</a>{{/each}}</p>
+
+    <time class="c-byline__publish-date">{{content.date_published}}</time>
+
+    <ul class="c-byline__share u-clearfix">
+        <li class="c-byline__share-item"><a class="c-byline__share-link c-byline__share-link--facebook" href="https://www.facebook.com/sharer/sharer.php?u={{content.share_url}}/sfb" target="_blank" class="share-button share-button--facebook"></a></li>
+        <li class="c-byline__share-item"><a class="c-byline__share-link c-byline__share-link--twitter" href="https://twitter.com/intent/tweet?text={{content.share_text}}&amp;url={{content.share_url}}/stw" target="_blank" class="share-button share-button--twitter"></a></li>
+        <li class="c-byline__share-item"><a class="c-byline__share-link c-byline__share-link--email" href="mailto:?subject={{content.share_text}}&amp;body={{content.share_url}}/sbl" target="_blank" class="share-button share-button--email"></a></li>
+    </div>
+</div>
