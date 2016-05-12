@@ -4,12 +4,16 @@
     &--first {
         padding-top: 24px;
 
-        &__text:first-child::first-letter {
+        .c-copy__text:first-child::first-letter {
             @include fs-headline(11);
             float: left;
             padding-right: 10px;
             color: colour(news-support-3);
         }
+    }
+
+    .c-interactive + & {
+        padding-top: 40px;
     }
 
     &__content {

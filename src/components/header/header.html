@@ -1,0 +1,14 @@
+<header class="c-header">
+    <video class="c-header__video" loop :autoplay="content.autoplay" poster="{{ content.src }}&amp;maxbitrate=1000&amp;format=video/mp4&amp;poster=1" preload="none">
+        <source src="{{ content.src }}&amp;maxbitrate={{ config.bandwidth }}&amp;format=video/mp4" type="video/mp4">
+        <source src="{{ content.src }}&amp;maxbitrate={{ config.bandwidth }}&amp;format=video/webm" type="video/webm">
+    </video>
+
+    <div class="c-header__inner">
+        <h2 class="c-header__subtitle o-container">{{ content.subtitle }}</h2>
+        <h1 class="c-header__headline o-container">{{ content.headline }}</h1>
+        <div class="c-header__description">
+            <p class="c-header__description-text o-container">{{ content.description }}</p>
+        </div>
+    </div>
+</header>

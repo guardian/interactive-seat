@@ -1,10 +1,67 @@
-import component from '../../js/modules/component';
-import templates from '../../js/templates';
+import Block from '../../js/modules/Block';
+import InteractiveInfo from '../interactive-info/interactive-info';
+import template from './interactive.html!text';
 
-let interactive = Object.create(component);
+import persona1 from './partials/persona-1.svg!text';
+import persona2 from './partials/persona-2.svg!text';
+import persona3 from './partials/persona-3.svg!text';
 
-Object.assign(interactive, {
-    template: templates.interactive
+const CHALLENGES = {
+    persona: 'persona-1',
+    factors: [
+        {
+            id: 'plate-shape',
+            title: 'Plate Shape',
+            choices: [
+                {
+                    id: 'angular',
+                    title: 'Angular'
+                },
+                {
+                    id: 'round',
+                    title: 'Round'
+                }
+            ]
+        },
+        {
+            id: 'plate-colour',
+            title: 'Plate Colour',
+            choices: [
+                {
+                    id: 'white',
+                    title: 'White'
+                },
+                {
+                    id: 'black',
+                    title: 'Black'
+                }
+            ]
+        }
+    ]
+};
+
+let Interactive = Block.extend({
+    template,
+    partials: {
+        'persona-1': persona1,
+        'persona-2': persona2,
+        'persona-3': persona3
+    },
+    components: {
+        InteractiveInfo
+    },
+    data() {
+        return {
+            title: 'Play with your food',
+            description: 'Experiment with presentation and atmosphere to see how they can impact the taste of your food',
+            hasStarted: false
+        };
+    },
+    methods: {
+        start() {
+            this.hasStarted = true;
+        }
+    }
 });
 
-export default interactive;
+export default Interactive;

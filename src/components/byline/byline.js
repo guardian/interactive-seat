@@ -1,10 +1,8 @@
-import component from '../../js/modules/component';
-import templates from '../../js/templates';
+import Block from '../../js/modules/Block'
+import template from './byline.html!text';
 
-let byline = Object.create(component);
-
-Object.assign(byline, {
-    template: templates.byline
+let Byline = Block.extend({
+    template
 });
 
-export default byline;
+export default Byline;

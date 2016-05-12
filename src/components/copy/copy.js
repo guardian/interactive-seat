@@ -1,10 +1,8 @@
-import component from '../../js/modules/component';
-import templates from '../../js/templates';
+import Block from '../../js/modules/Block'
+import template from './copy.html!text';
 
-let copy = Object.create(component);
-
-Object.assign(copy, {
-    template: templates.copy
+let Copy = Block.extend({
+    template
 });
 
-export default copy;
+export default Copy;
