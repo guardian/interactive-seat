@@ -1,5 +1,5 @@
-import isArray from 'isarray';
-import isObject from 'isobject';
+import isArray from 'lodash.isarray';
+import isObject from 'lodash.isobject';
 import Vue from 'vue';
 
 let Block = Vue.extend({

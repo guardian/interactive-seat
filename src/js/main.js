@@ -5,10 +5,16 @@ import fetchJSON from './lib/fetch';
 
 const CONTENT_URL = 'https://interactive.guim.co.uk/docsdata-test/1ukLv0mLRiysvsraIUv-izI4BFEsv42_OrwNGxQIOGwY.json';
 
-export let init = function(el) {
+export let init = function(el, context, config) {
     fetchJSON(CONTENT_URL)
         .then((data) => cleanData(data))
         .then((data) => {
+            Object.assign(data.config, config, {
+                bandwidth: 500
+            });
+
+            console.log('Data: ', data);
+
             new App({
                 data,
                 el

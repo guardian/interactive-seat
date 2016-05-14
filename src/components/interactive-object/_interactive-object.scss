@@ -1,0 +1,19 @@
+.c-interactive-object {
+    flex: 1 auto;
+
+    &__object {
+        background: none;
+        border: none;
+    }
+
+    &__image {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    &__label {
+        @include fs-bodyCopy(1);
+        color: colour(white);
+    }
+}

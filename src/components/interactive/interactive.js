@@ -1,65 +1,41 @@
 import Block from '../../js/modules/Block';
-import InteractiveInfo from '../interactive-info/interactive-info';
+import InteractiveChallenge from '../interactive-challenge/interactive-challenge';
+import InteractiveMenu from '../interactive-menu/interactive-menu';
+import InteractiveResults from '../interactive-results/interactive-results';
 import template from './interactive.html!text';
-
-import persona1 from './partials/persona-1.svg!text';
-import persona2 from './partials/persona-2.svg!text';
-import persona3 from './partials/persona-3.svg!text';
-
-const CHALLENGES = {
-    persona: 'persona-1',
-    factors: [
-        {
-            id: 'plate-shape',
-            title: 'Plate Shape',
-            choices: [
-                {
-                    id: 'angular',
-                    title: 'Angular'
-                },
-                {
-                    id: 'round',
-                    title: 'Round'
-                }
-            ]
-        },
-        {
-            id: 'plate-colour',
-            title: 'Plate Colour',
-            choices: [
-                {
-                    id: 'white',
-                    title: 'White'
-                },
-                {
-                    id: 'black',
-                    title: 'Black'
-                }
-            ]
-        }
-    ]
-};
 
 let Interactive = Block.extend({
     template,
-    partials: {
-        'persona-1': persona1,
-        'persona-2': persona2,
-        'persona-3': persona3
-    },
     components: {
-        InteractiveInfo
+        InteractiveChallenge,
+        InteractiveMenu,
+        InteractiveResults
     },
     data() {
         return {
-            title: 'Play with your food',
-            description: 'Experiment with presentation and atmosphere to see how they can impact the taste of your food',
-            hasStarted: false
+            view: 'interactive-menu',
+            challengeCompleted: false,
+            challengeId: 1
         };
     },
-    methods: {
-        start() {
-            this.hasStarted = true;
+    events: {
+        'challenge-selected': function (challengeId) {
+            this.challengeId = challengeId;
+
+            this.view = 'interactive-challenge';
+        },
+        'challenge-completed': function () {
+            this.challengeCompleted = true;
+
+            this.view = 'interactive-results';
+        },
+        'challenge-failed': function () {
+            this.challengeCompleted = false;
+
+            this.view = 'interactive-results';
+        },
+        'restart': function () {
+            this.view = 'interactive-menu';
         }
     }
 });

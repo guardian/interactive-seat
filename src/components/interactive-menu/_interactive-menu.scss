@@ -1,0 +1,51 @@
+.c-interactive-menu {
+    &__challenge-previews {
+        display: flex;
+        flex-flow: row nowrap;
+        flex: 1 1 auto;
+        margin: 0;
+        padding: 10px 0;
+        overflow-x: scroll;
+    }
+
+    &__challenge-preview {
+        flex: 1 1 auto;
+        margin: 0 10px;
+        padding: 0 10px;
+        min-width: 70%;
+        text-align: center;
+        background: none;
+        border: none;
+        outline: none;
+
+        &:first-of-type {
+            margin: 0;
+            padding: 0 0 0 20px;
+        }
+
+        &:last-of-type {
+            margin: 0;
+            padding: 0 20px 0 0;
+        }
+
+        > svg {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    &__title {
+        @include fs-header(3);
+        margin: 10px 0 0;
+        color: colour(white);
+    }
+
+    &__prompt {
+        @include fs-header(2);
+        margin: 0;
+        padding: 0 0 30px;
+        color: transparentize(colour(white), 0.4);
+        text-align: center;
+    }
+}

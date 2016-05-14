@@ -1,0 +1,12 @@
+<div class="c-interactive-menu">
+    <interactive-info title="Play with your food" description="Experiment with presentation and atmosphere to see how they can impact the taste of your food"></interactive-info>
+
+    <div class="c-interactive-menu__challenge-previews">
+        <button v-for="(id, challenge) of challenges" @click="selectChallenge(id)" class="c-interactive-menu__challenge-preview">
+            <partial :name="`persona-${ id }`"></partial>
+            <h6 class="c-interactive-menu__title">{{ challenge.title }}</h6>
+        </button>
+    </div>
+
+    <p class="c-interactive-menu__prompt">Select your customers to start</p>
+</div>

@@ -20,6 +20,7 @@
         @include fs-bodyCopy(2);
         box-sizing: initial;
         margin: 0 auto;
+        overflow: hidden;
 
         @include mq($from: tablet) {
             @include fs-bodyCopy(3, $size-only: true);

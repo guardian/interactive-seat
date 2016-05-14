@@ -1,0 +1,9 @@
+<div class="c-interactive-challenge">
+    <interactive-info title="Play with your food" description="Try changing the way things look"></interactive-info>
+
+    <p class="c-interactive-challenge__tries o-container">You have {{ numberOfTries }} {{ numberOfTries === 1 ? 'try' : 'tries' }} remaining!</p>
+
+    <div class="c-interactive-challenge__objects o-container">
+        <interactive-object v-for="object in objects" :object="object" :config="config"></interactive-object>
+    </div>
+</div>

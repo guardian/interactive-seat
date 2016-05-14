@@ -34,13 +34,13 @@
   "jspm": {
     "configFile": "src/js/config.js",
     "dependencies": {
-      "ded/bonzo": "github:ded/bonzo@^2.0.0",
       "ded/bowser": "github:ded/bowser@^1.0.0",
       "fastclick": "npm:fastclick@^1.0.6",
       "guardian/iframe-messenger": "github:guardian/iframe-messenger@master",
-      "isarray": "npm:isarray@^1.0.0",
-      "isobject": "npm:isobject@^2.1.0",
       "json": "github:systemjs/plugin-json@^0.1.0",
+      "lodash.clonedeep": "npm:lodash.clonedeep@^4.3.2",
+      "lodash.isarray": "npm:lodash.isarray@^4.0.0",
+      "lodash.isobject": "npm:lodash.isobject@^3.0.2",
       "reqwest": "github:ded/reqwest@^1.1.5",
       "text": "github:systemjs/plugin-text@^0.0.2",
       "vue": "npm:vue@^1.0.22"

@@ -133,7 +133,7 @@ module.exports = function(grunt) {
                         expand: true,
                         cwd: 'src/assets/img/personas/',
                         src: '*.svg',
-                        dest: 'src/components/interactive/partials/'
+                        dest: 'src/partials/'
                     }
                 ]
             }

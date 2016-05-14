@@ -13,13 +13,13 @@ System.config({
   },
 
   map: {
-    "ded/bonzo": "github:ded/bonzo@2.0.0",
     "ded/bowser": "github:ded/bowser@1.0.0",
     "fastclick": "npm:fastclick@1.0.6",
     "guardian/iframe-messenger": "github:guardian/iframe-messenger@master",
-    "isarray": "npm:isarray@1.0.0",
-    "isobject": "npm:isobject@2.1.0",
     "json": "github:systemjs/plugin-json@0.1.0",
+    "lodash.clonedeep": "npm:lodash.clonedeep@4.3.2",
+    "lodash.isarray": "npm:lodash.isarray@4.0.0",
+    "lodash.isobject": "npm:lodash.isobject@3.0.2",
     "reqwest": "github:ded/reqwest@1.1.5",
     "text": "github:systemjs/plugin-text@0.0.2",
     "traceur": "github:jmcriffey/bower-traceur@0.0.93",
@@ -78,9 +78,6 @@ System.config({
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
-    "npm:isobject@2.1.0": {
-      "isarray": "npm:isarray@1.0.0"
-    },
     "npm:jstransform@10.1.0": {
       "base62": "npm:base62@0.1.1",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
@@ -88,6 +85,13 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "source-map": "npm:source-map@0.1.31"
+    },
+    "npm:lodash._baseclone@4.5.7": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:lodash.clonedeep@4.3.2": {
+      "lodash._baseclone": "npm:lodash._baseclone@4.5.7"
     },
     "npm:path-browserify@0.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"

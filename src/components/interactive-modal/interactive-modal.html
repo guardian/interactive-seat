@@ -1,0 +1,12 @@
+<div class="c-interactive-modal">
+    <button @click="showModal = false" class="c-interactive-modal__close-button">&#x2715;</button>
+
+    <img class="c-interactive-modal__image" :src="config.assetPath + object.src" alt="{{ object.title }}">
+
+    <p class="c-interactive-modal__title">{{ object.title }}</p>
+
+    <button class="c-interactive-modal__option" v-for="option of object.options" @click="selectOption(option)">
+        <span v-if="option.id === selectedOptionId">&#x2713;</span>
+        {{ option.title }}
+    </button>
+</div>

@@ -7,6 +7,7 @@
 @import "general";
 @import "share";
 @import "objects";
+@import "transitions";
 @import "utilities";
 
 // Components
@@ -14,7 +15,12 @@
 @import "../components/copy/copy";
 @import "../components/header/header";
 @import "../components/interactive/interactive";
+@import "../components/interactive-challenge/interactive-challenge";
 @import "../components/interactive-info/interactive-info";
+@import "../components/interactive-menu/interactive-menu";
+@import "../components/interactive-modal/interactive-modal";
+@import "../components/interactive-object/interactive-object";
+@import "../components/interactive-results/interactive-results";
 @import "../components/navigation/navigation";
 @import "../components/share/share";
 

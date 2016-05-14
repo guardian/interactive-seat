@@ -1,7 +1,7 @@
 <header class="c-header">
-    <video class="c-header__video" loop :autoplay="content.autoplay" poster="{{ content.src }}&amp;maxbitrate=1000&amp;format=video/mp4&amp;poster=1" preload="none">
-        <source src="{{ content.src }}&amp;maxbitrate={{ config.bandwidth }}&amp;format=video/mp4" type="video/mp4">
-        <source src="{{ content.src }}&amp;maxbitrate={{ config.bandwidth }}&amp;format=video/webm" type="video/webm">
+    <video class="c-header__video" loop :autoplay="content.autoplay" :poster="`${ content.src }&amp;maxbitrate=1000&amp;format=video/mp4&amp;poster=1`" preload="none">
+        <source :src="`${ content.src }&amp;maxbitrate=${ config.bandwidth }&amp;format=video/mp4`" type="video/mp4">
+        <source :src="`${ content.src }&amp;maxbitrate=${ config.bandwidth }&amp;format=video/webm`" type="video/webm">
     </video>
 
     <div class="c-header__inner">

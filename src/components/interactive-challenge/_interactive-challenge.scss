@@ -1,0 +1,12 @@
+.c-interactive-challenge {
+    &__tries {
+        padding-top: 30px;
+        text-align: center;
+    }
+
+    &__objects {
+        display: flex;
+        flex-flow: row nowrap;
+        padding-top: 30px;
+    }
+}

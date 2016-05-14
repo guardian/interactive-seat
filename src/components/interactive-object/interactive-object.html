@@ -1,0 +1,14 @@
+<div class="c-interactive-object">
+    <button @click="showModal = true" class="c-interactive-object__object">
+        <img :src="config.assetPath + object.src" alt="{{ object.title }}" class="c-interactive-object__image">
+
+        <p class="c-interactive-object__label">{{ object.title }} ({{ object.options.length }} options)</p>
+
+        <template v-if="selectedOption">
+            <span v-if="selectedOption.correct">Correct!</span>
+            <span v-else>Wrong!</span>
+        </template>
+    </button>
+
+    <interactive-modal v-if="showModal" :object="object" :config="config" :show-modal.sync="showModal" :selected-option-id="selectedOption.id" transition="fade"></interactive-modal>
+</div>
