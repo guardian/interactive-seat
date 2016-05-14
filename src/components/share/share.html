@@ -1,0 +1,9 @@
+<div class="c-share">
+    <slot></slot>
+
+    <ul class="c-share__list u-clearfix">
+        <li class="c-share__list-item"><a class="c-share__link c-share__link--facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ url }}/sfb" target="_blank"></a></li>
+        <li class="c-share__list-item"><a class="c-share__link c-share__link--twitter" href="https://twitter.com/intent/tweet?text={{ text }}&amp;url={{ url }}/stw" target="_blank"></a></li>
+        <li class="c-share__list-item"><a class="c-share__link c-share__link--email" href="mailto:?subject={{ text }}&amp;body={{ url }}/sbl" target="_blank"></a></li>
+    </ul>
+</div>

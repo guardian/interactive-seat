@@ -1,13 +1,9 @@
 <div class="c-byline o-container">
-    <img v-for="photo of content.byline_photos" class="c-byline__photo" src="{{ photo }}">
+    <img v-for="photo of content.byline_photos" class="c-byline__photo" :src="photo">
 
     <p class="c-byline__authors">By <template v-for="(index, author) of content.authors"><template v-if="index > 0"> and </template><a href="{{ author.link }}">{{ author.name }}</a></template></p>
 
     <time class="c-byline__publish-date">{{ content.date_published }}</time>
 
-    <ul class="c-byline__share u-clearfix">
-        <li class="c-byline__share-item"><a class="c-byline__share-link c-byline__share-link--facebook" href="https://www.facebook.com/sharer/sharer.php?u={{content.share_url}}/sfb" target="_blank" class="share-button share-button--facebook"></a></li>
-        <li class="c-byline__share-item"><a class="c-byline__share-link c-byline__share-link--twitter" href="https://twitter.com/intent/tweet?text={{content.share_text}}&amp;url={{content.share_url}}/stw" target="_blank" class="share-button share-button--twitter"></a></li>
-        <li class="c-byline__share-item"><a class="c-byline__share-link c-byline__share-link--email" href="mailto:?subject={{content.share_text}}&amp;body={{content.share_url}}/sbl" target="_blank" class="share-button share-button--email"></a></li>
-    </div>
+    <share :text="content.share_text" :url="content.share_url"></share>
 </div>
