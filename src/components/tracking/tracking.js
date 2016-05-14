@@ -1,5 +1,5 @@
 import loadScript from '../../js/lib/loadScript';
-import Block from '../../js/modules/Block'
+import Block from '../../js/modules/Block';
 import template from './tracking.html!text';
 
 const YOU_GOV_TRACKING_URL = '//tracker.yougov.com/campaign/11?name=inter';
