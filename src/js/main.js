@@ -1,3 +1,5 @@
+import 'classlist-polyfill';
+
 import App from '../components/app/app';
 import cleanData from './lib/cleanData';
 import fetchJSON from './lib/fetch';

@@ -13,6 +13,7 @@ System.config({
   },
 
   map: {
+    "classlist-polyfill": "npm:classlist-polyfill@1.0.3",
     "ded/bowser": "github:ded/bowser@1.0.0",
     "fastclick": "npm:fastclick@1.0.6",
     "guardian/iframe-messenger": "github:guardian/iframe-messenger@master",
