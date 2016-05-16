@@ -45,7 +45,7 @@ let Interactive = Block.extend({
 });
 
 let transition = function (className) {
-    return (el, done) => {
+    return function (el, done) {
         // guard against lack of CSS animation support
         if (!support.cssAnimation) {
             done();
@@ -75,10 +75,20 @@ let transition = function (className) {
     };
 };
 
+let cancelTransition = function (className) {
+    return function (el) {
+        [].forEach.call(el.querySelectorAll('.animate'), (el) => {
+            el.classList.remove(className);
+        });
+    };
+};
+
 Vue.transition('interactive-view', {
     css: false,
     enter: transition('enter'),
-    leave: transition('leave')
+    enterCancelled: cancelTransition('enter'),
+    leave: transition('leave'),
+    leaveCancelled: cancelTransition('leave')
 });
 
 export default Interactive;
