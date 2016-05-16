@@ -1,15 +1,23 @@
 .c-interactive-modal {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
     padding: 10px;
-    width: calc(100% - 40px);
-    height: calc(100% - 20px);
     color: colour(black);
     background: colour(white);
+
+    @include mq($until: tablet) {
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        margin: auto;
+        width: calc(100% - 40px);
+        height: calc(100% - 20px);
+    }
+
+    @include mq($from: tablet) {
+        top: -10px;
+        left: -10px;
+    }
 
     &__close-button {
         position: absolute;
@@ -21,6 +29,7 @@
         background: none;
         border: 1px solid colour(black);
         border-radius: 50%;
+        outline: none;
     }
 
     &__image {
@@ -47,6 +56,7 @@
         text-align: left;
         background: none;
         border: none;
+        outline: none;
 
         & + & {
             border-top: 1px solid transparentize(colour(black), 0.9);

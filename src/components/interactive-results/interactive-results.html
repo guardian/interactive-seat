@@ -2,13 +2,15 @@
     <interactive-info v-if="challengeCompleted" title="Well done, you changed their minds!" description="A long, successful career in neurogastronomy awaits you."></interactive-info>
     <interactive-info v-else title="Sorry, you failed to change their minds!" description="You lose 3 experience points and are docked a health potion."></interactive-info>
 
-    <share class="o-container" :text="config.share_text" :url="config.share_url">
+    <share class="l-horizontal-padding" :text="config.share_text" :url="config.share_url">
         <p class="c-share__title">Share your results</p>
     </share>
 
-    <div class="c-interactive-results__footer o-container">
-        <button class="c-interactive-results__restart-button" @click="restart">&#8594;</button>
+    <div class="c-interactive-results__footer">
+        <div class="l-container l-horizontal-padding">
+            <button class="c-interactive-results__restart-button" @click="restart">&#8594;</button>
 
-        <p class="c-interactive-results__text">Scroll to continue reading or hit restart to try another challenge.</p>
+            <p class="c-interactive-results__text">Scroll to continue reading or hit restart to try another challenge.</p>
+        </div>
     </div>
 </div>

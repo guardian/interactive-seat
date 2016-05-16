@@ -1,15 +1,23 @@
 .c-interactive-object {
     flex: 1 auto;
 
+    @include mq($from: tablet) {
+        position: relative;
+    }
+
     &__object {
+        padding: 0;
         background: none;
         border: none;
+        outline: none;
     }
 
     &__image {
-        display: block;
-        width: 100%;
-        height: auto;
+        @include mq($until: tablet) {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
     }
 
     &__label {

@@ -1,4 +1,4 @@
-<div class="c-byline o-container">
+<div class="c-byline l-container l-horizontal-padding">
     <img v-for="photo of content.byline_photos" class="c-byline__photo" :src="photo">
 
     <p class="c-byline__authors">By <template v-for="(index, author) of content.authors"><template v-if="index > 0"> and </template><a href="{{ author.link }}">{{ author.name }}</a></template></p>

@@ -1,4 +1,15 @@
 .c-interactive-menu {
+    @include mq($from: tablet) {
+        flex-flow: row nowrap;
+        align-items: center;
+    }
+
+    &__interactive-info {
+        @include mq($from: tablet) {
+            flex: 1 1 0;
+        }
+    }
+
     &__challenge-previews {
         display: flex;
         flex-flow: row nowrap;
@@ -6,9 +17,16 @@
         margin: 0;
         padding: 10px 0;
         overflow-x: scroll;
+
+        @include mq($from: tablet) {
+            display: block;
+            flex: 3 3 0;
+            overflow: visible;
+        }
     }
 
     &__challenge-preview {
+        position: relative;
         flex: 1 1 auto;
         margin: 0 10px;
         padding: 0 10px;
@@ -28,6 +46,20 @@
             padding: 0 20px 0 0;
         }
 
+        @include mq($from: tablet) {
+            display: inline-block;
+            flex: none;
+            margin: 0;
+            padding: 0;
+            width: (100% / 3);
+            min-width: initial;
+
+            &:first-of-type,
+            &:last-of-type {
+                padding: 0;
+            }
+        }
+
         > svg {
             display: block;
             width: 100%;
@@ -36,9 +68,30 @@
     }
 
     &__title {
-        @include fs-header(3);
+        @include fs-bodyHeading(3);
         margin: 10px 0 0;
         color: colour(white);
+    }
+
+    &__start-button {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin: 30px auto 0;
+        width: 62px;
+        height: 62px;
+        font-size: 36px;
+        line-height: 56px;
+        color: colour(white);
+        background: transparentize(colour(black), 0.8);
+        border: 2px solid transparentize(colour(white), 0.2);
+        border-radius: 50%;
+        transform: translateX(-50%);
+
+        @include mq($from: tablet) {
+            display: block;
+        }
     }
 
     &__prompt {
@@ -47,5 +100,9 @@
         padding: 0 0 30px;
         color: transparentize(colour(white), 0.4);
         text-align: center;
+
+        @include mq($from: tablet) {
+            display: none;
+        }
     }
 }

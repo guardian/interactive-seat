@@ -10,6 +10,12 @@ $font-scale: map-merge(
                 10: (font-size: 62, line-height: 66),
                 11: (font-size: 96, line-height: 96)
             )
+        ),
+        header: map-merge(
+            map-get($font-scale, header),
+            (
+                6: (font-size: 32, line-height: 36)
+            )
         )
     )
 );
