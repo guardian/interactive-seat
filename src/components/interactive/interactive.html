@@ -1,3 +1,5 @@
 <section class="c-interactive">
+    <div class="c-interactive__background" :style="{ backgroundImage: `url(${ config.assetPath }/assets/img/bg.png)` }"></div>
+
     <component class="c-interactive__view l-container" :is="view" :config="config" :challenge-id="challengeId" :challenge-completed="challengeCompleted" transition="fade" transition-mode="out-in"></component>
 </section>

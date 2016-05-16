@@ -3,15 +3,16 @@
     height: 100%;
     color: colour(white);
 
-    &::before {
-        content: '';
+    &__background {
         position: absolute;
         top: 0;
         left: 0;
         z-index: -1;
         width: 100%;
         height: 100%;
-        background: colour(white) url(../assets/img/bg.png) no-repeat center center;
+        background-color: colour(white);
+        background-repeat: no-repeat;
+        background-position: center center;
         background-size: cover;
         opacity: 0.6;
     }
