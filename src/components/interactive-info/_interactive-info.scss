@@ -1,6 +1,14 @@
 .c-interactive-info {
     padding-top: 25px;
 
+    &.enter {
+        animation: fade-in 0.5s, from-the-left 0.5s;
+    }
+
+    &.leave {
+        animation: fade-out 0.5s, to-the-right 0.5s;
+    }
+
     &::before {
         content: '';
         display: block;

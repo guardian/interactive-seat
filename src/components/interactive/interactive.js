@@ -1,7 +1,11 @@
+import Vue from 'vue';
+
 import Block from '../../js/modules/Block';
+import browser from '../../js/lib/browser';
 import InteractiveChallenge from '../interactive-challenge/interactive-challenge';
 import InteractiveMenu from '../interactive-menu/interactive-menu';
 import InteractiveResults from '../interactive-results/interactive-results';
+import support from '../../js/lib/support';
 import template from './interactive.html!text';
 
 let Interactive = Block.extend({
@@ -38,6 +42,43 @@ let Interactive = Block.extend({
             this.view = 'interactive-menu';
         }
     }
+});
+
+let transition = function (className) {
+    return (el, done) => {
+        // guard against lack of CSS animation support
+        if (!support.cssAnimation) {
+            done();
+
+            return;
+        }
+
+        let promises = [].map.call(el.querySelectorAll('.animate'), (el) => {
+            let promise = new Promise((resolve) => {
+                let eventHandler = () => {
+                    resolve();
+
+                    el.classList.remove(className);
+
+                    el.removeEventListener(browser.cssAnimationEndEventName, eventHandler, false);
+                };
+
+                el.addEventListener(browser.cssAnimationEndEventName, eventHandler, false);
+            });
+
+            el.classList.add(className);
+
+            return promise;
+        });
+
+        Promise.all(promises).then(done);
+    };
+};
+
+Vue.transition('interactive-view', {
+    css: false,
+    enter: transition('enter'),
+    leave: transition('leave')
 });
 
 export default Interactive;
