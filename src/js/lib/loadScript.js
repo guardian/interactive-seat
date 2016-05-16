@@ -1,25 +1,9 @@
-export default function loadScript(url, callback) {
-    let script = document.createElement('script');
-    let done = false;
-
-    script.charset = 'utf-8';
-    script.src = url;
-
-    script.onload = script.onreadystatechange = function () {
-        if (!done && (!this.readyState || this.readyState === 'loaded' || this.readyState === 'complete')) {
-            done = true;
-
-            if (callback) {
-                callback();
-            }
-
-            script.onload = script.onreadystatechange = null;
-
-            if (script.parentNode) {
-                script.parentNode.removeChild(script);
-            }
-        }
-    };
-
-    document.body.appendChild(script);
+export default function loadScript(url) {
+    return new Promise(function (resolve, reject) {
+        var script = document.createElement('script');
+        script.src = url;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.head.appendChild(script);
+    });
 }
