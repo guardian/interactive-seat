@@ -22,7 +22,7 @@ function timedFileLoad(url) {
 }
 
 export default function getBandwidth() {
-    return new Promise(function (resolve, reject) {
+    return new Promise(function (resolve) {
         let timeout = setTimeout(() => resolve(DEFAULT_BANDWIDTH), TIMEOUT_DURATION);
 
         Promise.all([
