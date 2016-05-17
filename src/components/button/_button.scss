@@ -1,0 +1,9 @@
+.c-button {
+    display: block;
+    width: 48px;
+    height: 48px;
+    color: colour(news-support-4);
+    background: transparentize(colour(black), 0.4);
+    border: 2px solid colour(news-support-4);
+    border-radius: 50%;
+}
