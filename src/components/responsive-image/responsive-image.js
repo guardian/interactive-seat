@@ -20,7 +20,7 @@ let ResponsiveImage = Vue.extend({
     },
     computed: {
         srcSet() {
-            return this.widths.map((width) => `${ this.path }/${ width }${ this.extension } ${ width }w`).join(', ');
+            return this.widths.map((width) => `${ this.path }${ width }${ this.extension } ${ width }w`).join(', ');
         }
     }
 });
