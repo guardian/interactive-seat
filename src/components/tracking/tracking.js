@@ -1,10 +1,10 @@
 import loadScript from '../../js/lib/loadScript';
-import Block from '../../js/modules/Block';
 import template from './tracking.html!text';
+import Vue from 'vue';
 
 const YOU_GOV_TRACKING_URL = '//tracker.yougov.com/campaign/11?name=inter';
 
-let Tracking = Block.extend({
+let Tracking = Vue.extend({
     template,
     data() {
         return {

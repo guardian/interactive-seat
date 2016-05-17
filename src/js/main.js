@@ -1,32 +1,15 @@
-import 'classlist-polyfill';
+import 'classlist-polyfill'
 
-import App from '../components/app/app';
-import cleanData from './lib/cleanData';
-import fetchJSON from './lib/fetch';
-import getBandwidth from './lib/bandwidth';
+import Vue from 'vue';
 
-const CONTENT_URL = 'https://interactive.guim.co.uk/docsdata-test/1ukLv0mLRiysvsraIUv-izI4BFEsv42_OrwNGxQIOGwY.json';
+import Tracking from '../components/tracking/tracking.js';
 
-export let init = function(el, context, config) {
-    Promise.all([
-        fetchJSON(CONTENT_URL),
-        getBandwidth()
-    ]).then((results) => {
-        let [data] = results;
-
-        cleanData(data);
-
-        return results;
-    }).then((results) => {
-        let [data, bandwidth] = results;
-
-        Object.assign(data.config, config, { bandwidth });
-
-        console.log('Data: ', data);
-
-        new App({
-            data,
-            el
-        });
+export let init = function(el) {
+    new Vue({
+        el,
+        template: '<figure id="js-app"><div>Tracking test...</div><tracking></tracking></figure>',
+        components: {
+            Tracking
+        }
     });
 };
