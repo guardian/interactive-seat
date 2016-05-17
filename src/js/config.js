@@ -19,8 +19,6 @@ System.config({
     "guardian/iframe-messenger": "github:guardian/iframe-messenger@master",
     "json": "github:systemjs/plugin-json@0.1.0",
     "lodash.clonedeep": "npm:lodash.clonedeep@4.3.2",
-    "lodash.isarray": "npm:lodash.isarray@4.0.0",
-    "lodash.isobject": "npm:lodash.isobject@3.0.2",
     "reqwest": "github:ded/reqwest@1.1.5",
     "text": "github:systemjs/plugin-text@0.0.2",
     "traceur": "github:jmcriffey/bower-traceur@0.0.93",
