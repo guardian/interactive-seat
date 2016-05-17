@@ -1,9 +1,10 @@
 <nav class="c-navigation">
     <ul class="c-navigation__list l-container l-horizontal-padding">
-        <li class="c-navigation__item c-navigation__item--jump-to-story">
-            <a class="c-navigation__link" href="{{ url }}">Jump to story</a>
-        </li><li v-for="item in content.items" class="c-navigation__item">
-            <a :class="item.isActive ? 'c-navigation__link is-active' : 'c-navigation__link'" href="{{ item.url }}">{{ item.title }}</a>
+        <li v-for="link in content.links" class="c-navigation__item">
+            <a class="c-navigation__link" href="{{ link.url }}">
+                <span class="c-navigation__link-label">{{ link.label }}: </span>
+                <span class="c-navigation__link-text">{{ link.text }}</span>
+            </a>
         </li>
     </ul>
 </nav>
