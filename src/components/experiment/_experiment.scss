@@ -1,0 +1,67 @@
+.c-experiment {
+    overflow: hidden;
+    position: relative;
+    color: colour(white);
+
+    @include mq($until: tablet) {
+        height: 100%;
+    }
+
+    &__outer {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        z-index: 2;
+        width: 100%;
+    }
+
+    &__inner {
+        position: relative;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        background: transparentize(colour(black), 0.8);
+    }
+
+    &__title,
+    &__subtitle {
+        @include fs-header(1);
+        margin: 0;
+    }
+
+    &__title {
+        padding-top: 4px
+    }
+
+    &__subtitle {
+        color: transparentize(colour(white), 0.4);
+    }
+
+    .is-mobile & {
+        .c-experiment__video {
+            visibility: hidden;
+            z-index: 0;
+        }
+    }
+
+    .c-experiment__video {
+        z-index: 1;
+        width: 100%;
+        height: auto;
+
+        &--primary {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+    }
+
+    &__play-button {
+        float: left;
+        margin-right: 12px;
+
+        @include mq($from: tablet) {
+            margin-right: 24px;
+        }
+    }
+}

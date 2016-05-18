@@ -1,5 +1,6 @@
 import Vue from 'vue';
 
+import Button from '../button/button';
 import template from './video.html!text';
 
 const FORMATS = ['mp4', 'webm', 'ogg'];
@@ -13,18 +14,77 @@ const OGG_SUFFIXES = {
 
 let Video = Vue.extend({
     template,
-    props: [
-        'path',
-        'bandwidth'
-    ],
+    components: {
+        Button
+    },
+    props: {
+        path: String,
+        bandwidth: String,
+        preload: {
+            type: String,
+            default: 'none'
+        },
+        hasControls: {
+            type: Boolean,
+            default: false
+        },
+        autoplay: {
+            type: Boolean,
+            default: false
+        },
+        loop: {
+            type: Boolean,
+            default: false
+        },
+        muted: {
+            type: Boolean,
+            default: false
+        },
+        progress: {
+            type: Number,
+            default: 0
+        }
+    },
     data() {
+        let bitRate = getBitRate(this.bandwidth);
+
         return {
-            sources: getSources(this.path, this.bandwidth)
+            sources: getSources(this.path, bitRate),
+            poster: getPosterUrl(this.path, bitRate),
+            isPlaying: false
         };
     },
     methods: {
         play() {
-            this.$el.play();
+            this.isPlaying = true;
+
+            this.$el.querySelector('.js-video-player').play();
+        },
+        pause() {
+            this.isPlaying = false;
+
+            this.$el.querySelector('.js-video-player').pause();
+        },
+        setCurrentTime(currentTime) {
+            this.$el.querySelector('.js-video-player').currentTime = currentTime;
+        },
+        onClickPauseButton() {
+            this.$dispatch('video-pause');
+        },
+        onTimeUpdate(event) {
+            this.progress = (event.target.currentTime / event.target.duration) * 100;
+        },
+        onClickSeekBar(event) {
+            let rect = this.$el.querySelector('.js-seek-bar').getBoundingClientRect();
+            let deltaX = event.x - rect.left;
+            let elWidth = rect.width;
+            let duration = this.$el.querySelector('.js-video-player').duration;
+            let currentTime = (1 / elWidth) * deltaX * duration;
+
+            this.setCurrentTime(currentTime);
+        },
+        onEnded() {
+            this.$dispatch('video-end');
         }
     }
 });
@@ -47,9 +107,7 @@ function getBitRate(bandwidth) {
     return bitRate;
 }
 
-function getSources(path, bandwidth) {
-    let bitRate = getBitRate(bandwidth);
-
+function getSources(path, bitRate) {
     return FORMATS.map((format) => {
         return {
             src: getUrl(path, bitRate, format),
@@ -68,6 +126,10 @@ function getWebmUrl(path, bitRate) {
 
 function getOggUrl(path, bitRate) {
     return `${ path }${ OGG_SUFFIXES[bitRate] }`;
+}
+
+function getPosterUrl(path, bitRate) {
+    return `${ path }_${ bitRate }_H264_poster.jpg`;
 }
 
 function getUrl(path, bitRate, format) {

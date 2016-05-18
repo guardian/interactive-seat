@@ -1,3 +1,20 @@
-<video class="c-video" preload="none">
-    <source v-for="source in sources" :src="source.src" type="video/{{ source.format }}"></source>
-</video>
+<div class="c-video" :class="{ 'is-playing': isPlaying }">
+    <template v-if="hasControls">
+        <video class="c-video__player js-video-player" @timeupdate="onTimeUpdate" @ended="onEnded" :poster="poster" :preload="preload" :loop="loop" :muted="muted" :autoplay="autoplay">
+            <source v-for="source in sources" :src="source.src" type="video/{{ source.format }}"></source>
+        </video>
+
+        <div v-if="isPlaying" class="c-video__controls" transition="fade">
+            <button class="c-video__pause-button c-button--medium" @click="onClickPauseButton">Pause</button>
+
+            <div class="js-seek-bar c-video__seek-bar" @click="onClickSeekBar">
+                <div class="c-video__progress-bar" :style="{ width: `${ progress }%` }"></div>
+            </div>
+        </div>
+    </template>
+    <template v-else>
+        <video class="c-video__player js-video-player" :poster="poster" :preload="preload" :loop="loop" :muted="muted" :autoplay="autoplay">
+            <source v-for="source in sources" :src="source.src" type="video/{{ source.format }}"></source>
+        </video>
+    </template>
+</div>

@@ -1,14 +1,21 @@
 <header class="c-header">
-    <video class="c-header__video" loop :autoplay="content.autoplay" :poster="`${ content.src }&amp;maxbitrate=1000&amp;format=video/mp4&amp;poster=1`" preload="none">
-        <source :src="`${ content.src }&amp;maxbitrate=${ config.bandwidth }&amp;format=video/mp4`" type="video/mp4">
-        <source :src="`${ content.src }&amp;maxbitrate=${ config.bandwidth }&amp;format=video/webm`" type="video/webm">
-    </video>
+    <template v-if="config.isMobile">
+        <responsive-image class="l-cover" :path="content.image_path"></responsive-image>
+        <video class="c-header__video l-cover" :path="content.video_path" :bandwidth="config.bandwidth"></video>
+    </template>
+    <template v-else>
+        <video id="js-preview-video" class="c-header__video c-header__video--preview" autoplay loop muted :path="content.preview_path" :bandwidth="config.bandwidth"></video>
+        <video id="js-primary-video" class="c-header__video c-header__video--primary" preload="auto" has-controls :path="content.video_path" :bandwidth="config.bandwidth"></video>
+    </template>
 
-    <div class="c-header__inner">
-        <h2 class="c-header__subtitle l-container l-horizontal-padding">{{ content.subtitle }}</h2>
-        <h1 class="c-header__headline l-container l-horizontal-padding">{{ content.headline }}</h1>
-        <div class="c-header__description">
-            <p class="c-header__description-text l-container l-horizontal-padding">{{ content.description }}</p>
+    <div id="js-overlay" class="c-header__outer">
+        <div class="l-container">
+            <div class="c-header__inner l-horizontal-padding">
+                <h2 class="c-header__subtitle">{{ content.subtitle }}</h2>
+                <h1 class="c-header__headline">{{ content.headline }}</h1>
+                <button class="c-header__play-button" :class="{ 'c-button--large': !config.isMobile }" @click="onClickPlayButton">Play</button>
+                <p v-if="!config.isMobile" class="c-header__description">{{ content.description }}</p>
+            </div>
         </div>
     </div>
 </header>

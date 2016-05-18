@@ -1,0 +1,50 @@
+.c-video {
+    overflow: hidden;
+    margin: 0 auto;
+    padding-bottom: 56.25%;
+
+    &__player {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__controls {
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.5s 0.5s;
+
+        .c-video:hover & {
+            opacity: 1;
+            transition: opacity 0.5s;
+        }
+    }
+
+    &__pause-button {
+        position: absolute;
+        bottom: 34px;
+        left: 24px;
+    }
+
+    &__seek-bar,
+    &__progress-bar {
+        position: absolute;
+        left: 0;
+        height: 10px;
+    }
+
+    &__seek-bar {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background: transparentize(colour(news-support-4), 0.6);
+    }
+
+    &__progress-bar {
+        top: 0;
+        background: colour(news-support-4);
+    }
+}

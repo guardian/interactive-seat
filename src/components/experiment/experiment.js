@@ -2,10 +2,10 @@ import animate from '../../js/lib/animate';
 import Block from '../../js/modules/Block';
 import Button from '../button/button';
 import ResponsiveImage from '../responsive-image/responsive-image';
-import template from './header.html!text';
+import template from './experiment.html!text';
 import Video from '../video/video';
 
-let Header = Block.extend({
+let Experiment = Block.extend({
     template,
     components: {
         Button,
@@ -79,4 +79,4 @@ let Header = Block.extend({
     }
 });
 
-export default Header;
+export default Experiment;

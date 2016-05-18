@@ -5,6 +5,7 @@ import template from './app.html!text';
 
 import Byline from '../byline/byline';
 import Copy from '../copy/copy';
+import Experiment from '../experiment/experiment';
 import Header from '../header/header';
 import Interactive from '../interactive/interactive';
 import Navigation from '../navigation/navigation';
@@ -18,6 +19,7 @@ let App = Vue.extend({
     components: {
         Byline,
         Copy,
+        Experiment,
         Header,
         Interactive,
         Navigation,
