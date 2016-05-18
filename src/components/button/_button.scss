@@ -1,9 +1,23 @@
 .c-button {
     display: block;
+    margin: 0;
+    padding: 0;
     width: 48px;
     height: 48px;
     color: colour(news-support-4);
     background: transparentize(colour(black), 0.4);
     border: 2px solid colour(news-support-4);
     border-radius: 50%;
+    cursor: pointer;
+    outline: none;
+
+    &--medium {
+        width: 66px;
+        height: 66px;
+    }
+
+    &--large {
+        width: 92px;
+        height: 92px;
+    }
 }
