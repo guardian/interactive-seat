@@ -10,6 +10,9 @@ import Interactive from '../interactive/interactive';
 import Navigation from '../navigation/navigation';
 import Tracking from '../tracking/tracking';
 
+Vue.config.devtools = true;
+Vue.config.debug = true;
+
 let App = Vue.extend({
     template,
     components: {
