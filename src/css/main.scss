@@ -7,8 +7,6 @@
 @import "general";
 @import "share";
 @import "animations";
-@import "utilities";
-@import "layout";
 
 // Components
 @import "../components/button/button";
@@ -25,4 +23,6 @@
 @import "../components/navigation/navigation";
 @import "../components/share/share";
 
+@import "utilities";
+@import "layout";
 @import "shame";
