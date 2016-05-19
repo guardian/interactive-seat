@@ -2,120 +2,135 @@ import cloneDeep from 'lodash.clonedeep';
 
 const CHALLENGES = {
     1: {
-        title: 'Looking for extravangace',
-        numberOfTries: 5,
-        objects: [
+        title: 'This sweet toothed explorer likes to experiment',
+        tasks: [
             {
-                id: 'plate-shape',
-                title: 'Plate Shape',
-                src: '/assets/img/plate.png',
+                title: 'Can you sweeten the deal?',
+                description: 'How would you use shape to make this dish sweeter?',
                 options: [
                     {
-                        id: 'angular',
-                        title: 'Angular',
-                        correct: true
+                        title: 'Serve more rounded food',
+                        response: 'Correct! Studies show that food in round shapes enhance the perception of sweetness.'
                     },
                     {
-                        id: 'round',
-                        title: 'Round',
-                        correct: false
+                        title: 'Serve more angular food',
+                        response: 'Sorry – science suggests that we perceive square-ish foods tend to be more tart.'
                     }
                 ]
             },
             {
-                id: 'plate-colour',
-                title: 'Plate Colour',
-                src: '/assets/img/plate.png',
+                title: 'How would you like to use aroma?',
                 options: [
                     {
-                        id: 'white',
-                        title: 'White',
-                        correct: true
+                        title: 'Introduce the scent of vanilla to the dish',
+                        Response: 'Correct! The scent of vanilla CAN make foods seem sweeter.'
                     },
                     {
-                        id: 'black',
-                        title: 'Black',
-                        correct: false
+                        title: 'Add nothing – this dish already smells great as it is',
+                        Response: 'Sorry! Doing nothing won\'t change the taste of the food, but you’ve missed an opportunity to enhance the sweetness.'
+                    }
+                ]
+            },
+            {
+                title: 'Just desserts: which colour scheme will enhance sweetness?',
+                options: [
+                    {
+                        title: 'Serve a multi-coloured pudding',
+                        Response: 'Correct! Foods that come in multiple colours trick the brain so you eat more than you would if it came in a single colour (even if it is their favourite).'
+                    },
+                    {
+                        title: 'Stick to a single palate - what’s their favourite colour?',
+                        Response: 'Sorry! This was a bit of a trick: multicoloured foods will make a person more susceptible to over-indulging - even more than a whole dish prepared in their favourite colour.'
                     }
                 ]
             }
         ]
     },
     2: {
-        title: 'Looking for sweetness',
-        numberOfTries: 5,
-        objects: [
+        title: 'This sweet toothed explorer likes to experiment',
+        tasks: [
             {
-                id: 'cutlery-shape',
-                title: 'Cutlery Shape',
-                src: '/assets/img/plate.png',
+                title: 'Can you sweeten the deal?',
+                description: 'How would you use shape to make this dish sweeter?',
                 options: [
                     {
-                        id: 'angular',
-                        title: 'Angular',
-                        correct: false
+                        title: 'Serve more rounded food',
+                        response: 'Correct! Studies show that food in round shapes enhance the perception of sweetness.'
                     },
                     {
-                        id: 'round',
-                        title: 'Round',
-                        correct: true
+                        title: 'Serve more angular food',
+                        response: 'Sorry – science suggests that we perceive square-ish foods tend to be more tart.'
                     }
                 ]
             },
             {
-                id: 'cutlery-weight',
-                title: 'Cutlery Weight',
-                src: '/assets/img/plate.png',
+                title: 'How would you like to use aroma?',
                 options: [
                     {
-                        id: 'light',
-                        title: 'Light',
-                        correct: true
+                        title: 'Introduce the scent of vanilla to the dish',
+                        Response: 'Correct! The scent of vanilla CAN make foods seem sweeter.'
                     },
                     {
-                        id: 'heavy',
-                        title: 'Heavy',
-                        correct: false
+                        title: 'Add nothing – this dish already smells great as it is',
+                        Response: 'Sorry! Doing nothing won\'t change the taste of the food, but you’ve missed an opportunity to enhance the sweetness.'
+                    }
+                ]
+            },
+            {
+                title: 'Just desserts: which colour scheme will enhance sweetness?',
+                options: [
+                    {
+                        title: 'Serve a multi-coloured pudding',
+                        Response: 'Correct! Foods that come in multiple colours trick the brain so you eat more than you would if it came in a single colour (even if it is their favourite).'
+                    },
+                    {
+                        title: 'Stick to a single palate - what’s their favourite colour?',
+                        Response: 'Sorry! This was a bit of a trick: multicoloured foods will make a person more susceptible to over-indulging - even more than a whole dish prepared in their favourite colour.'
                     }
                 ]
             }
         ]
     },
     3: {
-        title: 'Looking for big flavour',
-        numberOfTries: 5,
-        objects: [
+        title: 'This sweet toothed explorer likes to experiment',
+        tasks: [
             {
-                id: 'music',
-                title: 'Music',
-                src: '/assets/img/plate.png',
+                title: 'Can you sweeten the deal?',
+                description: 'How would you use shape to make this dish sweeter?',
                 options: [
                     {
-                        id: 'jazz',
-                        title: 'Jazz',
-                        correct: false
+                        title: 'Serve more rounded food',
+                        response: 'Correct! Studies show that food in round shapes enhance the perception of sweetness.'
                     },
                     {
-                        id: 'techno',
-                        title: 'Techno',
-                        correct: true
+                        title: 'Serve more angular food',
+                        response: 'Sorry – science suggests that we perceive square-ish foods tend to be more tart.'
                     }
                 ]
             },
             {
-                id: 'lighting',
-                title: 'Lighting',
-                src: '/assets/img/plate.png',
+                title: 'How would you like to use aroma?',
                 options: [
                     {
-                        id: 'dim',
-                        title: 'Dim',
-                        correct: true
+                        title: 'Introduce the scent of vanilla to the dish',
+                        Response: 'Correct! The scent of vanilla CAN make foods seem sweeter.'
                     },
                     {
-                        id: 'bright',
-                        title: 'Bright',
-                        correct: false
+                        title: 'Add nothing – this dish already smells great as it is',
+                        Response: 'Sorry! Doing nothing won\'t change the taste of the food, but you’ve missed an opportunity to enhance the sweetness.'
+                    }
+                ]
+            },
+            {
+                title: 'Just desserts: which colour scheme will enhance sweetness?',
+                options: [
+                    {
+                        title: 'Serve a multi-coloured pudding',
+                        Response: 'Correct! Foods that come in multiple colours trick the brain so you eat more than you would if it came in a single colour (even if it is their favourite).'
+                    },
+                    {
+                        title: 'Stick to a single palate - what’s their favourite colour?',
+                        Response: 'Sorry! This was a bit of a trick: multicoloured foods will make a person more susceptible to over-indulging - even more than a whole dish prepared in their favourite colour.'
                     }
                 ]
             }
