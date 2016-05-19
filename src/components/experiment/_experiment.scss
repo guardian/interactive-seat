@@ -59,6 +59,8 @@
     &__play-button {
         float: left;
         margin-right: 12px;
+        color: colour(news-support-4);
+        border: 2px solid colour(news-support-4);
 
         @include mq($from: tablet) {
             margin-right: 24px;

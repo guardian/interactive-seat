@@ -10,7 +10,7 @@
 
     <div id="js-overlay" class="c-experiment__outer">
         <div class="c-experiment__inner l-container l-horizontal-padding u-clearfix">
-            <button class="c-experiment__play-button" :class="{ 'c-button--medium': !config.isMobile }" @click="onClickPlayButton">Play</button>
+            <button class="c-experiment__play-button c-button--circle" :class="{ 'c-button--medium-circle': !config.isMobile }" @click="onClickPlayButton">Play</button>
             <p class="c-experiment__title">{{ content.title }}</p>
             <p class="c-experiment__subtitle">{{ content.subtitle }}</p>
         </div>

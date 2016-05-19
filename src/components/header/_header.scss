@@ -84,5 +84,7 @@
     &__play-button {
         float: left;
         margin-right: 24px;
+        color: colour(news-support-4);
+        border: 2px solid colour(news-support-4);
     }
 }

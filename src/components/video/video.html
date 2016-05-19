@@ -5,7 +5,7 @@
         </video>
 
         <div v-if="isPlaying" class="c-video__controls" transition="fade">
-            <button class="c-video__pause-button c-button--medium" @click="onClickPauseButton">Pause</button>
+            <button class="c-video__pause-button c-button--circle c-button--medium-circle" @click="onClickPauseButton">Pause</button>
 
             <div class="js-seek-bar c-video__seek-bar" @click="onClickSeekBar">
                 <div class="c-video__progress-bar" :style="{ width: `${ progress }%` }"></div>
