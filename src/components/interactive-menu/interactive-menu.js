@@ -3,16 +3,16 @@ import InteractiveInfo from '../interactive-info/interactive-info';
 import template from './interactive-menu.html!text';
 import Vue from 'vue';
 
-import persona1 from '../../partials/persona-1.svg!text';
-import persona2 from '../../partials/persona-2.svg!text';
-import persona3 from '../../partials/persona-3.svg!text';
+import patron1 from '../../partials/patron-1.svg!text';
+import patron2 from '../../partials/patron-2.svg!text';
+import patron3 from '../../partials/patron-3.svg!text';
 
 let InteractiveMenu = Vue.extend({
     template,
     partials: {
-        'persona-1': persona1,
-        'persona-2': persona2,
-        'persona-3': persona3
+        patron1,
+        patron2,
+        patron3
     },
     components: {
         InteractiveInfo
