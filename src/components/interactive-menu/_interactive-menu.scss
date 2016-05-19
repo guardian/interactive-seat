@@ -9,7 +9,6 @@
         flex-flow: row nowrap;
         flex: 1 1 auto;
         margin: 0;
-        padding: 10px 0;
         overflow-x: scroll;
 
         @include mq($from: tablet) {
@@ -85,18 +84,6 @@
 
         @include mq($from: tablet) {
             display: block;
-        }
-    }
-
-    &__prompt {
-        @include fs-header(2);
-        margin: 0;
-        padding: 0 0 30px;
-        color: transparentize(colour(white), 0.4);
-        text-align: center;
-
-        @include mq($from: tablet) {
-            display: none;
         }
     }
 
