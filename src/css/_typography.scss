@@ -14,7 +14,14 @@ $font-scale: map-merge(
         header: map-merge(
             map-get($font-scale, header),
             (
-                6: (font-size: 32, line-height: 36)
+                6: (font-size: 32, line-height: 36),
+                7: (font-size: 40, line-height: 44)
+            )
+        ),
+        textSans: map-merge(
+            map-get($font-scale, textSans),
+            (
+                5: (font-size: 16, line-height: 20)
             )
         )
     )
