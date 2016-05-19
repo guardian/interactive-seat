@@ -1,9 +1,11 @@
 <div class="c-interactive-challenge">
-    <interactive-info title="Play with your food" description="Try changing the way things look"></interactive-info>
-
-    <p class="c-interactive-challenge__tries l-container l-horizontal-padding">You have {{ numberOfTries }} {{ numberOfTries === 1 ? 'try' : 'tries' }} remaining!</p>
-
-    <div class="c-interactive-challenge__objects l-container l-horizontal-padding">
-        <interactive-object v-for="object in objects" :object="object" :config="config"></interactive-object>
-    </div>
+    <interactive-task
+        v-for="(index, task) of tasks"
+        v-if="index === currentTaskIndex"
+        :task="task"
+        :index="index"
+        :number-of-tasks="tasks.length"
+        :challenge-id="challengeId"
+        transition="fade-with-delay">
+    </interactive-task>
 </div>

@@ -18,23 +18,21 @@ let Interactive = Block.extend({
     data() {
         return {
             view: 'interactive-menu',
-            challengeCompleted: false,
-            challengeId: 1
+            challengeId: 1,
+            numberOfTasks: 0,
+            numberOfTasksCorrect: 0
         };
     },
     events: {
-        'challenge-selected': function (challengeId) {
+        'challenge-selected': function (challengeId, numberOfTasks) {
             this.challengeId = challengeId;
+
+            this.numberOfTasks = numberOfTasks;
 
             this.view = 'interactive-challenge';
         },
-        'challenge-completed': function () {
-            this.challengeCompleted = true;
-
-            this.view = 'interactive-results';
-        },
-        'challenge-failed': function () {
-            this.challengeCompleted = false;
+        'challenge-completed': function (numberOfTasksCorrect) {
+            this.numberOfTasksCorrect = numberOfTasksCorrect;
 
             this.view = 'interactive-results';
         },

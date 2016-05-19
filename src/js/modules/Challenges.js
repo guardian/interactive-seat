@@ -7,40 +7,60 @@ const CHALLENGES = {
             {
                 title: 'Can you sweeten the deal?',
                 description: 'How would you use shape to make this dish sweeter?',
+                partials: ['place-setting-normal'],
+                isActive: true,
                 options: [
                     {
+                        id: 'heavy',
                         title: 'Serve more rounded food',
-                        response: 'Correct! Studies show that food in round shapes enhance the perception of sweetness.'
+                        response: 'Correct! Studies show that food in round shapes enhance the perception of sweetness.',
+                        isCorrect: true
                     },
                     {
+                        id: 'light',
                         title: 'Serve more angular food',
-                        response: 'Sorry – science suggests that we perceive square-ish foods tend to be more tart.'
+                        response: 'Sorry – science suggests that we perceive square-ish foods tend to be more tart.',
+                        isCorrect: false
                     }
                 ]
             },
             {
-                title: 'How would you like to use aroma?',
+                title: 'Can you sweeten the deal?',
+                description: 'How would you like to use aroma?',
+                partials: ['place-setting-normal'],
+                isActive: false,
                 options: [
                     {
+                        id: 'heavy',
                         title: 'Introduce the scent of vanilla to the dish',
-                        Response: 'Correct! The scent of vanilla CAN make foods seem sweeter.'
+                        response: 'Correct! The scent of vanilla CAN make foods seem sweeter.',
+                        isCorrect: true
                     },
                     {
+                        id: 'light',
                         title: 'Add nothing – this dish already smells great as it is',
-                        Response: 'Sorry! Doing nothing won\'t change the taste of the food, but you’ve missed an opportunity to enhance the sweetness.'
+                        response: 'Sorry! Doing nothing won\'t change the taste of the food, but you’ve missed an opportunity to enhance the sweetness.',
+                        isCorrect: false
                     }
                 ]
             },
             {
-                title: 'Just desserts: which colour scheme will enhance sweetness?',
+                title: 'Can you sweeten the deal?',
+                description: 'Just desserts: which colour scheme will enhance sweetness?',
+                partials: ['place-setting-normal'],
+                isActive: false,
                 options: [
                     {
+                        id: 'heavy',
                         title: 'Serve a multi-coloured pudding',
-                        Response: 'Correct! Foods that come in multiple colours trick the brain so you eat more than you would if it came in a single colour (even if it is their favourite).'
+                        response: 'Correct! Foods that come in multiple colours trick the brain so you eat more than you would if it came in a single colour (even if it is their favourite).',
+                        isCorrect: true
                     },
                     {
+                        id: 'light',
                         title: 'Stick to a single palate - what’s their favourite colour?',
-                        Response: 'Sorry! This was a bit of a trick: multicoloured foods will make a person more susceptible to over-indulging - even more than a whole dish prepared in their favourite colour.'
+                        response: 'Sorry! This was a bit of a trick: multicoloured foods will make a person more susceptible to over-indulging - even more than a whole dish prepared in their favourite colour.',
+                        isCorrect: false
                     }
                 ]
             }
@@ -52,40 +72,60 @@ const CHALLENGES = {
             {
                 title: 'Can you sweeten the deal?',
                 description: 'How would you use shape to make this dish sweeter?',
+                partials: ['place-setting-normal'],
+                isActive: true,
                 options: [
                     {
+                        id: 'heavy',
                         title: 'Serve more rounded food',
-                        response: 'Correct! Studies show that food in round shapes enhance the perception of sweetness.'
+                        response: 'Correct! Studies show that food in round shapes enhance the perception of sweetness.',
+                        isCorrect: true
                     },
                     {
+                        id: 'light',
                         title: 'Serve more angular food',
-                        response: 'Sorry – science suggests that we perceive square-ish foods tend to be more tart.'
+                        response: 'Sorry – science suggests that we perceive square-ish foods tend to be more tart.',
+                        isCorrect: false
                     }
                 ]
             },
             {
-                title: 'How would you like to use aroma?',
+                title: 'Can you sweeten the deal?',
+                description: 'How would you like to use aroma?',
+                partials: ['place-setting-normal'],
+                isActive: false,
                 options: [
                     {
+                        id: 'heavy',
                         title: 'Introduce the scent of vanilla to the dish',
-                        Response: 'Correct! The scent of vanilla CAN make foods seem sweeter.'
+                        response: 'Correct! The scent of vanilla CAN make foods seem sweeter.',
+                        isCorrect: true
                     },
                     {
+                        id: 'light',
                         title: 'Add nothing – this dish already smells great as it is',
-                        Response: 'Sorry! Doing nothing won\'t change the taste of the food, but you’ve missed an opportunity to enhance the sweetness.'
+                        response: 'Sorry! Doing nothing won\'t change the taste of the food, but you’ve missed an opportunity to enhance the sweetness.',
+                        isCorrect: false
                     }
                 ]
             },
             {
-                title: 'Just desserts: which colour scheme will enhance sweetness?',
+                title: 'Can you sweeten the deal?',
+                description: 'Just desserts: which colour scheme will enhance sweetness?',
+                partials: ['place-setting-normal'],
+                isActive: false,
                 options: [
                     {
+                        id: 'heavy',
                         title: 'Serve a multi-coloured pudding',
-                        Response: 'Correct! Foods that come in multiple colours trick the brain so you eat more than you would if it came in a single colour (even if it is their favourite).'
+                        response: 'Correct! Foods that come in multiple colours trick the brain so you eat more than you would if it came in a single colour (even if it is their favourite).',
+                        isCorrect: true
                     },
                     {
+                        id: 'light',
                         title: 'Stick to a single palate - what’s their favourite colour?',
-                        Response: 'Sorry! This was a bit of a trick: multicoloured foods will make a person more susceptible to over-indulging - even more than a whole dish prepared in their favourite colour.'
+                        response: 'Sorry! This was a bit of a trick: multicoloured foods will make a person more susceptible to over-indulging - even more than a whole dish prepared in their favourite colour.',
+                        isCorrect: false
                     }
                 ]
             }
@@ -97,40 +137,60 @@ const CHALLENGES = {
             {
                 title: 'Can you sweeten the deal?',
                 description: 'How would you use shape to make this dish sweeter?',
+                partials: ['place-setting-normal'],
+                isActive: true,
                 options: [
                     {
+                        id: 'heavy',
                         title: 'Serve more rounded food',
-                        response: 'Correct! Studies show that food in round shapes enhance the perception of sweetness.'
+                        response: 'Correct! Studies show that food in round shapes enhance the perception of sweetness.',
+                        isCorrect: true
                     },
                     {
+                        id: 'light',
                         title: 'Serve more angular food',
-                        response: 'Sorry – science suggests that we perceive square-ish foods tend to be more tart.'
+                        response: 'Sorry – science suggests that we perceive square-ish foods tend to be more tart.',
+                        isCorrect: false
                     }
                 ]
             },
             {
-                title: 'How would you like to use aroma?',
+                title: 'Can you sweeten the deal?',
+                description: 'How would you like to use aroma?',
+                partials: ['place-setting-normal'],
+                isActive: false,
                 options: [
                     {
+                        id: 'heavy',
                         title: 'Introduce the scent of vanilla to the dish',
-                        Response: 'Correct! The scent of vanilla CAN make foods seem sweeter.'
+                        response: 'Correct! The scent of vanilla CAN make foods seem sweeter.',
+                        isCorrect: true
                     },
                     {
+                        id: 'light',
                         title: 'Add nothing – this dish already smells great as it is',
-                        Response: 'Sorry! Doing nothing won\'t change the taste of the food, but you’ve missed an opportunity to enhance the sweetness.'
+                        response: 'Sorry! Doing nothing won\'t change the taste of the food, but you’ve missed an opportunity to enhance the sweetness.',
+                        isCorrect: false
                     }
                 ]
             },
             {
-                title: 'Just desserts: which colour scheme will enhance sweetness?',
+                title: 'Can you sweeten the deal?',
+                description: 'Just desserts: which colour scheme will enhance sweetness?',
+                partials: ['place-setting-normal'],
+                isActive: false,
                 options: [
                     {
+                        id: 'heavy',
                         title: 'Serve a multi-coloured pudding',
-                        Response: 'Correct! Foods that come in multiple colours trick the brain so you eat more than you would if it came in a single colour (even if it is their favourite).'
+                        response: 'Correct! Foods that come in multiple colours trick the brain so you eat more than you would if it came in a single colour (even if it is their favourite).',
+                        isCorrect: true
                     },
                     {
+                        id: 'light',
                         title: 'Stick to a single palate - what’s their favourite colour?',
-                        Response: 'Sorry! This was a bit of a trick: multicoloured foods will make a person more susceptible to over-indulging - even more than a whole dish prepared in their favourite colour.'
+                        response: 'Sorry! This was a bit of a trick: multicoloured foods will make a person more susceptible to over-indulging - even more than a whole dish prepared in their favourite colour.',
+                        isCorrect: false
                     }
                 ]
             }

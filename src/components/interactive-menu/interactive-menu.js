@@ -9,22 +9,23 @@ import patron3 from '../../partials/patron-3.svg!text';
 
 let InteractiveMenu = Vue.extend({
     template,
+    components: {
+        InteractiveInfo
+    },
     partials: {
         patron1,
         patron2,
         patron3
     },
-    components: {
-        InteractiveInfo
-    },
+    props: ['config'],
     data() {
         return {
             challenges: Challenges.get()
         };
     },
     methods: {
-        selectChallenge(challengeId) {
-            this.$dispatch('challenge-selected', challengeId);
+        selectChallenge(challengeId, numberOfTasks) {
+            this.$dispatch('challenge-selected', challengeId, numberOfTasks);
         }
     }
 });

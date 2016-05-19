@@ -1,41 +1,47 @@
+import Vue from 'vue';
+
 import Challenges from '../../js/modules/Challenges';
 import InteractiveInfo from '../interactive-info/interactive-info';
-import InteractiveObject from '../interactive-object/interactive-object';
+import InteractiveTask from '../interactive-task/interactive-task';
 import template from './interactive-challenge.html!text';
-import Vue from 'vue';
 
 let InteractiveChallenge = Vue.extend({
     template,
     components: {
         InteractiveInfo,
-        InteractiveObject
+        InteractiveTask
     },
     props: ['challengeId', 'config'],
     data() {
-        return Challenges.getById(this.challengeId);
+        let challenge = Challenges.getById(this.challengeId);
+
+        Object.assign(challenge, {
+            currentTaskIndex: 0,
+            numberOfTasks: challenge.tasks.length,
+            numberOfTasksCorrect: 0
+        });
+
+        return challenge;
     },
     events: {
-        'option-selected': function() {
-            if (this.isComplete()) {
-                this.$dispatch('challenge-completed');
-            } else {
-                this.useTry();
+        'task-complete': function (isCorrect) {
+            if (isCorrect) {
+                this.numberOfTasksCorrect++;
             }
+
+            this.nextTask();
         }
     },
     methods: {
-        isComplete() {
-            // 1. Select only the `InteractiveObject` child components
-            // 2. Return false if there are any incorrect options selected
-            return this.$children
-                       .filter((child) => child instanceof InteractiveObject)
-                       .every((child) => child.selectedOption && child.selectedOption.correct === true);
-        },
-        useTry() {
-            this.numberOfTries = this.numberOfTries - 1;
+        nextTask() {
+            // TODO: pass customer emotion (neutral, happy, sad) into $dispatch
 
-            if (this.numberOfTries === 0) {
-                this.$dispatch('challenge-failed');
+            let isFinalTask = (this.currentTaskIndex + 1 === this.numberOfTasks);
+
+            if (isFinalTask) {
+                this.$dispatch('challenge-completed', this.numberOfTasksCorrect);
+            } else {
+                this.currentTaskIndex = this.currentTaskIndex + 1;
             }
         }
     }

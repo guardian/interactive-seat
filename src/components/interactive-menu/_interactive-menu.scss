@@ -9,6 +9,7 @@
         flex-flow: row nowrap;
         flex: 1 1 auto;
         margin: 0;
+        padding: 20px 0;
         overflow-x: scroll;
 
         @include mq($from: tablet) {
@@ -25,9 +26,6 @@
         padding: 0 10px;
         min-width: 70%;
         text-align: center;
-        background: none;
-        border: none;
-        outline: none;
 
         &:first-of-type {
             margin: 0;
@@ -61,9 +59,13 @@
     }
 
     &__title {
-        @include fs-bodyHeading(3);
+        @include fs-header(1);
         margin: 10px 0 0;
         color: colour(white);
+
+        @include mq($from: tablet) {
+            @include fs-header(2);
+        }
     }
 
     &__start-button {
@@ -72,14 +74,7 @@
         top: 100%;
         left: 50%;
         margin: 30px auto 0;
-        width: 62px;
-        height: 62px;
         font-size: 36px;
-        line-height: 56px;
-        color: colour(white);
-        background: transparentize(colour(black), 0.8);
-        border: 2px solid transparentize(colour(white), 0.2);
-        border-radius: 50%;
         transform: translateX(-50%);
 
         @include mq($from: tablet) {
@@ -87,9 +82,10 @@
         }
     }
 
-    > .c-interactive-info {
+    &__interactive-info {
         @include mq($from: tablet) {
             flex: 1 1 0;
+            padding-right: 40px;
         }
     }
 }

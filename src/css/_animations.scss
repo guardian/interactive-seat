@@ -9,10 +9,18 @@
 }
 
 .fade-enter {
-    animation: fade-in 0.5s both;
+    animation: fade-in 0.5s;
 }
 
 .fade-leave {
+    animation: fade-out 0.5s;
+}
+
+.fade-with-delay-enter {
+    animation: fade-in 0.5s 0.5s both;
+}
+
+.fade-with-delay-leave {
     animation: fade-out 0.5s both;
 }
 
