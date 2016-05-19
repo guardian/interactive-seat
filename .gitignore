@@ -25,3 +25,4 @@ cfg/aws-keys.json
 
 # Compiled files
 src/js/templates.js
+src/partials
