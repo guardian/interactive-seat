@@ -28,10 +28,18 @@
     }
 
     &__link {
-        color: transparentize(colour(white), 0.4);
+        &,
+        &:hover {
+            color: transparentize(colour(white), 0.4);
+            text-decoration: none;
+        }
     }
 
     &__link-text {
         color: colour(white);
+
+        .c-navigation__link:hover & {
+            color: colour(news-support-4);
+        }
     }
 }
