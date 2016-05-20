@@ -1,0 +1,43 @@
+.c-credits {
+    padding-bottom: 28px;
+    background: colour(white);
+
+    @include mq($from: tablet) {
+        padding-bottom: 36px;
+    }
+
+    &__list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    &__credit {
+        padding-bottom: 14px;
+
+        @include mq($from: tablet) {
+            padding-bottom: 18px;
+        }
+    }
+
+    &__credit-title,
+    &__credit-text {
+        margin: 0;
+    }
+
+    &__credit-title {
+        @include fs-bodyHeading(1);
+
+        @include mq($from: tablet) {
+            @include fs-bodyHeading(3);
+        }
+    }
+
+    &__credit-text {
+        @include fs-bodyCopy(1);
+
+        @include mq($from: tablet) {
+            @include fs-bodyCopy(3);
+        }
+    }
+}

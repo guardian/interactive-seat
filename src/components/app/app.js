@@ -6,6 +6,7 @@ import template from './app.html!text';
 // Components
 import Byline from '../byline/byline';
 import Copy from '../copy/copy';
+import Credits from '../credits/credits';
 import Experiment from '../experiment/experiment';
 import Header from '../header/header';
 import Icon from '../icon/icon';
@@ -24,6 +25,7 @@ let App = Vue.extend({
     components: {
         Byline,
         Copy,
+        Credits,
         Experiment,
         Header,
         Icon,

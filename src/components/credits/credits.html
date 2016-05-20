@@ -1,0 +1,16 @@
+<div class="c-credits l-container l-horizontal-padding">
+    <ul class="c-credits__list l-text-container u-clearfix">
+        <li v-for="credit of content.credits" class="c-credits__credit">
+            <h5 class="c-credits__credit-title">{{ credit.title }}</h5>
+            <p class="c-credits__credit-text">
+                <template v-for="(index, entity) of credit.entities">
+                    <template v-if="index > 0">
+                        <template v-if="index === credit.entities.length - 1"> and </template>
+                        <template v-else>, </template>
+                    </template>
+                    <a :href="entity.url">{{ entity.title }}</a>
+                </template>
+            </p>
+        </li>
+    </ul>
+</div>
