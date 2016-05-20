@@ -1,10 +1,19 @@
-.l-container {
+.l-container,
+.l-text-container {
     margin: 0 auto;
+}
 
+.l-container {
     @each $breakpoint in (tablet desktop leftCol wide) {
         @include mq($from: $breakpoint) {
             max-width: map-get($mq-breakpoints, $breakpoint);
         }
+    }
+}
+
+.l-text-container {
+    @include mq($from: tablet) {
+        max-width: gs-span(7) + $gs-gutter;
     }
 }
 
