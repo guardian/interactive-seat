@@ -92,12 +92,12 @@
 
         @include mq($from: tablet) {
             height: auto;
-            max-height: 510px;
         }
 
         > svg {
+            display: block;
+
             @include mq($until: tablet) {
-                display: block;
                 position: absolute;
                 top: 50%;
                 left: 50%;
