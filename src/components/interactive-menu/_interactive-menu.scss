@@ -1,60 +1,63 @@
 .c-interactive-menu {
     @include mq($from: tablet) {
         flex-flow: row nowrap;
-        align-items: center;
+        align-items: flex-start;
+        padding: 75px 0;
     }
 
     &__challenge-previews {
         display: flex;
         flex-flow: row nowrap;
-        flex: 1 1 auto;
-        margin: 0;
-        padding: 20px 0;
+        align-items: stretch;
+        align-self: stretch;
         overflow-x: scroll;
+        padding: 30px 0;
 
         @include mq($from: tablet) {
-            display: block;
             flex: 3 3 0;
-            overflow: visible;
+            padding: 0;
         }
     }
 
     &__challenge-preview {
+        box-sizing: border-box;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: stretch;
+        align-content: center;
+        align-self: stretch;
         position: relative;
-        flex: 1 1 auto;
         margin: 0 10px;
         padding: 0 10px;
-        min-width: 70%;
         text-align: center;
 
-        &:first-of-type {
-            margin: 0;
-            padding: 0 0 0 20px;
-        }
+        @include mq($until: tablet) {
+            min-width: 70%;
 
-        &:last-of-type {
-            margin: 0;
-            padding: 0 20px 0 0;
+            &:first-of-type {
+                margin: 0;
+                padding: 0 0 0 20px;
+            }
+
+            &:last-of-type {
+                margin: 0;
+                padding: 0 20px 0 0;
+            }
         }
 
         @include mq($from: tablet) {
-            display: inline-block;
-            flex: none;
             margin: 0;
-            padding: 0;
-            width: (100% / 3);
-            min-width: initial;
+            padding: 0 10px;
+            flex: 1 1 (100% / 3);
 
-            &:first-of-type,
-            &:last-of-type {
-                padding: 0;
+            > * {
+                flex: 1 1 auto;
             }
         }
 
         > svg {
             display: block;
-            width: 100%;
-            height: auto;
+            margin: 0 auto;
         }
     }
 
@@ -70,12 +73,8 @@
 
     &__start-button {
         display: none;
-        position: absolute;
-        top: 100%;
-        left: 50%;
         margin: 30px auto 0;
         font-size: 36px;
-        transform: translateX(-50%);
 
         @include mq($from: tablet) {
             display: block;
@@ -83,6 +82,11 @@
     }
 
     &__interactive-info {
+        @include mq($until: tablet) {
+            box-sizing: content-box;
+            width: calc(100% - 40px);
+        }
+
         @include mq($from: tablet) {
             flex: 1 1 0;
             padding-right: 40px;
