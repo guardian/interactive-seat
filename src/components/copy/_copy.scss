@@ -1,35 +1,33 @@
 .c-copy {
+    @include fs-bodyCopy(2);
     background: colour(white);
 
+    @include mq($from: tablet) {
+        @include fs-bodyCopy(3);
+    }
+
     &--first {
-        padding-top: 24px;
+        padding-top: 26px;
 
         .c-copy__text:first-child::first-letter {
             @include fs-headline(11);
             float: left;
             padding-right: 10px;
             color: colour(news-support-3);
+
+            @include mq($from: tablet) {
+                @include fs-headline(12);
+            }
         }
     }
 
+    .c-experiment + &,
     .c-interactive + & {
-        padding-top: 40px;
-    }
-
-    &__content {
-        @include fs-bodyCopy(2);
-        box-sizing: initial;
-        margin: 0 auto;
-        overflow: hidden;
-
-        @include mq($from: tablet) {
-            @include fs-bodyCopy(3, $size-only: true);
-            width: gs-span(7) + $gs-gutter;
-        }
+        padding-top: 26px;
     }
 
     &__text {
         margin: 0;
-        padding-bottom: 40px;
+        padding-bottom: 26px;
     }
 }
