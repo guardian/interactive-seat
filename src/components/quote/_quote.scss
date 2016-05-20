@@ -1,0 +1,32 @@
+.c-quote {
+    @include fs-headline(4);
+    margin: 0;
+    padding-bottom: 26px;
+    background: colour(white);
+
+    @include mq($from: tablet) {
+        @include fs-headline(7);
+    }
+
+    .c-copy + &,
+    .c-experiment + &,
+    .c-interactive + & {
+        padding-top: 26px;
+    }
+
+    &__text,
+    &__cite {
+        font-weight: 200;
+    }
+
+    &__text {
+        display: inline;
+        margin: 0;
+        color: colour(neutral-2);
+    }
+
+    &__cite {
+        color: colour(neutral-3);
+        font-style: normal;
+    }
+}

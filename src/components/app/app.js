@@ -12,6 +12,7 @@ import Header from '../header/header';
 import Icon from '../icon/icon';
 import Interactive from '../interactive/interactive';
 import Navigation from '../navigation/navigation';
+import Quote from '../quote/quote';
 import Subhead from '../subhead/subhead';
 import Tracking from '../tracking/tracking';
 
@@ -32,6 +33,7 @@ let App = Vue.extend({
         Icon,
         Interactive,
         Navigation,
+        Quote,
         Subhead,
         Tracking
     },
