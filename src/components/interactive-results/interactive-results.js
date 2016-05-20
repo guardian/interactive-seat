@@ -35,17 +35,22 @@ let InteractiveResults = Vue.extend({
         'config'
     ],
     data() {
-        let patronPartialName;
+        let playerWonGame = this.numberOfTasksCorrect === this.numberOfTasks;
 
-        if (this.numberOfTasksCorrect === this.numberOfTasks) {
-            patronPartialName = `patron-${ this.challengeId }-happy`;
-        } else {
-            patronPartialName = `patron-${ this.challengeId }-sad`;
+        if (playerWonGame) {
+            return {
+                title: 'Well done: you successfully used science to influence your diners’ perception of flavour in their meals!',
+                description: '(A long, successful career in neurogastronomy awaits you.)',
+                shareText: 'I changed my taste buds using the power of neurogastronomy!',
+                patronPartialName: `patron-${ this.challengeId }-happy`
+            };
         }
 
         return {
-            description: `You only got ${ this.numberOfTasksCorrect } out of ${ this.numberOfTasks } correct`,
-            patronPartialName: patronPartialName
+            title: 'Ah, sorry. You failed to enhance their meals with multi-sensory dining.',
+            description: '(I guess neurogastronomy isn’t for everyone…)',
+            shareText: 'Science can play with your taste buds to alter the way things taste – do you know how?',
+            patronPartialName: `patron-${ this.challengeId }-sad`
         };
     },
     methods: {
