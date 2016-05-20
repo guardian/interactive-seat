@@ -1,16 +1,54 @@
 .c-subhead {
-    @include fs-header(2);
     margin: 0;
     background: colour(white);
 
-    @include mq($from: tablet) {
-        @include fs-header(5);
-        padding-bottom: 6px;
+    &--without-video {
+        @include fs-header(2);
+
+        @include mq($from: tablet) {
+            @include fs-header(5);
+            padding-bottom: 6px;
+        }
+
+        .c-copy + &,
+        .c-interactive + & {
+            padding-top: 26px;
+        }
     }
 
-    .c-copy + &,
-    .c-experiment + &,
-    .c-interactive + & {
-        padding-top: 26px;
+    &--with-video {
+        overflow: hidden;
+        position: relative;
+        color: colour(white);
+
+        @include mq($until: tablet) {
+            height: 100%;
+        }
+
+        &__outer {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            z-index: 2;
+            width: 100%;
+        }
+
+        &__inner {
+            position: relative;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            background: transparentize(colour(black), 0.8);
+        }
+
+        &__title {
+            @include fs-headline(4);
+            margin: 0;
+            padding-top: 4px;
+            font-weight: 200;
+
+            @include mq($from: tablet) {
+                @include fs-headline(7, $size-only: true);
+            }
+        }
     }
 }
