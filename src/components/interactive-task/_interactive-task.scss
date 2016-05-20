@@ -91,6 +91,11 @@
             height: auto;
         }
 
+        @include mq($from: wide) {
+            margin: 0 auto;
+            max-width: 80%;
+        }
+
         > svg {
             display: block;
 
