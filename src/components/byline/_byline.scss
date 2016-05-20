@@ -1,19 +1,44 @@
 .c-byline {
+    @include fs-textSans(1);
+    position: relative;
+    color: colour(neutral-2);
     background: colour(white);
 
-    &__authors {
-        @include fs-headline(1);
-        margin: 0;
-        padding-top: 20px;
+    &__inner {
+        padding-top: 10px;
 
         @include mq($from: desktop) {
-            @include fs-headline(2);
+            position: absolute;
+            top: 26px;
+            left: 40px;
+        }
+
+        @include mq($from: leftCol) {
+            left: 40px;
+            width: 210px;
+        }
+
+        @include mq($from: wide) {
+            left: 40px;
+            width: 290px;
         }
     }
 
+    &__sponsorship {
+        border-top: 1px dotted #dfdfdf;
+        border-bottom: 1px dotted #dfdfdf;
+    }
+
+    &__sponsorship-title {
+        margin: 0;
+    }
+
     &__publish-date {
-        @include fs-textSans(1);
         display: block;
         margin-top: 10px;
+    }
+
+    &__share {
+        padding-top: 10px;
     }
 }

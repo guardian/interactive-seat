@@ -1,9 +1,13 @@
 <div class="c-byline l-container l-horizontal-padding">
-    <img v-for="photo of content.byline_photos" class="c-byline__photo" :src="photo">
+    <div class="c-byline__inner l-text-container">
+        <div class="c-byline__sponsorship">
+            <p class="c-byline__sponsorship-title">Supported by:</p>
 
-    <p class="c-byline__authors">By <template v-for="(index, author) of content.authors"><template v-if="index > 0"> and </template><a href="{{ author.link }}">{{ author.name }}</a></template></p>
+            <img class="c-byline__sponsorship-image" :src="`${ config.assetPath }/assets/img/seat-logo.jpg`" alt="Seat logo">
+        </div>
 
-    <time class="c-byline__publish-date">{{ content.date_published }}</time>
+        <time class="c-byline__publish-date">{{ content.date_published }}</time>
 
-    <share :text="content.share_text" :url="content.share_url"></share>
+        <share class="c-byline__share" :text="content.share_text" :url="content.share_url"></share>
+    </div>
 </div>
