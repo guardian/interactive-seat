@@ -13,6 +13,7 @@
             <div class="c-header__inner l-horizontal-padding">
                 <h2 class="c-header__subtitle">{{ content.subtitle }}</h2>
                 <h1 class="c-header__headline">{{ content.headline }}</h1>
+                <p v-if="config.isMobile" class="c-header__description">{{ content.description }}</p>
                 <button class="c-header__play-button c-button--circle" :class="{ 'c-button--large-circle': !config.isMobile }" @click="onClickPlayButton">Play</button>
                 <p v-if="!config.isMobile" class="c-header__description">{{ content.description }}</p>
             </div>

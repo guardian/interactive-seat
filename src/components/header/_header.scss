@@ -11,16 +11,11 @@
         z-index: 2;
         bottom: 0;
         margin: 0 auto;
-        padding-top: 20px;
-        padding-bottom: 12px;
+        padding-top: 24px;
+        padding-bottom: 36px;
         width: 100%;
         color: colour(white);
         background: transparentize(colour(black), 0.8);
-
-        @include mq($from: tablet) {
-            padding-top: 24px;
-            padding-bottom: 36px;
-        }
     }
 
     &__inner {
@@ -36,6 +31,7 @@
 
     &__subtitle {
         @include fs-header(2);
+        padding-bottom: 12px;
         color: colour(news-support-4);
 
         @include mq($from: tablet) {
@@ -44,20 +40,26 @@
     }
 
     &__headline {
-        @include fs-headline(4);
-        padding-top: 4px;
-        padding-bottom: 10px;
+        @include fs-headline(5);
+        padding-bottom: 12px;
         color: colour(white);
+        font-weight: 200;
 
         @include mq($from: tablet) {
             @include fs-headline(10, $size-only: true);
-            margin-top: 20px;
-            margin-bottom: 30px;
+            padding-bottom: 24px;
         }
     }
 
     &__description {
-        @include fs-bodyHeading(1);
+        @include fs-bodyCopy(3);
+        margin: 0;
+        padding-bottom: 24px;
+
+        @include mq($from: tablet) {
+            @include fs-header(2);
+            margin-left: 110px;
+        }
     }
 
     .is-mobile & {
@@ -83,7 +85,6 @@
 
     &__play-button {
         float: left;
-        margin-right: 24px;
         color: colour(news-support-4);
         border: 2px solid colour(news-support-4);
     }
