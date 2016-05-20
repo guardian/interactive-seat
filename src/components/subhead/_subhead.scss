@@ -1,0 +1,16 @@
+.c-subhead {
+    @include fs-header(2);
+    margin: 0;
+    background: colour(white);
+
+    @include mq($from: tablet) {
+        @include fs-header(5);
+        padding-bottom: 6px;
+    }
+
+    .c-copy + &,
+    .c-experiment + &,
+    .c-interactive + & {
+        padding-top: 26px;
+    }
+}

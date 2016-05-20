@@ -12,6 +12,7 @@ import Header from '../header/header';
 import Icon from '../icon/icon';
 import Interactive from '../interactive/interactive';
 import Navigation from '../navigation/navigation';
+import Subhead from '../subhead/subhead';
 import Tracking from '../tracking/tracking';
 
 // Partials
@@ -31,6 +32,7 @@ let App = Vue.extend({
         Icon,
         Interactive,
         Navigation,
+        Subhead,
         Tracking
     },
     partials: {
