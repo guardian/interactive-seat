@@ -19,7 +19,7 @@ let Video = Vue.extend({
     },
     props: {
         path: String,
-        bandwidth: String,
+        bandwidth: Number,
         preload: {
             type: String,
             default: 'none'
