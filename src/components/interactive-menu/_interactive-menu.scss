@@ -78,6 +78,7 @@
 
         @include mq($from: tablet) {
             display: block;
+            flex: 0;
         }
     }
 
