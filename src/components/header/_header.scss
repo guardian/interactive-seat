@@ -32,10 +32,16 @@
     &__subtitle {
         @include fs-header(2);
         padding-bottom: 12px;
-        color: colour(news-support-4);
 
         @include mq($from: tablet) {
             @include fs-header(4, $size-only: true);
+        }
+    }
+
+    &__subtitle-link {
+        &,
+        &:hover {
+            color: colour(news-support-4);
         }
     }
 
