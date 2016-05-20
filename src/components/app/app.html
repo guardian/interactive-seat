@@ -1,3 +1,4 @@
 <figure id="js-app" class="c-app" :class="{ 'is-mobile': config.isMobile }">
+    <partial name="icons"></partial>
     <component v-for="block in blocks" :is="block.block" :content="block" :config="config"></component>
 </figure>

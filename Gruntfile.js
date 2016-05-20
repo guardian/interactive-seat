@@ -15,9 +15,13 @@ module.exports = function(grunt) {
                 files: ['src/**/*.scss'],
                 tasks: ['sass', 'postcss:autoprefixer']
             },
-            svg: {
-                files: 'src/assets/**/*.svg',
+            partials: {
+                files: 'src/assets/img/partials/**/*.svg',
                 tasks: ['svgmin']
+            },
+            icons: {
+                files: 'src/assets/img/icons/**/*.svg',
+                tasks: ['svgstore']
             },
             assets: {
                 files: ['src/assets/**/*'],
@@ -127,7 +131,15 @@ module.exports = function(grunt) {
         },
 
         svgmin: {
-            personas: {
+            options: {
+                plugins: [
+                    { cleanupIDs: false },
+                    { removeDimensions: true },
+                    { removeStyleElement: true },
+                    { removeViewBox: false }
+                ]
+            },
+            assets: {
                 files: [
                     {
                         expand: true,
@@ -136,6 +148,26 @@ module.exports = function(grunt) {
                         dest: 'src/partials/'
                     }
                 ]
+            }
+        },
+
+        svgstore: {
+            options: {
+                prefix : 'icon-',
+                cleanupdefs: true,
+                inheritviewbox: true,
+                svg: {
+                    class: 'c-icons',
+                    version: '1.1',
+                    viewBox: '0 0 100 100',
+                    xmlns: 'http://www.w3.org/2000/svg',
+                    'xmlns:xlink': 'http://www.w3.org/1999/xlink'
+                }
+            },
+            icons: {
+                files: {
+                    'src/assets/img/partials/icons.svg': ['src/assets/img/icons/**/*.svg']
+                }
             }
         },
 
@@ -160,12 +192,33 @@ module.exports = function(grunt) {
         copy: {
             harness: {
                 files: [
-                    {expand: true, cwd: 'harness/', src: ['curl.js', 'index.html', 'immersive.html', 'interactive.html'], dest: 'build'}
+                    {
+                        expand: true,
+                        cwd: 'harness/',
+                        src: [
+                            'curl.js',
+                            'index.html',
+                            'immersive.html',
+                            'interactive.html'
+                        ],
+                        dest: 'build'
+                    }
                 ]
             },
             assets: {
                 files: [
-                    {expand: true, cwd: 'src/', src: ['assets/**/*'], dest: 'build'}
+                    {
+                        expand: true,
+                        cwd: 'src/',
+                        src: [
+                            'assets/**/*',
+                            '!assets/img/icons',
+                            '!assets/img/icons/**/*',
+                            '!assets/img/partials',
+                            '!assets/img/partials/**/*'
+                        ],
+                        dest: 'build'
+                    }
                 ]
             },
             deploy: {
@@ -179,7 +232,7 @@ module.exports = function(grunt) {
                         expand: true, cwd: 'build/',
                         src: ['main.js', 'main.css', 'main.js.map', 'main.css.map',
                             'embed.js', 'embed.css', 'embed.js.map', 'embed.css.map',
-                            'assets/**/*', '!assets/img/partials/'],
+                            'assets/**/*'],
                         dest: 'deploy/<%= visuals.timestamp %>/<%= visuals.timestamp %>'
                     }
                 ]
@@ -304,7 +357,7 @@ module.exports = function(grunt) {
     })
 
     grunt.registerTask('embed', ['shell:embed', 'template:embed', 'sass:embed']);
-    grunt.registerTask('interactive', ['svgmin', 'shell:interactive', 'template:bootjs', 'sass:interactive']);
+    grunt.registerTask('interactive', ['svgstore', 'svgmin', 'shell:interactive', 'template:bootjs', 'sass:interactive']);
     grunt.registerTask('all', ['interactive', 'embed', 'postcss:autoprefixer', 'copy:assets'])
     grunt.registerTask('default', ['clean', 'copy:harness', 'all', 'connect', 'watch']);
     grunt.registerTask('build', ['clean', 'all', 'stripDebug', 'postcss:minify']);
