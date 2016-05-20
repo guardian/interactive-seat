@@ -8,7 +8,10 @@
                         <template v-if="index === credit.entities.length - 1"> and </template>
                         <template v-else>, </template>
                     </template>
-                    <a :href="entity.url">{{ entity.title }}</a>
+                    <a v-if="entity.image" :href="entity.url">
+                        <img :src="entity.image" :alt="entity.title" width="50" height="38">
+                    </a>
+                    <a v-else :href="entity.url">{{ entity.title }}</a>
                 </template>
             </p>
         </li>
