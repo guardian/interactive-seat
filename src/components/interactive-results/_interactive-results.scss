@@ -1,4 +1,9 @@
 .c-interactive-results {
+    > * {
+        position: relative;
+        z-index: 2;
+    }
+
     &__restart-button {
         position: absolute;
         bottom: 12px;
