@@ -65,7 +65,7 @@ const CHALLENGES = {
             },
             {
                 title: 'What’s going to make this a classy night to remember?',
-                description: 'What are you going to Which sounds like it would be more expensive?',
+                description: 'Which sounds like it would be more expensive?',
                 options: [
                     {
                         id: 'heavy',
