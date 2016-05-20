@@ -1,3 +1,3 @@
-<section class="c-interactive" :style="{ backgroundImage: `url(${ config.assetPath }/assets/img/pattern.png)` }">
+<section :id="content.id" class="c-interactive" :style="{ backgroundImage: `url(${ config.assetPath }/assets/img/pattern.png)` }">
     <component class="c-interactive__view l-container" :is="view" :config="config" :challenge-id="challengeId" :number-of-tasks="numberOfTasks" :number-of-tasks-correct="numberOfTasksCorrect" transition="fade" transition-mode="out-in"></component>
 </section>
