@@ -74,7 +74,20 @@
     &__start-button {
         display: none;
         margin: 30px auto 0;
-        font-size: 36px;
+
+        @include mq($from: tablet) {
+            display: block;
+            flex: 0;
+        }
+    }
+
+    &__start-icon {
+        display: none;
+        margin: 30px auto 0;
+        padding: 12px;
+        width: (50px - (2 * 12));
+        height: (50px - (2 * 12));
+        background: transparentize(colour(black), 0.8);
 
         @include mq($from: tablet) {
             display: block;

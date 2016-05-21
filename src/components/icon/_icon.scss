@@ -13,8 +13,11 @@
         fill: currentColor;
     }
 
-    &--round {
-        border: 2px solid currentColor;
+    &--circular {
         border-radius: 50%;
+    }
+
+    &--bordered {
+        border: 2px solid currentColor;
     }
 }

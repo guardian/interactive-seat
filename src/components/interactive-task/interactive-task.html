@@ -5,9 +5,8 @@
         <p class="c-interactive-task__description">{{ task.description }}</p>
 
         <button v-if="isAnswered" class="c-interactive-task__next-button" @click="onClickNextButton">
-            <span class="c-interactive-task__next-button-circle c-button c-button--circle c-button--medium-circle">Next</span>
-
-            Next Challenge
+            <icon class="c-interactive-task__next-icon c-icon--circular c-icon--bordered" name="arrow-right"></icon>
+            <span class="c-interactive-task__next-text">Next Challenge</span>
         </button>
     </div>
 
@@ -24,8 +23,8 @@
                         @mouseover="onMouseOverOption(option.id)"
                         @mouseout="onMouseOutOption">
                     <template v-if="isAnswered">
-                        <span v-if="option.isCorrect">&#x2713;</span>
-                        <span v-else>&#x2717;</span>
+                        <icon v-if="option.isCorrect" class="c-interactive-task__result-icon c-interactive-task__result-icon--right" name="result-right"></icon>
+                        <icon v-else class="c-interactive-task__result-icon c-interactive-task__result-icon--wrong" name="result-wrong"></icon>
                     </template>
 
                     {{ option.title }}

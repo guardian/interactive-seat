@@ -16,7 +16,10 @@
                 </h2>
                 <h1 class="c-header__headline">{{ content.headline }}</h1>
                 <p v-if="config.isMobile" class="c-header__description">{{ content.description }}</p>
-                <button class="c-header__play-button c-button--circle" :class="{ 'c-button--large-circle': !config.isMobile }" @click="onClickPlayButton">Play</button>
+                <button class="c-header__play-button" @click="onClickPlayButton">
+                    <icon class="c-header__play-icon c-icon--circular c-icon--bordered" name="play"></icon>
+                    <span v-if="config.isMobile" class="c-header__play-text">Play video</span>
+                </button>
                 <p v-if="!config.isMobile" class="c-header__description">{{ content.description }}</p>
             </div>
         </div>

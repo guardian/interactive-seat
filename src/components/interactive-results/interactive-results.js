@@ -1,6 +1,7 @@
 import Vue from 'vue';
 
 import Button from '../button/button';
+import Icon from '../icon/icon';
 import InteractiveInfo from '../interactive-info/interactive-info';
 import Share from '../share/share';
 import template from './interactive-results.html!text';
@@ -17,6 +18,7 @@ let InteractiveResults = Vue.extend({
     template,
     components: {
         Button,
+        Icon,
         InteractiveInfo,
         Share
     },

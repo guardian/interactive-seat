@@ -4,6 +4,7 @@ import template from './interactive-task.html!text';
 
 // Components
 import Button from '../../components/button/button';
+import Icon from '../../components/icon/icon';
 
 // Task partials
 import task1ShapeAngular from '../../partials/task-1-shape-angular.svg!text';import task1ShapeDefault from '../../partials/task-1-shape-default.svg!text';import task1ShapeRounded from '../../partials/task-1-shape-rounded.svg!text';import task1SmellAdd from '../../partials/task-1-smell-add.svg!text';import task1SmellDefault from '../../partials/task-1-smell-default.svg!text';import task1SmellNone from '../../partials/task-1-smell-none.svg!text';import task2WeightDefault from '../../partials/task-2-weight-default.svg!text';import task2WeightHeavy from '../../partials/task-2-weight-heavy.svg!text';import task2WeightLight from '../../partials/task-2-weight-light.svg!text';import task2SoundClassical from '../../partials/task-2-sound-classical.svg!text';import task2SoundDefault from '../../partials/task-2-sound-default.svg!text';import task2SoundNone from '../../partials/task-2-sound-none.svg!text';import task3ColourDefault from '../../partials/task-3-colour-default.svg!text';import task3ColourMono from '../../partials/task-3-colour-mono.svg!text';import task3ColourMulti from '../../partials/task-3-colour-multi.svg!text';import task3SoundDefault from '../../partials/task-3-sound-default.svg!text';import task3SoundLoud from '../../partials/task-3-sound-loud.svg!text';import task3SoundLow from '../../partials/task-3-sound-low.svg!text';
@@ -22,7 +23,8 @@ import patron3Sad from '../../partials/patron-3-sad.svg!text';
 let InteractiveTask = Vue.extend({
     template,
     components: {
-        Button
+        Button,
+        Icon
     },
     partials: {
         task1ShapeAngular,

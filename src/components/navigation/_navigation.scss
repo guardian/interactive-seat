@@ -35,6 +35,19 @@
         }
     }
 
+    &__link-icon {
+        margin-right: 5px;
+        padding: 4px;
+        width: (28px - (2 * 4));
+        height: (28px - (2 * 4));
+        color: colour(white);
+        border-width: 1px;
+
+        .c-navigation__link:hover & {
+            color: colour(news-support-4);
+        }
+    }
+
     &__link-text {
         color: colour(white);
 

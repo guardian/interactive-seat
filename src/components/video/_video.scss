@@ -24,11 +24,26 @@
     }
 
     &__pause-button {
+        display: block;
         position: absolute;
         bottom: 34px;
         left: 24px;
+    }
+
+    &__pause-icon {
+        margin-right: 20px;
+        padding: 18px;
+        width: (62px - (2 * 18));
+        height: (62px - (2 * 18));
         color: colour(news-support-4);
-        border: 2px solid colour(news-support-4);
+        background: transparentize(colour(black), 0.6);
+    }
+
+    &__pause-text {
+        @include fs-header(5);
+        display: inline-block;
+        vertical-align: middle;
+        color: transparentize(colour(white), 0.4);
     }
 
     &__seek-bar,

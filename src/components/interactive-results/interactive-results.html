@@ -16,5 +16,8 @@
         <partial :name="patronPartialName"></partial>
     </div>
 
-    <button class="c-interactive-results__restart-button c-button--pill" @click="onClickRestartButton">Try again?</button>
+    <button class="c-interactive-results__restart-button c-button--pill" @click="onClickRestartButton">
+        <icon class="c-interactive-results__restart-icon" name="replay"></icon>
+        <span class="c-interactive-results__restart-text">Try again?</span>
+    </button>
 </div>

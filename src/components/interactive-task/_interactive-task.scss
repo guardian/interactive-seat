@@ -60,19 +60,16 @@
 
     &__next-button {
         @include fs-textSans(5);
-        position: relative;
-        padding-left: 78px;
-        height: 62px;
-        line-height: 62px;
         color: colour(white);
         font-weight: bold;
     }
 
-    &__next-button-circle {
-        position: absolute;
-        left: 0;
-        color: colour(white);
-        border-color: colour(white);
+    &__next-icon {
+        margin-right: 12px;
+        padding: 14px;
+        width: (66px - (2 * 14));
+        height: (66px - (2 * 14));
+        background: transparentize(colour(black), 0.6);
     }
 
     &__main {
@@ -150,6 +147,20 @@
                 color: colour(white);
                 background: transparentize(colour(black), 0.8);
             }
+        }
+    }
+
+    &__result-icon {
+        margin-right: 12px;
+        width: 22px;
+        height: 22px;
+
+        &--right {
+            color: green;
+        }
+
+        &--wrong {
+            color: red;
         }
     }
 

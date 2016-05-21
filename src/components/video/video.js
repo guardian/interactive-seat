@@ -1,6 +1,7 @@
 import Vue from 'vue';
 
 import Button from '../button/button';
+import Icon from '../icon/icon';
 import template from './video.html!text';
 
 const FORMATS = ['mp4', 'webm', 'ogg'];
@@ -15,7 +16,8 @@ const OGG_SUFFIXES = {
 let Video = Vue.extend({
     template,
     components: {
-        Button
+        Button,
+        Icon
     },
     props: {
         path: String,
