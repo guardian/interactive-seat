@@ -63,7 +63,7 @@
         padding-bottom: 24px;
 
         @include mq($from: tablet) {
-            @include fs-header(2);
+            @include fs-header(4);
             margin-left: 110px;
         }
     }
