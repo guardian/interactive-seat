@@ -47,16 +47,11 @@
     &__credit-title {
         @include fs-bodyHeading(1);
 
-        @include mq($from: tablet) {
-            @include fs-bodyHeading(3);
-        }
+
     }
 
     &__credit-text {
         @include fs-bodyCopy(1);
 
-        @include mq($from: tablet) {
-            @include fs-bodyCopy(3);
-        }
     }
 }
