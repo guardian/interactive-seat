@@ -4,7 +4,7 @@
             <source v-for="source in sources" :src="source.src" type="video/{{ source.format }}"></source>
         </video>
 
-        <div v-if="isPlaying" class="c-video__controls" transition="fade">
+        <div v-if="isPlaying" class="c-video__controls">
             <button class="c-video__pause-button" @click="onClickPauseButton">
                 <icon class="c-video__pause-icon c-icon--circular c-icon--bordered" name="pause"></icon>
                 <span class="c-video__pause-text">Pause</span>
