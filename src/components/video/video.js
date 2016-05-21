@@ -57,7 +57,7 @@ let Video = Vue.extend({
             events,
             sources: getSources(this.path, bitRate),
             poster: getPosterUrl(this.path, bitRate),
-            isPlaying: false
+            isPlaying: this.autoplay
         };
     },
     methods: {
