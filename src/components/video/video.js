@@ -1,8 +1,11 @@
 import Vue from 'vue';
 
+import events from '../../js/modules/events';
+import template from './video.html!text';
+
+// Components
 import Button from '../button/button';
 import Icon from '../icon/icon';
-import template from './video.html!text';
 
 const FORMATS = ['mp4', 'webm', 'ogg'];
 const OGG_SUFFIXES = {
@@ -51,6 +54,7 @@ let Video = Vue.extend({
         let bitRate = getBitRate(this.bandwidth);
 
         return {
+            events,
             sources: getSources(this.path, bitRate),
             poster: getPosterUrl(this.path, bitRate),
             isPlaying: false

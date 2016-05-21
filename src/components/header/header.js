@@ -1,4 +1,7 @@
 import animate from '../../js/lib/animate';
+import events from '../../js/modules/events';
+
+// Components
 import Block from '../../js/modules/Block';
 import Button from '../button/button';
 import Icon from '../icon/icon';
@@ -13,6 +16,11 @@ let Header = Block.extend({
         Icon,
         ResponsiveImage,
         Video
+    },
+    data() {
+        return {
+            events
+        };
     },
     methods: {
         playVideo() {

@@ -1,7 +1,7 @@
 <nav class="c-navigation">
     <ul class="c-navigation__list l-container l-horizontal-padding">
         <li v-for="link in content.links" class="c-navigation__item">
-            <a class="c-navigation__link" :href="link.href">
+            <a :data-link-name="events.NAV_CLICK" class="c-navigation__link" :href="link.href">
                 <icon class="c-navigation__link-icon c-icon--circular c-icon--bordered" name="arrow-down"></icon>
                 <span class="c-navigation__link-label">{{ link.label }}: </span>
                 <span class="c-navigation__link-text">{{ link.text }}</span>

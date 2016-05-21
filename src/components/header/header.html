@@ -16,7 +16,7 @@
                 </h2>
                 <h1 class="c-header__headline">{{ content.headline }}</h1>
                 <p v-if="config.isMobile" class="c-header__description">{{ content.description }}</p>
-                <button class="c-header__play-button" @click="onClickPlayButton">
+                <button :data-link-name="events.VIDEO_PLAY" class="c-header__play-button" @click="onClickPlayButton">
                     <icon class="c-header__play-icon c-icon--circular c-icon--bordered" name="play"></icon>
                     <span v-if="config.isMobile" class="c-header__play-text">Play video</span>
                 </button>

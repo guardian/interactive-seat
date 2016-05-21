@@ -10,7 +10,7 @@
                 <span class="c-video__pause-text">Pause</span>
             </button>
 
-            <div class="js-seek-bar c-video__seek-bar" @click="onClickSeekBar">
+            <div :data-link-name="events.VIDEO_SCRUB" class="js-seek-bar c-video__seek-bar" @click="onClickSeekBar">
                 <div class="c-video__progress-bar" :style="{ width: `${ progress }%` }"></div>
             </div>
         </div>

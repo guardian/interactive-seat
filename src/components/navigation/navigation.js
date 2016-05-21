@@ -1,11 +1,19 @@
+import events from '../../js/modules/events';
+import template from './navigation.html!text';
+
+// Components
 import Block from '../../js/modules/Block';
 import Icon from '../icon/icon';
-import template from './navigation.html!text';
 
 let Navigation = Block.extend({
     template,
     components: {
         Icon
+    },
+    data() {
+        return {
+            events
+        };
     }
 });
 

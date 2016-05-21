@@ -22,7 +22,12 @@
 
             <time class="c-byline__publish-date">{{ content.date_published }}</time>
 
-            <share class="c-byline__share" :text="content.share_text" :url="content.share_url"></share>
+            <share
+                class="c-byline__share"
+                :text="content.share_text"
+                :url="content.share_url"
+                :events="shareEvents">
+            </share>
         </div>
     </div>
 </div>

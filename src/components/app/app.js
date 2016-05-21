@@ -2,6 +2,7 @@ import fastClick from 'fastclick/lib/fastclick';
 import Vue from 'vue';
 
 import template from './app.html!text';
+import loadScript from '../../js/lib/loadScript';
 
 // Components
 import Byline from '../byline/byline';
@@ -18,6 +19,8 @@ import Tracking from '../tracking/tracking';
 
 // Partials
 import Icons from '../../partials/icons.svg!text';
+
+const OPHAN_TRACKING_SCRIPT_URL = '//j.ophan.co.uk/interactive.js';
 
 Vue.config.devtools = true;
 Vue.config.debug = true;
@@ -44,6 +47,9 @@ let App = Vue.extend({
         console.log('Hello World!');
 
         fastClick(document.body);
+    },
+    ready() {
+        loadScript(OPHAN_TRACKING_SCRIPT_URL);
     }
 });
 

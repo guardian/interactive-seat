@@ -1,10 +1,13 @@
 import Vue from 'vue';
 
+import events from '../../js/modules/events';
+import template from './interactive-results.html!text';
+
+// Components
 import Button from '../button/button';
 import Icon from '../icon/icon';
 import InteractiveInfo from '../interactive-info/interactive-info';
 import Share from '../share/share';
-import template from './interactive-results.html!text';
 
 // Patron partials
 import patron1Happy from '../../partials/patron-1-happy.svg!text';
@@ -38,9 +41,15 @@ let InteractiveResults = Vue.extend({
     ],
     data() {
         let playerWonGame = this.numberOfTasksCorrect === this.numberOfTasks;
+        let shareEvents = {
+            SHARE_FACEBOOK: events.SHARE_INT_FACEBOOK,
+            SHARE_TWITTER: events.SHARE_INT_TWITTER,
+            SHARE_EMAIL: events.SHARE_INT_FACEBOOK
+        };
 
         if (playerWonGame) {
             return {
+                shareEvents,
                 title: 'Well done: you successfully used science to influence your diners’ perception of flavour in their meals!',
                 description: '(A long, successful career in neurogastronomy awaits you.)',
                 shareText: 'I changed my taste buds using the power of neurogastronomy!',
@@ -49,6 +58,7 @@ let InteractiveResults = Vue.extend({
         }
 
         return {
+            shareEvents,
             title: 'Ah, sorry. You failed to enhance their meals with multi-sensory dining.',
             description: '(I guess neurogastronomy isn’t for everyone…)',
             shareText: 'Science can play with your taste buds to alter the way things taste – do you know how?',
