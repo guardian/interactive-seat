@@ -4,7 +4,10 @@ $pasteup-palette: map-merge(
     $pasteup-palette,
     (
         white: #fff,
-        black: #000
+        black: #000,
+        twitter: #03b3ee,
+        facebook: #3067a3,
+        email: #767676
     )
 );
 
