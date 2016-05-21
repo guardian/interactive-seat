@@ -3,6 +3,10 @@ import throttle from 'lodash.throttle';
 import animate from '../../js/lib/animate';
 import events from '../../js/modules/events';
 import isElementInViewport from '../../js/lib/isElementInViewport';
+import pageIsVisible from '../../js/lib/pageIsVisible';
+
+import { visibilityChangeEventName } from '../../js/lib/browser';
+import { supportsPageVisibility } from '../../js/lib/support';
 
 // Components
 import Block from '../../js/modules/Block';
@@ -30,6 +34,8 @@ let Header = Block.extend({
     methods: {
         play() {
             this.clearAutoPlayTimeout();
+
+            document.removeEventListener(visibilityChangeEventName, this.onVisibilityChange, false);
 
             return this.playVideo()
                        .stopPreviewVideo()
@@ -121,6 +127,17 @@ let Header = Block.extend({
 
             return this;
         },
+        onVisibilityChange() {
+            if (pageIsVisible()) {
+                this.setAutoPlayTimeout();
+
+                return this;
+            }
+
+            this.clearAutoPlayTimeout();
+
+            return this;
+        },
         onClickPlayButton() {
             return this.play();
         }
@@ -137,10 +154,20 @@ let Header = Block.extend({
     },
     ready() {
         if (!this.config.isMobile) {
-            this.setAutoPlayTimeout();
+            return this;
+        }
+
+        if (supportsPageVisibility) {
+            if (pageIsVisible()) {
+                this.setAutoPlayTimeout();
+            }
+
+            document.addEventListener(visibilityChangeEventName, this.onVisibilityChange, false);
 
             return this;
         }
+
+        return this.setAutoPlayTimeout();
     }
 });
 
