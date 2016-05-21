@@ -10,10 +10,29 @@
         margin: 0;
         padding: 0;
         list-style: none;
+
+        @include mq($from: tablet) {
+            display: flex;
+            flex-flow: row wrap;
+            align-items: flex-start;
+            align-content: flex-start;
+        }
     }
 
     &__credit {
         padding-bottom: 14px;
+
+        @include mq($from: tablet) {
+            flex-basis: 50%;
+
+            &:nth-of-type(odd) {
+                padding-right: 10px;
+            }
+
+            &:nth-of-type(even) {
+                padding-left: 10px;
+            }
+        }
 
         @include mq($from: tablet) {
             padding-bottom: 18px;
