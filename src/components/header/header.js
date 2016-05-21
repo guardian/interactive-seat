@@ -24,67 +24,87 @@ let Header = Block.extend({
     },
     methods: {
         playVideo() {
-            let videos = this.$children.filter((child) => child instanceof Video);
-            let previewVideo;
-            let primaryVideo;
-            let overlayEl;
+            let primaryVideo = this.$children.filter((child) => child.$el.id === 'js-primary-video')[0];
 
             if (this.config.isMobile) {
-                videos[0].play();
+                primaryVideo.play();
 
-                return;
+                return this;
             }
-
-            previewVideo = videos.filter((video) => video.$el.id === 'js-preview-video')[0];
-            primaryVideo = videos.filter((video) => video.$el.id === 'js-primary-video')[0];
-            overlayEl = this.$el.querySelector('#js-overlay');
 
             primaryVideo.play();
 
-            animate(overlayEl, 'animate--fade-out');
+            return this;
+        },
+        stopVideo() {
+            let primaryVideo = this.$children.filter((child) => child.$el.id === 'js-primary-video')[0];
+
+            primaryVideo.pause();
+
+            return this.showOverlay();
+        },
+        playPreviewVideo() {
+            let previewVideo = this.$children.filter((child) => child.$el.id === 'js-preview-video')[0];
+
+            if (previewVideo.isPlaying) {
+                return this;
+            }
+
+            previewVideo.play();
+
+            previewVideo.$el.classList.remove('u-to-the-back');
+
+            animate(previewVideo.$el, 'animate--fade-in');
+
+            return this;
+        },
+        stopPreviewVideo() {
+            let previewVideo = this.$children.filter((child) => child.$el.id === 'js-preview-video')[0];
+
+            if (!previewVideo.isPlaying) {
+                return this;
+            }
 
             animate(previewVideo.$el, 'animate--fade-out').then(() => {
                 previewVideo.pause();
 
                 previewVideo.$el.classList.add('u-to-the-back');
+            });
+
+            return this;
+        },
+        hideOverlay() {
+            let overlayEl = this.$el.querySelector('#js-overlay');
+
+            animate(overlayEl, 'animate--fade-out').then(() => {
                 overlayEl.classList.add('u-to-the-back');
             });
+
+            return this;
         },
-        stopVideo() {
-            let videos = this.$children.filter((child) => child instanceof Video);
-            let previewVideo;
-            let primaryVideo;
-            let overlayEl;
+        showOverlay() {
+            let overlayEl = this.$el.querySelector('#js-overlay');
 
-            previewVideo = videos.filter((video) => video.$el.id === 'js-preview-video')[0];
-            primaryVideo = videos.filter((video) => video.$el.id === 'js-primary-video')[0];
-            overlayEl = this.$el.querySelector('#js-overlay');
-
-            previewVideo.play();
-            primaryVideo.pause();
-
-            previewVideo.$el.classList.remove('u-to-the-back');
             overlayEl.classList.remove('u-to-the-back');
 
-            animate(previewVideo.$el, 'animate--fade-in');
             animate(overlayEl, 'animate--fade-in');
+
+            return this;
         },
         onClickPlayButton() {
-            this.playVideo();
-        },
-        onPauseVideo() {
-            this.stopVideo();
-        },
-        onEndVideo() {
-            this.stopVideo();
+            return this.playVideo()
+                       .stopPreviewVideo()
+                       .hideOverlay();
         }
     },
     events: {
         'video-pause': function () {
-            this.onPauseVideo();
+            this.stopVideo()
+                .showOverlay();
         },
         'video-end': function () {
-            this.onEndVideo();
+            this.playPreviewVideo()
+                .showOverlay();
         }
     }
 });
