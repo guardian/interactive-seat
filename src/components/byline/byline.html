@@ -3,11 +3,26 @@
         <div class="c-byline__sponsorship">
             <p class="c-byline__sponsorship-title">Supported by:</p>
 
-            <a href="https://ad.doubleclick.net/ddm/trackclk/N1137.GuardianPHD/B9799567.132609157;dc_trk_aid=305251388;dc_trk_cid=71131957;dc_lat=;dc_rdid=;tag_for_child_directed_treatment="><img class="c-byline__sponsorship-image" :src="`${ config.assetPath }/assets/img/seat-logo.jpg`" alt="Seat logo"></a>
+            <a :href="content.sponsorship_link">
+                <img class="c-byline__sponsorship-image" :src="getImageUrl('/assets/img/seat-logo.jpg')" alt="Seat logo">
+            </a>
         </div>
 
-        <time class="c-byline__publish-date">{{ content.date_published }}</time>
+        <div class="c-byline__details">
+            <p class="c-byline__authors">
+                By
+                <template v-for="(index, author) of content.authors">
+                    <template v-if="index > 0">
+                        <template v-if="index === credit.entities.length - 1"> and </template>
+                        <template v-else>, </template>
+                    </template>
+                    <a v-else :href="author.url">{{ author.title }}</a>
+                </template>
+            </p>
 
-        <share class="c-byline__share" :text="content.share_text" :url="content.share_url"></share>
+            <time class="c-byline__publish-date">{{ content.date_published }}</time>
+
+            <share class="c-byline__share" :text="content.share_text" :url="content.share_url"></share>
+        </div>
     </div>
 </div>
