@@ -9,7 +9,7 @@
                         <template v-else>, </template>
                     </template>
                     <a v-if="entity.image" :href="entity.url">
-                        <img src="{{ config.assetPath }}{{ entity.image }}" :alt="entity.title" width="50" height="38">
+                        <img :src="getImageUrl(entity.image)" :alt="entity.title" width="50" height="38">
                     </a>
                     <a v-else :href="entity.url">{{ entity.title }}</a>
                 </template>

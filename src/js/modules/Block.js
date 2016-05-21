@@ -8,6 +8,11 @@ let Block = Vue.extend({
         config: {
             type: Object
         }
+    },
+    methods: {
+        getImageUrl(imagePath) {
+            return `${ this.config.assetPath }${ imagePath }`;
+        }
     }
 });
 
