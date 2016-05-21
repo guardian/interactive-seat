@@ -44,7 +44,7 @@ let InteractiveResults = Vue.extend({
         let shareEvents = {
             SHARE_FACEBOOK: events.SHARE_INT_FACEBOOK,
             SHARE_TWITTER: events.SHARE_INT_TWITTER,
-            SHARE_EMAIL: events.SHARE_INT_FACEBOOK
+            SHARE_EMAIL: events.SHARE_INT_EMAIL
         };
 
         if (playerWonGame) {
