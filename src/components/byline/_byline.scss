@@ -44,6 +44,10 @@
     &__sponsorship-title,
     &__authors {
         margin: 0;
+        &.extra {
+            margin-top: 5px;
+            margin-bottom: 12px;
+        }
     }
 
     &__publish-date {
