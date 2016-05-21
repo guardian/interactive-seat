@@ -1,5 +1,8 @@
+import throttle from 'lodash.throttle';
+
 import animate from '../../js/lib/animate';
 import events from '../../js/modules/events';
+import isElementInViewport from '../../js/lib/isElementInViewport';
 
 // Components
 import Block from '../../js/modules/Block';
@@ -8,6 +11,8 @@ import Icon from '../icon/icon';
 import ResponsiveImage from '../responsive-image/responsive-image';
 import template from './header.html!text';
 import Video from '../video/video';
+
+const AUTOPLAY_TIMEOUT_DURATION = 4000;
 
 let Header = Block.extend({
     template,
@@ -23,6 +28,13 @@ let Header = Block.extend({
         };
     },
     methods: {
+        play() {
+            this.clearAutoPlayTimeout();
+
+            return this.playVideo()
+                       .stopPreviewVideo()
+                       .hideOverlay();
+        },
         playVideo() {
             let primaryVideo = this.$children.filter((child) => child.$el.id === 'js-primary-video')[0];
 
@@ -91,10 +103,26 @@ let Header = Block.extend({
 
             return this;
         },
+        setAutoPlayTimeout() {
+            this.onWindowScroll = throttle(() => {
+                if (!isElementInViewport(this.$el)) {
+                    this.clearAutoPlayTimeout();
+                }
+            }, 100);
+
+            this.autoplayTimeout = setTimeout(() => this.play(), AUTOPLAY_TIMEOUT_DURATION);
+
+            window.addEventListener('scroll', this.onWindowScroll, false);
+        },
+        clearAutoPlayTimeout() {
+            clearTimeout(this.autoplayTimeout);
+
+            window.removeEventListener('scroll', this.onWindowScroll, false);
+
+            return this;
+        },
         onClickPlayButton() {
-            return this.playVideo()
-                       .stopPreviewVideo()
-                       .hideOverlay();
+            return this.play();
         }
     },
     events: {
@@ -105,6 +133,13 @@ let Header = Block.extend({
         'video-end': function () {
             this.playPreviewVideo()
                 .showOverlay();
+        }
+    },
+    ready() {
+        if (!this.config.isMobile) {
+            this.setAutoPlayTimeout();
+
+            return this;
         }
     }
 });
