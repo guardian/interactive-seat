@@ -5,7 +5,7 @@ import browser from '../../js/lib/browser';
 import InteractiveChallenge from '../interactive-challenge/interactive-challenge';
 import InteractiveMenu from '../interactive-menu/interactive-menu';
 import InteractiveResults from '../interactive-results/interactive-results';
-import support from '../../js/lib/support';
+import { supportsCssAnimation } from '../../js/lib/support';
 import template from './interactive.html!text';
 
 let Interactive = Block.extend({
@@ -45,7 +45,7 @@ let Interactive = Block.extend({
 let transition = function (className) {
     return function (el, done) {
         // guard against lack of CSS animation support
-        if (!support.cssAnimation) {
+        if (!supportsCssAnimation) {
             done();
 
             return;

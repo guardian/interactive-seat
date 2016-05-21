@@ -1,9 +1,9 @@
-import browser from './browser';
-import support from './support';
+import { cssAnimationEndEventName } from './browser';
+import { supportsCssAnimation } from './support';
 
 export default function animate (el, className) {
     // guard against lack of CSS animation support
-    if (!support.cssAnimation) {
+    if (!supportsCssAnimation) {
         return new Promise((resolve) => resolve());
     }
 
@@ -11,10 +11,10 @@ export default function animate (el, className) {
         let eventHandler = () => {
             resolve();
 
-            el.removeEventListener(browser.cssAnimationEndEventName, eventHandler, false);
+            el.removeEventListener(cssAnimationEndEventName, eventHandler, false);
         };
 
-        el.addEventListener(browser.cssAnimationEndEventName, eventHandler, false);
+        el.addEventListener(cssAnimationEndEventName, eventHandler, false);
     });
 
     [].forEach.call(el.classList, (className) => {
