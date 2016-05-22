@@ -50,13 +50,7 @@
         }
     }
 
-    &__main {
-        @include mq($until: tablet) {
-            background: transparentize(colour(black), 0.8);
-        }
-    }
-
-    &__place-setting {
+    &__option-image-container {
         position: relative;
         z-index: 2;
         margin: 0 auto;
@@ -69,9 +63,17 @@
         @include mq($from: wide) {
             max-width: 80%;
         }
+    }
+
+    &__option-image {
+        &.is-active {
+            opacity: 0.6;
+        }
 
         > svg {
-            max-height: 200px;
+            @include mq($until: tablet) {
+                max-height: 200px;
+            }
         }
     }
 
@@ -88,9 +90,9 @@
     &__next-icon {
         margin-right: 12px;
         padding: 14px;
-        width: (70px - (2 * 14) - 4);
-        height: (70px - (2 * 14) - 4);
-        background: transparentize(colour(black), 0.6);
+        width: (70px - (2 * 14));
+        height: (70px - (2 * 14));
+        background: colour(blue);
     }
 
     &__next-text {
@@ -159,7 +161,6 @@
         left: 0;
         z-index: 1;
         width: 100%;
-        opacity: 0.8;
 
         @include mq($from: tablet) {
             display: block;

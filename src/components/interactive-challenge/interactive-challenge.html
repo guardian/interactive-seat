@@ -6,13 +6,15 @@
     </div>
 
     <div class="c-interactive-challenge__main l-horizontal-padding">
-        <div class="c-interactive-challenge__place-setting">
+        <div class="c-interactive-challenge__option-image-container">
             <button v-if="isAnswered" class="c-interactive-challenge__next-button" @click="onClickNextButton">
-                <icon class="c-interactive-challenge__next-icon c-icon--circular c-icon--bordered" name="arrow-right"></icon>
+                <icon class="c-interactive-challenge__next-icon c-icon--circular" name="arrow-right"></icon>
                 <span class="c-interactive-challenge__next-text">{{ buttonText }}</span>
             </button>
 
-            <partial :name="placeSettingPartialName"></partial>
+            <div class="c-interactive-challenge__option-image" :class="{ 'is-active': isAnswered }">
+                <partial :name="placeSettingPartialName"></partial>
+            </div>
         </div>
 
         <ul class="c-interactive-challenge__options">
