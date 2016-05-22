@@ -21,7 +21,7 @@ import Tracking from '../tracking/tracking';
 // Partials
 import Icons from '../../partials/icons.svg!text';
 
-const OPHAN_TRACKING_SCRIPT_URL = '//j.ophan.co.uk/interactive.js';
+const OPHAN_TRACKING_SCRIPT_URL = 'https://j.ophan.co.uk/interactive.js';
 
 Vue.config.devtools = true;
 Vue.config.debug = true;
