@@ -57,7 +57,8 @@ let Video = Vue.extend({
             events,
             sources: getSources(this.path, bitRate),
             poster: getPosterUrl(this.path, bitRate),
-            isPlaying: this.autoplay
+            isPlaying: this.autoplay,
+            hasBubbled: false
         };
     },
     methods: {
@@ -75,6 +76,8 @@ let Video = Vue.extend({
             this.$el.querySelector('.js-video-player').currentTime = currentTime;
         },
         onClickPauseButton() {
+            this.hasBubbled = true;
+
             this.$dispatch('video-pause');
         },
         onTimeUpdate(event) {
@@ -88,6 +91,15 @@ let Video = Vue.extend({
             let currentTime = (1 / elWidth) * deltaX * duration;
 
             this.setCurrentTime(currentTime);
+        },
+        onPause() {
+            if (this.hasBubbled) {
+                this.hasBubbled = false;
+
+                return this;
+            }
+
+            this.$dispatch('video-pause');
         },
         onEnded() {
             this.$dispatch('video-end');

@@ -37,18 +37,18 @@ let Header = Block.extend({
 
             document.removeEventListener(visibilityChangeEventName, this.onVisibilityChange, false);
 
+            if (this.config.isHandheld) {
+                return this.playVideo()
+                           .hidePreviewImage()
+                           .hideOverlay();
+            }
+
             return this.playVideo()
                        .stopPreviewVideo()
                        .hideOverlay();
         },
         playVideo() {
             let primaryVideo = this.$children.filter((child) => child.$el.id === 'js-primary-video')[0];
-
-            if (this.config.isMobile) {
-                primaryVideo.play();
-
-                return this;
-            }
 
             primaryVideo.play();
 
@@ -88,6 +88,24 @@ let Header = Block.extend({
 
                 previewVideo.$el.classList.add('u-to-the-back');
             });
+
+            return this;
+        },
+        hidePreviewImage() {
+            let previewImageEl = this.$el.querySelector('#js-preview-image');
+
+            animate(previewImageEl, 'animate--fade-out').then(() => {
+                previewImageEl.classList.add('u-to-the-back');
+            });
+
+            return this;
+        },
+        showPreviewImage() {
+            let previewImageEl = this.$el.querySelector('#js-preview-image');
+
+            previewImageEl.classList.remove('u-to-the-back');
+
+            animate(previewImageEl, 'animate--fade-in');
 
             return this;
         },
@@ -144,16 +162,25 @@ let Header = Block.extend({
     },
     events: {
         'video-pause': function () {
+            if (this.config.isMobile) {
+                this.showPreviewImage();
+            }
+
             this.stopVideo()
                 .showOverlay();
         },
         'video-end': function () {
-            this.playPreviewVideo()
-                .showOverlay();
+            if (this.config.isHandheld) {
+                this.showPreviewImage()
+                    .showOverlay();
+            } else {
+                this.playPreviewVideo()
+                    .showOverlay();
+            }
         }
     },
     ready() {
-        if (this.config.isMobile) {
+        if (this.config.isHandheld) {
             return this;
         }
 

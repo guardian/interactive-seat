@@ -12,6 +12,12 @@
         height: 100%;
     }
 
+    .is-handheld & {
+        .c-video__controls {
+            opacity: 1;
+        }
+    }
+
     &__controls {
         cursor: pointer;
         opacity: 0;

@@ -68,9 +68,8 @@
         }
     }
 
-    .is-mobile & {
+    .is-handheld & {
         .c-header__video {
-            visibility: hidden;
             z-index: 0;
         }
     }

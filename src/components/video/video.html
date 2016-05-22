@@ -1,6 +1,6 @@
 <div class="c-video" :class="{ 'is-playing': isPlaying }">
     <template v-if="hasControls">
-        <video class="c-video__player js-video-player" @timeupdate="onTimeUpdate" @ended="onEnded" :poster="poster" :preload="preload" :loop="loop" :muted="muted" :autoplay="autoplay">
+        <video class="c-video__player js-video-player" @pause="onPause" @timeupdate="onTimeUpdate" @ended="onEnded" :poster="poster" :preload="preload" :loop="loop" :muted="muted" :autoplay="autoplay">
             <source v-for="source in sources" :src="source.src" type="video/{{ source.format }}"></source>
         </video>
 
