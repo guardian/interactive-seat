@@ -22,7 +22,7 @@
         color: colour(white);
 
         .is-handheld & {
-            height: 100%;
+            height: 100vh;
             max-height: 550px;
         }
 
