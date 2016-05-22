@@ -2,7 +2,7 @@
     overflow: hidden;
     position: relative;
 
-    @include mq($until: tablet) {
+    .is-mobile & {
         height: 100%;
     }
 
@@ -23,8 +23,7 @@
     }
 
     &__subtitle,
-    &__headline,
-    &__description-text {
+    &__headline {
         margin-top: 0;
         margin-bottom: 0;
     }
@@ -64,7 +63,8 @@
 
         @include mq($from: tablet) {
             @include fs-header(4);
-            margin-left: 110px;
+            float: right;
+            width: calc(100% - 110px);
         }
     }
 
@@ -111,5 +111,9 @@
 
     &__play-text {
         @include fs-header(2);
+
+        @include mq($from: tablet) {
+            display: none;
+        }
     }
 }

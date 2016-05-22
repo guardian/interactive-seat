@@ -21,7 +21,7 @@
         position: relative;
         color: colour(white);
 
-        @include mq($until: tablet) {
+        .is-mobile & {
             height: 100%;
         }
 
