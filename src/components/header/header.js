@@ -153,7 +153,7 @@ let Header = Block.extend({
         }
     },
     ready() {
-        if (!this.config.isMobile) {
+        if (this.config.isMobile) {
             return this;
         }
 
