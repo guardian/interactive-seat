@@ -82,7 +82,7 @@ let Video = Vue.extend({
         },
         onClickSeekBar(event) {
             let rect = this.$el.querySelector('.js-seek-bar').getBoundingClientRect();
-            let deltaX = event.x - rect.left;
+            let deltaX = event.clientX - rect.left;
             let elWidth = rect.width;
             let duration = this.$el.querySelector('.js-video-player').duration;
             let currentTime = (1 / elWidth) * deltaX * duration;
