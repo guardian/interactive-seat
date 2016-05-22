@@ -6,6 +6,11 @@
         height: 100%;
     }
 
+    //hack for android
+    .is-android-app & {
+        min-height: 550px;
+    }
+
     &__outer {
         position: absolute;
         z-index: 2;
