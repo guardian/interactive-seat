@@ -51,15 +51,22 @@ let Video = Vue.extend({
         }
     },
     data() {
-        let bitRate = getBitRate(this.bandwidth);
-
         return {
             events,
-            sources: getSources(this.path, bitRate),
-            poster: getPosterUrl(this.path, bitRate),
             isPlaying: this.autoplay,
             hasBubbled: false
         };
+    },
+    computed: {
+        bitRate() {
+            return getBitRate(this.bandwidth);
+        },
+        sources() {
+            return getSources(this.path, this.bitRate);
+        },
+        poster() {
+            return getPosterUrl(this.path, this.bitRate);
+        }
     },
     methods: {
         play() {
