@@ -1,6 +1,7 @@
 import fastClick from 'fastclick/lib/fastclick';
 import Vue from 'vue';
 
+import '../../js/modules/transitions';
 import template from './app.html!text';
 import loadScript from '../../js/lib/loadScript';
 

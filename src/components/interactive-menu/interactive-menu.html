@@ -8,7 +8,7 @@
         </button>
     </interactive-info>
 
-    <div class="c-interactive-menu__challenge-previews">
-        <partial v-for="(id, challenge) of challenges" :name="`patron-${ id }`"></partial>
+    <div class="c-interactive-menu__patrons">
+        <partial v-for="patron of patrons" :name="`patron-${ patron.id }`"></partial>
     </div>
 </div>

@@ -1,7 +1,7 @@
 import Vue from 'vue';
 
-import Challenges from '../../js/modules/Challenges';
 import events from '../../js/modules/events';
+import patrons from '../../js/modules/patrons';
 import template from './interactive-menu.html!text';
 
 // Components
@@ -30,7 +30,7 @@ let InteractiveMenu = Vue.extend({
     data() {
         return {
             events,
-            challenges: Challenges.get()
+            patrons
         };
     },
     methods: {

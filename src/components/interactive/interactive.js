@@ -1,88 +1,76 @@
-import Vue from 'vue';
+import cloneDeep from 'lodash.clonedeep';
 
+import template from './interactive.html!text';
+import challenges from '../../js/modules/challenges';
+import patrons from '../../js/modules/patrons';
+
+// Components
 import Block from '../../js/modules/Block';
-import browser from '../../js/lib/browser';
 import InteractiveChallenge from '../interactive-challenge/interactive-challenge';
 import InteractiveMenu from '../interactive-menu/interactive-menu';
 import InteractiveResults from '../interactive-results/interactive-results';
-import { supportsCssAnimation } from '../../js/lib/support';
-import template from './interactive.html!text';
+
+let challengeComponents = challenges.reduce((accumulator, challenge) => {
+    accumulator[`interactive-challenge-${ challenge.id }`] = InteractiveChallenge.extend({
+        data() {
+            return cloneDeep(challenge);
+        }
+    });
+
+    return accumulator;
+}, {});
 
 let Interactive = Block.extend({
     template,
-    components: {
-        InteractiveChallenge,
+    components: Object.assign({
         InteractiveMenu,
         InteractiveResults
-    },
+    }, challengeComponents),
     data() {
-        return {
-            view: 'interactive-menu',
-            challengeId: 1,
-            numberOfTasks: 0,
-            numberOfTasksCorrect: 0
-        };
+        return this.getInitialState();
+    },
+    methods: {
+        getInitialState() {
+            return {
+                view: 'interactive-menu',
+                challengeId: 1,
+                numberOfChallenges: challenges.length,
+                results: patrons.reduce((accumulator, patron) => {
+                    accumulator[patron.id] = 0;
+
+                    return accumulator;
+                }, {})
+            };
+        },
+        reset() {
+            this.$data = this.getInitialState();
+
+            return this;
+        }
     },
     events: {
         'start': function () {
-            this.view = 'interactive-challenge';
+            this.view = `interactive-challenge-${ this.challengeId }`;
         },
-        'challenge-completed': function (numberOfTasksCorrect) {
-            this.numberOfTasksCorrect = numberOfTasksCorrect;
+        'challenge-complete': function (patronId, isCorrect) {
+            if (isCorrect) {
+                this.results[patronId] = this.results[patronId] + 1;
+            }
 
-            this.view = 'interactive-results';
+            if (this.challengeId < challenges.length) {
+                this.challengeId = this.challengeId + 1;
+
+                this.view = `interactive-challenge-${ this.challengeId }`;
+            } else {
+                this.view = 'interactive-results';
+            }
         },
         'restart': function () {
+            this.reset();
+
             this.view = 'interactive-menu';
         }
     }
-});
-
-let transition = function (className) {
-    return function (el, done) {
-        // guard against lack of CSS animation support
-        if (!supportsCssAnimation) {
-            done();
-
-            return;
-        }
-
-        let promises = [].map.call(el.querySelectorAll('.animate'), (el) => {
-            let promise = new Promise((resolve) => {
-                let eventHandler = () => {
-                    resolve();
-
-                    el.classList.remove(className);
-
-                    el.removeEventListener(browser.cssAnimationEndEventName, eventHandler, false);
-                };
-
-                el.addEventListener(browser.cssAnimationEndEventName, eventHandler, false);
-            });
-
-            el.classList.add(className);
-
-            return promise;
-        });
-
-        Promise.all(promises).then(done);
-    };
-};
-
-let cancelTransition = function (className) {
-    return function (el) {
-        [].forEach.call(el.querySelectorAll('.animate'), (el) => {
-            el.classList.remove(className);
-        });
-    };
-};
-
-Vue.transition('interactive-view', {
-    css: false,
-    enter: transition('enter'),
-    enterCancelled: cancelTransition('enter'),
-    leave: transition('leave'),
-    leaveCancelled: cancelTransition('leave')
 });
 
 export default Interactive;

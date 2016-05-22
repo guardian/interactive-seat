@@ -1,12 +1,173 @@
 .c-interactive-challenge {
-    &__tries {
-        padding-top: 30px;
-        text-align: center;
+    &__info,
+    &__main {
+        position: relative;
+        z-index: 2;
+
+        @include mq($from: tablet) {
+            float: left;
+            width: 50%;
+        }
     }
 
-    &__objects {
-        display: flex;
-        flex-flow: row nowrap;
-        padding-top: 30px;
+    &__info {
+        position: relative;
+        z-index: 3;
+        margin-top: 20px;
+
+        @include mq($from: tablet) {
+            margin-top: 60px;
+            padding-right: 60px;
+        }
+    }
+
+    &__progress {
+        @include fs-textSans(1);
+        margin: 0;
+
+        @include mq($from: tablet) {
+            @include fs-textSans(3);
+        }
+    }
+
+    &__title {
+        @include fs-headline(4);
+        margin-top: 0;
+        margin-bottom: 16px;
+        font-weight: 200;
+
+        @include mq($from: tablet) {
+            @include fs-headline(6);
+            margin-bottom: 60px;
+        }
+    }
+
+    &__description {
+        @include fs-header(1);
+
+        @include mq($from: tablet) {
+            @include fs-header(4);
+        }
+    }
+
+    &__main {
+        @include mq($until: tablet) {
+            background: transparentize(colour(black), 0.8);
+        }
+    }
+
+    &__place-setting {
+        position: relative;
+        z-index: 2;
+        margin: 0 auto;
+        padding: 20px 0;
+
+        @include mq($from: tablet) {
+            padding: 40px 0;
+        }
+
+        @include mq($from: wide) {
+            max-width: 80%;
+        }
+
+        > svg {
+            max-height: 200px;
+        }
+    }
+
+    &__next-button {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        color: colour(white);
+    }
+
+    &__next-icon {
+        margin-right: 12px;
+        padding: 14px;
+        width: (70px - (2 * 14) - 4);
+        height: (70px - (2 * 14) - 4);
+        background: transparentize(colour(black), 0.6);
+    }
+
+    &__next-text {
+        @include fs-textSans(5);
+        font-weight: bold;
+    }
+
+    &__options {
+        position: relative;
+        z-index: 2;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    &__option-button {
+        @include fs-headline(2);
+        overflow: hidden;
+        width: 100%;
+        height: 46px;
+        color: transparentize(colour(white), 0.4);
+        line-height: 44px;
+        text-align: left;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        border-top: 1px solid transparentize(colour(white), 0.4);
+        cursor: auto;
+
+        @include mq($from: tablet) {
+            @include fs-headline(3);
+        }
+
+        &.is-selected {
+            color: colour(white);
+        }
+
+        &.is-active {
+            cursor: pointer;
+
+            &:hover {
+                padding-left: 10px;
+                color: colour(white);
+                background: transparentize(colour(black), 0.8);
+            }
+        }
+    }
+
+    &__result-icon {
+        margin-right: 12px;
+        width: 22px;
+        height: 22px;
+
+        &--right {
+            color: green;
+        }
+
+        &--wrong {
+            color: red;
+        }
+    }
+
+    &__patron {
+        display: none;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        opacity: 0.8;
+
+        @include mq($from: tablet) {
+            display: block;
+            width: 50%;
+        }
+
+        > svg {
+            @extend .l-fill-width;
+        }
     }
 }

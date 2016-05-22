@@ -16,14 +16,6 @@
     animation: fade-out 0.5s;
 }
 
-.fade-with-delay-enter {
-    animation: fade-in 0.5s 0.5s both;
-}
-
-.fade-with-delay-leave {
-    animation: fade-out 0.5s both;
-}
-
 @keyframes fade-in {
     0% {
         opacity: 0;

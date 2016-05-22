@@ -27,21 +27,16 @@
         height: 16px;
     }
 
-    &__patron {
+    &__patrons {
         position: absolute;
         bottom: 0;
         left: 0;
         z-index: 1;
         width: 100%;
 
-        @include mq($from: tablet) {
-            width: 50%;
-        }
-
         > svg {
-            display: block;
-            width: 100%;
-            height: auto;
+            float: left;
+            width: (100% / 3);
         }
     }
 }

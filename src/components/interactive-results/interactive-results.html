@@ -13,8 +13,8 @@
         <p class="c-share__title">Share your results</p>
     </share>
 
-    <div class="c-interactive-results__patron">
-        <partial :name="patronPartialName"></partial>
+    <div class="c-interactive-results__patrons u-clearfix">
+        <partial v-for="patron of patrons" :name="patron"></partial>
     </div>
 
     <button class="c-interactive-results__restart-button c-button--pill" @click="onClickRestartButton">

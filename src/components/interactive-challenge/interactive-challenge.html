@@ -1,11 +1,39 @@
-<div class="c-interactive-challenge">
-    <interactive-task
-        v-for="(index, task) of tasks"
-        v-if="index === currentTaskIndex"
-        :task="task"
-        :index="index"
-        :number-of-tasks="tasks.length"
-        :challenge-id="challengeId"
-        transition="fade-with-delay">
-    </interactive-task>
+<div class="c-interactive-challenge l-container u-clearfix">
+    <div class="c-interactive-challenge__info l-horizontal-padding">
+        <p class="c-interactive-challenge__progress">{{ id }} of {{ numberOfChallenges }}</p>
+        <h5 class="c-interactive-challenge__title">{{ title }}</h5>
+        <p class="c-interactive-challenge__description">{{ description }}</p>
+    </div>
+
+    <div class="c-interactive-challenge__main l-horizontal-padding">
+        <div class="c-interactive-challenge__place-setting">
+            <button v-if="isAnswered" class="c-interactive-challenge__next-button" @click="onClickNextButton">
+                <icon class="c-interactive-challenge__next-icon c-icon--circular c-icon--bordered" name="arrow-right"></icon>
+                <span class="c-interactive-challenge__next-text">{{ buttonText }}</span>
+            </button>
+
+            <partial :name="placeSettingPartialName"></partial>
+        </div>
+
+        <ul class="c-interactive-challenge__options">
+            <li v-for="option of options" class="c-interactive-challenge__option">
+                <button class="c-interactive-challenge__option-button"
+                        :class="{ 'is-selected': option.id === selectedOptionId, 'is-active': !isAnswered }"
+                        @click="onSelectOption(option)"
+                        @mouseover="onMouseOverOption(option.id)"
+                        @mouseout="onMouseOutOption">
+                    <template v-if="isAnswered">
+                        <icon v-if="option.isCorrect" class="c-interactive-challenge__result-icon c-interactive-challenge__result-icon--right" name="result-right"></icon>
+                        <icon v-else class="c-interactive-challenge__result-icon c-interactive-challenge__result-icon--wrong" name="result-wrong"></icon>
+                    </template>
+
+                    {{ option.title }}
+                </button>
+            </li>
+        </ul>
+    </div>
+
+    <div class="c-interactive-challenge__patron">
+        <partial :name="patronPartialName"></partial>
+    </div>
 </div>
