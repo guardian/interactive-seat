@@ -33,8 +33,8 @@
     &__pause-icon {
         margin-right: 20px;
         padding: 18px;
-        width: (62px - (2 * 18));
-        height: (62px - (2 * 18));
+        width: (66px - (2 * 18) - 4);
+        height: (66px - (2 * 18) - 4);
         color: colour(news-support-4);
         background: transparentize(colour(black), 0.6);
     }

@@ -96,16 +96,16 @@
     &__play-icon {
         margin-right: 12px;
         padding: 14px 12px 14px 16px;
-        width: (48px - (2 * 14));
-        height: (48px - (2 * 14));
+        width: (52px - (2 * 14) - 4);
+        height: (52px - (2 * 14) - 4);
         color: colour(news-support-4);
         background: transparentize(colour(black), 0.6);
 
         @include mq($from: tablet) {
             margin-right: 0;
             padding: 24px 20px 24px 28px;
-            width: (84px - (2 * 24));
-            height: (84px - (2 * 24));
+            width: (88px - (2 * 24) - 4);
+            height: (88px - (2 * 24) - 4);
         }
     }
 
