@@ -1,8 +1,8 @@
-<div class="c-interactive-challenge l-container u-clearfix">
+<div class="c-interactive-challenge l-container u-clearfix animate">
     <div class="c-interactive-challenge__info l-horizontal-padding">
-        <p class="c-interactive-challenge__progress">{{ id }} of {{ numberOfChallenges }}</p>
+        <p class="c-interactive-challenge__progress animate">{{ id }} of {{ numberOfChallenges }}</p>
         <h5 class="c-interactive-challenge__title">{{ title }}</h5>
-        <p class="c-interactive-challenge__description">{{ description }}</p>
+        <p class="c-interactive-challenge__description animate">{{ description }}</p>
     </div>
 
     <div class="c-interactive-challenge__main l-horizontal-padding">
@@ -12,13 +12,13 @@
                 <span class="c-interactive-challenge__next-text">{{ buttonText }}</span>
             </button>
 
-            <div class="c-interactive-challenge__option-image" :class="{ 'is-active': isAnswered }">
+            <div class="c-interactive-challenge__option-image animate" :class="{ 'is-active': isAnswered }">
                 <partial :name="placeSettingPartialName"></partial>
             </div>
         </div>
 
         <ul class="c-interactive-challenge__options">
-            <li v-for="option of options" class="c-interactive-challenge__option">
+            <li v-for="option of options" class="c-interactive-challenge__option animate">
                 <button class="c-interactive-challenge__option-button"
                         :class="{ 'is-selected': option.id === selectedOptionId, 'is-active': !isAnswered }"
                         @click="onSelectOption(option)"
