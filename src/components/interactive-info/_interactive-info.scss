@@ -2,11 +2,11 @@
     padding-top: 25px;
 
     &.enter {
-        animation: fade-in 0.5s both, from-the-left 0.5s both;
+        animation: fade-in 0.35s 0.35s both, from-the-left 0.35s 0.35s both;
     }
 
     &.leave {
-        animation: fade-out 0.5s both, to-the-right 0.5s both;
+        animation: fade-out 0.35s 0.35s both, to-the-right 0.35s 0.35s both;
     }
 
     &::before {
