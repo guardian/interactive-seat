@@ -8,3 +8,9 @@ export default {
     supportsCssAnimation,
     supportsPageVisibility
 };
+
+// console.log(
+//     '(supportsCssAnimation, supportsPageVisibility)',
+//     supportsCssAnimation,
+//     supportsPageVisibility
+// );

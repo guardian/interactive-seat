@@ -1,3 +1,20 @@
+import bowser from 'ded/bowser';
+
+const MOBILE_THRESHOLD = 740;
+const TABLET_THRESHOLD = 980;
+
+export function isMobile() {
+    return (bowser.mobile || document.body.clientWidth < MOBILE_THRESHOLD);
+}
+
+export function isTablet() {
+    return (bowser.tablet || document.body.clientWidth < TABLET_THRESHOLD);
+}
+
+export function isHandheld() {
+    return (isMobile() || isTablet());
+}
+
 export const cssAnimationEndEventName = (() => {
     const cssAnimationEndEventNames = {
         animation: 'animationend',
@@ -48,3 +65,10 @@ export default {
     hiddenPropertyName,
     visibilityChangeEventName
 };
+
+// console.log(
+//     'cssAnimationEndEventName, hiddenPropertyName, visibilityChangeEventName',
+//     cssAnimationEndEventName,
+//     hiddenPropertyName,
+//     visibilityChangeEventName
+// );
