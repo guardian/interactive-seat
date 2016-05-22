@@ -10,35 +10,46 @@ import { isMobile, isTablet, isHandheld } from './lib/browser';
 const CONTENT_URL = 'https://interactive.guim.co.uk/docsdata-test/1ukLv0mLRiysvsraIUv-izI4BFEsv42_OrwNGxQIOGwY.json';
 
 export let init = function(el, context, config) {
+    let _isMobile = isMobile();
+    let _isTablet = isTablet();
+    let bandwidth;
+    let environment;
 
+    if (_isMobile) {
+        bandwidth = 0;
+    } else if (_isTablet) {
+        bandwidth  = 1024;
+    } else {
+        bandwidth = 4096;
+    }
 
-    Promise.all([
-        fetchJSON(CONTENT_URL),
-        getBandwidth()
-    ]).then((results) => {
-        let [data] = results;
+    environment = {
+        bandwidth,
+        isMobile: _isMobile,
+        isTablet: _isTablet,
+        isHandheld: isHandheld(),
+        isGuardianAndroidApp: isGuardianAndroidApp()
+    };
 
-        cleanData(data);
+    // console.log('(environment)', environment);
 
-        return results;
-    }).then((results) => {
-        let [data, bandwidth] = results;
-
-        Object.assign(data.config, config, {
-            bandwidth,
-            isGuardianAndroidApp: isGuardianAndroidApp(),
-            isMobile: isMobile(),
-            isTablet: isTablet(),
-            isHandheld: isHandheld()
-        });
-
-        // console.log('(isGuardianAndroidApp, isMobile, isTablet, isHandheld)', isMobile(), isTablet(), isHandheld());
-
-        console.log('Data: ', data);
-
-        new App({
-            data,
-            el
-        });
+    getBandwidth().then((bandwidth) => {
+        environment.bandwidth = bandwidth;
     });
+
+    fetchJSON(CONTENT_URL)
+        .then((content) => cleanData(content))
+        .then((content) => {
+            let data = {
+                blocks: content.blocks,
+                config: Object.assign(environment, content.config, config)
+            };
+
+            // console.log('(data)', data);
+
+            new App({
+                data,
+                el
+            });
+        });
 };
