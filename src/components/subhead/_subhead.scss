@@ -50,5 +50,12 @@
                 @include fs-headline(7, $size-only: true);
             }
         }
+
+        //hack for android
+        .is-android-app & {
+           min-height: 550px;
+        }
+
+
     }
 }
