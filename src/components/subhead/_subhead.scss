@@ -21,8 +21,9 @@
         position: relative;
         color: colour(white);
 
-        .is-mobile & {
+        .is-handheld & {
             height: 100%;
+            max-height: 550px;
         }
 
         &__outer {
@@ -53,7 +54,7 @@
 
         //hack for android
         .is-android-app & {
-           min-height: 550px;
+            min-height: 550px;
         }
     }
 }
