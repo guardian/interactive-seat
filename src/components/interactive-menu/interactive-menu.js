@@ -5,6 +5,7 @@ import events from '../../js/modules/events';
 import template from './interactive-menu.html!text';
 
 // Components
+import Button from '../button/button';
 import Icon from '../icon/icon';
 import InteractiveInfo from '../interactive-info/interactive-info';
 
@@ -16,6 +17,7 @@ import patron3 from '../../partials/patron-3.svg!text';
 let InteractiveMenu = Vue.extend({
     template,
     components: {
+        Button,
         Icon,
         InteractiveInfo
     },
@@ -32,8 +34,8 @@ let InteractiveMenu = Vue.extend({
         };
     },
     methods: {
-        selectChallenge(challengeId, numberOfTasks) {
-            this.$dispatch('challenge-selected', challengeId, numberOfTasks);
+        onClickStartButton() {
+            this.$dispatch('start');
         }
     }
 });

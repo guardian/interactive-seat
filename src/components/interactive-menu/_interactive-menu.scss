@@ -1,109 +1,60 @@
 .c-interactive-menu {
     @include mq($from: tablet) {
-        flex-flow: row nowrap;
-        align-items: flex-start;
-        padding: 75px 0;
+        padding-top: 60px;
+        padding-bottom: 60px;
     }
 
-    &__challenge-previews {
-        display: flex;
-        flex-flow: row nowrap;
-        align-items: stretch;
-        align-self: stretch;
-        overflow-x: scroll;
-        padding: 30px 0;
-
+    &__interactive-info {
         @include mq($from: tablet) {
-            flex: 3 3 0;
-            padding: 0;
-        }
-    }
-
-    &__challenge-preview {
-        box-sizing: border-box;
-        display: flex;
-        flex-flow: column nowrap;
-        align-items: stretch;
-        align-content: center;
-        align-self: stretch;
-        position: relative;
-        margin: 0 10px;
-        padding: 0 10px;
-        text-align: center;
-
-        @include mq($until: tablet) {
-            min-width: 70%;
-
-            &:first-of-type {
-                margin: 0;
-                padding: 0 0 0 20px;
-            }
-
-            &:last-of-type {
-                margin: 0;
-                padding: 0 20px 0 0;
-            }
-        }
-
-        @include mq($from: tablet) {
-            margin: 0;
-            padding: 0 10px;
-            flex: 1 1 (100% / 3);
-
-            > * {
-                flex: 1 1 auto;
-            }
-        }
-
-        > svg {
-            display: block;
-            margin: 0 auto;
-        }
-    }
-
-    &__title {
-        @include fs-header(1);
-        margin: 10px 0 0;
-        color: colour(white);
-
-        @include mq($from: tablet) {
-            @include fs-header(2);
+            float: left;
+            padding-top: 0;
+            padding-right: 40px;
+            width: (100% / 3);
         }
     }
 
     &__start-button {
-        display: none;
-        margin: 30px auto 0;
-
-        @include mq($from: tablet) {
-            display: block;
-            flex: 0;
-        }
+        @include fs-textSans(5);
+        padding: 20px 0 0;
+        color: colour(white);
+        font-weight: bold;
+        text-align: left;
     }
 
     &__start-icon {
-        display: none;
-        margin: 30px auto 0;
-        padding: 12px;
-        width: (50px - (2 * 12));
-        height: (50px - (2 * 12));
-        background: transparentize(colour(black), 0.8);
-
-        @include mq($from: tablet) {
-            display: block;
-            flex: 0;
-        }
+        margin-right: 12px;
+        padding: 14px;
+        width: (70px - (2 * 14) - 4);
+        height: (70px - (2 * 14) - 4);
+        background: transparentize(colour(black), 0.6);
     }
 
-    &__interactive-info {
-        @include mq($until: tablet) {
-            box-sizing: content-box;
-            width: calc(100% - 40px);
-        }
+    &__challenge-previews {
+        padding: 20px 0 0;
+        text-align: justify;
 
         @include mq($from: tablet) {
-            flex: 1 1 0;
-            padding-right: 40px;
+            float: left;
+            padding: 0;
+            width: ((100% / 3) * 2);
+            height: 100%;
+        }
+
+        > svg {
+            width: (100% / 3);
+            max-height: 100%;
+
+            &:nth-child(1) {
+                padding-right: 10px;
+            }
+
+            &:nth-child(2) {
+                padding: 0 5px;
+            }
+
+            &:nth-child(3) {
+                padding-left: 10px;
+            }
         }
     }
 }

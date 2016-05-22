@@ -24,11 +24,7 @@ let Interactive = Block.extend({
         };
     },
     events: {
-        'challenge-selected': function (challengeId, numberOfTasks) {
-            this.challengeId = challengeId;
-
-            this.numberOfTasks = numberOfTasks;
-
+        'start': function () {
             this.view = 'interactive-challenge';
         },
         'challenge-completed': function (numberOfTasksCorrect) {

@@ -1,13 +1,14 @@
-<div class="c-interactive-menu" :class="{ 'l-horizontal-padding': !config.isMobile }">
-    <interactive-info class="c-interactive-menu__interactive-info" :class="{ 'l-horizontal-padding': config.isMobile }" title="Interactive: Play with your food" description="Can you use the science of neurogastronomy to affect the way people perceive food? Choose a picky eater and see if you can satisfy them"></interactive-info>
+<div class="c-interactive-menu l-horizontal-padding u-clearfix">
+    <interactive-info
+        class="c-interactive-menu__interactive-info" title="Interactive: Play with your food"
+        description="Can you use the science of neurogastronomy to affect the way people perceive food? Choose a picky eater and see if you can satisfy them">
+        <button :data-link-name="events.INT_START" class="c-interactive-menu__start-button" @click="onClickStartButton">
+            <icon class="c-interactive-menu__start-icon c-icon--circular c-icon--bordered" name="arrow-right"></icon>
+            <span class="c-interactive-menu__start-text">Start playing</span>
+        </button>
+    </interactive-info>
 
     <div class="c-interactive-menu__challenge-previews">
-        <button v-for="(id, challenge) of challenges" :data-link-name="events.INT_START" class="c-interactive-menu__challenge-preview c-button" @click="selectChallenge(id, challenge.tasks.length)">
-            <partial :name="`patron-${ id }`"></partial>
-
-            <h6 class="c-interactive-menu__title">{{ challenge.title }}</h6>
-
-            <icon class="c-interactive-menu__start-icon c-icon--circular" name="arrow-right"></icon>
-        </button>
+        <partial v-for="(id, challenge) of challenges" :name="`patron-${ id }`"></partial>
     </div>
 </div>
