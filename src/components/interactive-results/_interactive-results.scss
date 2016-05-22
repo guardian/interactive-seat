@@ -4,6 +4,10 @@
         z-index: 2;
     }
 
+    &__interactive-info {
+        max-width: 740px;
+    }
+
     &__restart-button {
         position: absolute;
         bottom: 12px;
@@ -28,15 +32,45 @@
     }
 
     &__patrons {
+        overflow: hidden;
         position: absolute;
         bottom: 0;
         left: 0;
         z-index: 1;
         width: 100%;
 
+        @include mq($until: tablet) {
+            height: 100%;
+        }
+
         > svg {
-            float: left;
-            width: (100% / 3);
+            @include mq($until: tablet) {
+                position: absolute;
+                width: 80%;
+
+                &:nth-child(1) {
+                    bottom: 0;
+                    left: -25%;
+                }
+
+                &:nth-child(2) {
+                    bottom: 0;
+                    left: 50%;
+                    z-index: 1;
+                    transform: translateX(-50%);
+                }
+
+                &:nth-child(3) {
+                    bottom: 0;
+                    right: -25%;
+                }
+            }
+
+            @include mq($from: tablet) {
+                float: left;
+                position: static;
+                width: (100% / 3);
+            }
         }
     }
 }

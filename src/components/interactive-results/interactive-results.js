@@ -10,15 +10,15 @@ import InteractiveInfo from '../interactive-info/interactive-info';
 import Share from '../share/share';
 
 // Patron partials
-import patron1Neutral from '../../partials/patron-1-neutral.svg!text';
-import patron1Happy from '../../partials/patron-1-happy.svg!text';
-import patron1Sad from '../../partials/patron-1-sad.svg!text';
-import patron2Neutral from '../../partials/patron-2-neutral.svg!text';
-import patron2Happy from '../../partials/patron-2-happy.svg!text';
-import patron2Sad from '../../partials/patron-2-sad.svg!text';
-import patron3Neutral from '../../partials/patron-3-neutral.svg!text';
-import patron3Happy from '../../partials/patron-3-happy.svg!text';
-import patron3Sad from '../../partials/patron-3-sad.svg!text';
+import patron1TallNeutral from '../../partials/patron-1-tall-neutral.svg!text';
+import patron1TallHappy from '../../partials/patron-1-tall-happy.svg!text';
+import patron1TallSad from '../../partials/patron-1-tall-sad.svg!text';
+import patron2TallNeutral from '../../partials/patron-2-tall-neutral.svg!text';
+import patron2TallHappy from '../../partials/patron-2-tall-happy.svg!text';
+import patron2TallSad from '../../partials/patron-2-tall-sad.svg!text';
+import patron3TallNeutral from '../../partials/patron-3-tall-neutral.svg!text';
+import patron3TallHappy from '../../partials/patron-3-tall-happy.svg!text';
+import patron3TallSad from '../../partials/patron-3-tall-sad.svg!text';
 
 let InteractiveResults = Vue.extend({
     template,
@@ -29,15 +29,15 @@ let InteractiveResults = Vue.extend({
         Share
     },
     partials: {
-        patron1Neutral,
-        patron1Happy,
-        patron1Sad,
-        patron2Neutral,
-        patron2Happy,
-        patron2Sad,
-        patron3Neutral,
-        patron3Happy,
-        patron3Sad
+        patron1TallNeutral,
+        patron1TallHappy,
+        patron1TallSad,
+        patron2TallNeutral,
+        patron2TallHappy,
+        patron2TallSad,
+        patron3TallNeutral,
+        patron3TallHappy,
+        patron3TallSad
     },
     props: [
         'results',
@@ -58,11 +58,11 @@ let InteractiveResults = Vue.extend({
             totalCorrect += numberCorrect;
 
             if (numberCorrect === 2) {
-                patrons.push(`patron-${ patronId }-happy`);
+                patrons.push(`patron-${ patronId }-tall-happy`);
             } else if (numberCorrect === 1) {
-                patrons.push(`patron-${ patronId }-neutral`);
+                patrons.push(`patron-${ patronId }-tall-neutral`);
             } else {
-                patrons.push(`patron-${ patronId }-sad`);
+                patrons.push(`patron-${ patronId }-tall-sad`);
             }
         }
 
