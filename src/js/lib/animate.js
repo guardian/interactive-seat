@@ -1,3 +1,5 @@
+import isString from 'lodash.isstring';
+
 import { cssAnimationEndEventName } from './browser';
 import { supportsCssAnimation } from './support';
 
@@ -18,7 +20,7 @@ export default function animate (el, className) {
     });
 
     [].forEach.call(el.classList, (className) => {
-        if (className.indexOf('animate--') !== -1) {
+        if (isString(className) && className.indexOf('animate--') !== -1) {
             el.classList.remove(className);
         }
     });
