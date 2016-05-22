@@ -1,5 +1,4 @@
 .c-button {
-    box-sizing: content-box;
     display: block;
     margin: 0;
     padding: 0;
@@ -8,26 +7,6 @@
     border: none;
     outline: none;
     cursor: pointer;
-
-    &--circle {
-        width: 44px;
-        height: 44px;
-        line-height: 44px;
-        background: transparentize(colour(black), 0.4);
-        border-radius: 50%;
-    }
-
-    &--medium-circle {
-        width: 62px;
-        height: 62px;
-        line-height: 62px;
-    }
-
-    &--large-circle {
-        width: 88px;
-        height: 88px;
-        line-height: 88px;
-    }
 
     &--pill {
         @include fs-textSans(3);
