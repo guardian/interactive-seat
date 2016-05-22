@@ -12,11 +12,9 @@
         height: 100%;
     }
 
-
     //hack for android
     .is-android-app & {
         min-height: 550px;
         overflow: hidden;
     }
-
 }
