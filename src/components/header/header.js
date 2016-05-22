@@ -146,7 +146,7 @@ let Header = Block.extend({
             return this;
         },
         onVisibilityChange() {
-            if (pageIsVisible()) {
+            if (pageIsVisible() && isElementInViewport(this.$el)) {
                 this.setAutoPlayTimeout();
 
                 return this;
