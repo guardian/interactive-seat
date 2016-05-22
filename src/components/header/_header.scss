@@ -1,6 +1,7 @@
 .c-header {
     overflow: hidden;
     position: relative;
+    background: colour(black);
 
     .is-mobile & {
         height: 100%;
