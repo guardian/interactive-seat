@@ -21,13 +21,18 @@
         }
     }
 
-    &__progress {
+    &__progress,
+    &__direction {
         @include fs-textSans(1);
         margin: 0;
 
         @include mq($from: tablet) {
             @include fs-textSans(3);
         }
+    }
+
+    &__direction {
+        margin-top: -4px;
     }
 
     &__title {
@@ -128,6 +133,8 @@
         white-space: nowrap;
         text-overflow: ellipsis;
         border-top: 1px solid transparentize(colour(white), 0.4);
+        background: transparentize(colour(black), 0.9);
+        padding: 10px;
         transition: color 0.4s;
         transition: background-color 0.4s;
         transition: padding-left 0.4s;
@@ -140,7 +147,7 @@
         &.is-selected {
             color: colour(white);
             background: transparentize(colour(black), 0.8);
-            padding-left: 10px;
+            padding-left: 20px;
         }
 
         &.is-active {

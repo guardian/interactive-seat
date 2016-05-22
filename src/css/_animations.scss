@@ -12,6 +12,7 @@
         &.c-interactive-results__patrons {
             animation:  fade-in 0.75s both, from-below 0.35s both;
         }
+        &.c-interactive-challenge__direction,
         &.c-interactive-challenge__option,
         &.c-interactive-challenge__option-image {
             animation:  fade-in 0.35s both, from-below 0.35s both;
@@ -23,6 +24,8 @@
     }
     &.leave {
         animation:  fade-in 0.35s both, from-below 0.35s both;
+
+        &.c-interactive-challenge__direction,
         &.c-interactive-challenge__option,
         &.c-interactive-challenge__option-image {
             animation:  fade-out 0.35s both, to-above 0.35s both;
