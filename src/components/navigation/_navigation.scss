@@ -1,7 +1,12 @@
 .c-navigation {
+    display: none;
     margin: 0;
     padding: 0;
     background: colour(news-support-7);
+
+    @include mq($from: tablet) {
+        display: block;
+    }
 
     &__list {
         position: relative;
