@@ -11,7 +11,7 @@ let ResponsiveImage = Vue.extend({
         },
         widths: {
             type: Array,
-            default: [140, 500, 1000, 2000, 5760]
+            default: [140, 500, 1000, 1920]
         },
         sizes: {
             default: '100vw'
