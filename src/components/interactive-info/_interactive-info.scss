@@ -32,6 +32,10 @@
         padding-top: 12px;
 
         @include mq($from: tablet) {
+            @include fs-header(6);
+        }
+
+        @include mq($from: desktop) {
             @include fs-header(7);
         }
     }
@@ -42,6 +46,10 @@
         color: transparentize(colour(white), 0.4);
 
         @include mq($from: tablet) {
+            @include fs-header(2);
+        }
+
+        @include mq($from: desktop) {
             @include fs-header(5);
         }
     }
