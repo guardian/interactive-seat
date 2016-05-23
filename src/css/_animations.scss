@@ -9,30 +9,43 @@
 
     &.enter {
         animation: from-the-left 0.35s both;
+
+        &.c-interactive-info {
+            animation: fade-in 0.35s both, from-the-left 0.35s both;
+        }
+
         &.c-interactive-results__patrons {
-            animation:  fade-in 0.75s both, from-below 0.35s both;
+            animation: fade-in 0.75s both, from-below 0.35s both;
         }
-        &.c-interactive-challenge__direction,
-        &.c-interactive-challenge__option,
-        &.c-interactive-challenge__option-image {
-            animation:  fade-in 0.35s both, from-below 0.35s both;
-        }
-        &.c-interactive-challenge__progress,
-        &.c-interactive-challenge__description {
-            animation:  fade-in 0.35s both;
-        }
-    }
-    &.leave {
-        animation:  fade-in 0.35s both, from-below 0.35s both;
 
         &.c-interactive-challenge__direction,
         &.c-interactive-challenge__option,
         &.c-interactive-challenge__option-image {
-            animation:  fade-out 0.35s both, to-above 0.35s both;
+            animation: fade-in 0.35s both, from-below 0.35s both;
         }
+
         &.c-interactive-challenge__progress,
         &.c-interactive-challenge__description {
-            animation:  fade-out 0.35s both;
+            animation: fade-in 0.35s both;
+        }
+    }
+
+    &.leave {
+        animation: fade-out 0.35s both, to-below 0.35s both;
+
+        &.c-interactive-info {
+            animation: fade-out 0.35s both, to-the-right 0.35s both;
+        }
+
+        &.c-interactive-challenge__direction,
+        &.c-interactive-challenge__option,
+        &.c-interactive-challenge__option-image {
+            animation: fade-out 0.35s both, to-above 0.35s both;
+        }
+
+        &.c-interactive-challenge__progress,
+        &.c-interactive-challenge__description {
+            animation: fade-out 0.35s both;
         }
     }
 }

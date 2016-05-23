@@ -1,24 +1,26 @@
 <div class="c-interactive-results">
-    <interactive-info
-        class="c-interactive-results__interactive-info l-horizontal-padding"
-        :title="title"
-        :description="description">
-    </interactive-info>
+    <div class="c-interactive-results__container">
+        <interactive-info
+            class="c-interactive-results__interactive-info l-horizontal-padding"
+            :title="title"
+            :description="description">
+        </interactive-info>
 
-    <share
-        class="l-horizontal-padding"
-        :text="shareText"
-        :url="config.share_url"
-        :events="shareEvents">
-        <p class="c-share__title">Share your results</p>
-    </share>
+        <share
+            class="l-horizontal-padding"
+            :text="shareText"
+            :url="config.share_url"
+            :events="shareEvents">
+            <p class="c-share__title">Share your results</p>
+        </share>
 
-    <div class="c-interactive-results__patrons u-clearfix animate">
-        <partial v-for="patron of patrons" :name="patron"></partial>
+        <div class="c-interactive-results__patrons u-clearfix animate">
+            <partial v-for="patron of patrons" :name="patron"></partial>
+        </div>
+
+        <button class="c-interactive-results__restart-button c-button--pill" @click="onClickRestartButton">
+            <icon class="c-interactive-results__restart-icon" name="replay"></icon>
+            <span class="c-interactive-results__restart-text">Try again?</span>
+        </button>
     </div>
-
-    <button class="c-interactive-results__restart-button c-button--pill" @click="onClickRestartButton">
-        <icon class="c-interactive-results__restart-icon" name="replay"></icon>
-        <span class="c-interactive-results__restart-text">Try again?</span>
-    </button>
 </div>
