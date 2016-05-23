@@ -32,8 +32,20 @@ let Header = Block.extend({
         };
     },
     methods: {
-        play() {
+        play(wasAutoplayed) {
             this.clearAutoPlayTimeout();
+
+            if (wasAutoplayed) {
+                this.onWindowScroll = throttle(() => {
+                    if (!isElementInViewport(this.$el)) {
+                        this.pause();
+
+                        window.removeEventListener('scroll', this.onWindowScroll, false);
+                    }
+                }, 100);
+
+                window.addEventListener('scroll', this.onWindowScroll, false);
+            }
 
             document.removeEventListener(visibilityChangeEventName, this.onVisibilityChange, false);
 
@@ -46,6 +58,14 @@ let Header = Block.extend({
             return this.playVideo()
                        .stopPreviewVideo()
                        .hideOverlay();
+        },
+        pause() {
+            if (this.config.isMobile) {
+                this.showPreviewImage();
+            }
+
+            this.stopVideo()
+                .showOverlay();
         },
         playVideo() {
             let primaryVideo = this.$children.filter((child) => child.$el.id === 'js-primary-video')[0];
@@ -134,7 +154,7 @@ let Header = Block.extend({
                 }
             }, 100);
 
-            this.autoplayTimeout = setTimeout(() => this.play(), AUTOPLAY_TIMEOUT_DURATION);
+            this.autoplayTimeout = setTimeout(() => this.play(true), AUTOPLAY_TIMEOUT_DURATION);
 
             window.addEventListener('scroll', this.onWindowScroll, false);
         },
@@ -162,12 +182,7 @@ let Header = Block.extend({
     },
     events: {
         'video-pause': function () {
-            if (this.config.isMobile) {
-                this.showPreviewImage();
-            }
-
-            this.stopVideo()
-                .showOverlay();
+            this.pause();
         },
         'video-end': function () {
             if (this.config.isHandheld) {
