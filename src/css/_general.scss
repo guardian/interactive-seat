@@ -8,6 +8,7 @@ figure.interactive {
 
 .interactive {
     box-sizing: border-box;
+    transition: background-color 0.4s;
 
     *,
     *::before,

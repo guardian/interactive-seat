@@ -31,6 +31,10 @@ module.exports = function(grunt) {
                 files: ['harness/**/*'],
                 tasks: ['copy:harness']
             },
+            templates: {
+                files: ['src/js/boot.js.tpl'],
+                tasks: ['template:bootjs']
+            },
             livereload: {
                 options: {
                     livereload: true
