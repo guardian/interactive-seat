@@ -18,7 +18,7 @@
             <partial v-for="patron of patrons" :name="patron"></partial>
         </div>
 
-        <button class="c-interactive-results__restart-button c-button--pill" @click="onClickRestartButton">
+        <button class="c-interactive-results__restart-button c-button--pill" @click.prevent="onClickRestartButton">
             <icon class="c-interactive-results__restart-icon" name="replay"></icon>
             <span class="c-interactive-results__restart-text">Try again?</span>
         </button>

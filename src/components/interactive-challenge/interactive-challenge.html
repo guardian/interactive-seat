@@ -8,7 +8,7 @@
 
         <div class="c-interactive-challenge__main l-horizontal-padding">
             <div class="c-interactive-challenge__option-image-container">
-                <button v-if="isAnswered" class="c-interactive-challenge__next-button" @click="onClickNextButton">
+                <button v-if="isAnswered" class="c-interactive-challenge__next-button" @click.prevent="onClickNextButton">
                     <icon class="c-interactive-challenge__next-icon c-icon--circular" name="arrow-right"></icon>
                     <span class="c-interactive-challenge__next-text">{{ buttonText }}</span>
                 </button>
@@ -23,7 +23,7 @@
                 <li v-for="option of options" class="c-interactive-challenge__option animate">
                     <button class="c-interactive-challenge__option-button"
                             :class="{ 'is-selected': option.id === selectedOptionId, 'is-active': !isAnswered }"
-                            @click="onSelectOption(option)"
+                            @click.prevent="onSelectOption(option)"
                             @mouseover="onMouseOverOption(option.id)"
                             @mouseout="onMouseOutOption">
                         <template v-if="isAnswered">

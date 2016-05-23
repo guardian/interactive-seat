@@ -5,12 +5,12 @@
         </video>
 
         <div v-if="isPlaying" class="c-video__controls">
-            <button class="c-video__pause-button" @click="onClickPauseButton">
+            <button class="c-video__pause-button" @click.prevent="onClickPauseButton">
                 <icon class="c-video__pause-icon c-icon--circular c-icon--bordered" name="pause"></icon>
                 <span class="c-video__pause-text">Pause</span>
             </button>
 
-            <div :data-link-name="events.VIDEO_SCRUB" class="js-seek-bar c-video__seek-bar" @click="onClickSeekBar">
+            <div :data-link-name="events.VIDEO_SCRUB" class="js-seek-bar c-video__seek-bar" @click.prevent="onClickSeekBar">
                 <div class="c-video__progress-bar" :style="{ width: `${ progress }%` }"></div>
             </div>
         </div>
