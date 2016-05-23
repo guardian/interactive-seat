@@ -23,8 +23,8 @@ import Icons from '../../partials/icons.svg!text';
 
 const OPHAN_TRACKING_SCRIPT_URL = 'https://j.ophan.co.uk/interactive.js';
 
-Vue.config.devtools = true;
-Vue.config.debug = true;
+// Vue.config.devtools = true;
+// Vue.config.debug = true;
 
 let App = Vue.extend({
     template,
