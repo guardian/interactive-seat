@@ -1,4 +1,5 @@
 import 'classlist-polyfill';
+import 'picturefill';
 
 import App from '../components/app/app';
 import cleanData from './lib/cleanData';

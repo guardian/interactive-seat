@@ -21,6 +21,7 @@ System.config({
     "lodash.clonedeep": "npm:lodash.clonedeep@4.3.2",
     "lodash.isstring": "npm:lodash.isstring@4.0.1",
     "lodash.throttle": "npm:lodash.throttle@4.0.1",
+    "picturefill": "npm:picturefill@3.0.2",
     "reqwest": "github:ded/reqwest@1.1.5",
     "text": "github:systemjs/plugin-text@0.0.2",
     "traceur": "github:jmcriffey/bower-traceur@0.0.93",
@@ -109,6 +110,9 @@ System.config({
     },
     "npm:path-browserify@0.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:picturefill@3.0.2": {
+      "child_process": "github:jspm/nodelibs-child_process@0.1.0"
     },
     "npm:process@0.11.3": {
       "assert": "github:jspm/nodelibs-assert@0.1.0"
