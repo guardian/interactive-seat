@@ -69,15 +69,15 @@ let InteractiveResults = Vue.extend({
         if (totalCorrect > 4) {
             title = 'Well done: you successfully used science to influence your diners’ perception of flavour in their meals!';
             description = '(A long, successful career in neurogastronomy awaits you.)';
-            shareText = 'I changed my taste buds using the power of neurogastronomy! Can you?';
+            shareText = 'I changed my taste buds using the power of neurogastronomy! Can you? pic.twitter.com/t9zecA88np';
         } else if (totalCorrect > 2) {
             title = 'Not too bad. You managed to somewhat influence their perception of the flavours in the meal.';
             description = '(The important thing is that you learned something.)';
-            shareText = 'Science can play with your taste buds to alter the way things taste – do you know how?';
+            shareText = 'Science can play with your taste buds to alter the way things taste – do you know how? pic.twitter.com/SfXJx8s8K8';
         } else {
             title = 'Ah, sorry. You failed to enhance their meals with multi-sensory dining.';
             description = '(I guess neurogastronomy isn’t for everyone…)';
-            shareText = 'Science can play with your taste buds to alter the way things taste – do you know how?';
+            shareText = 'Science can play with your taste buds to alter the way things taste – do you know how? pic.twitter.com/SfXJx8s8K8';
         }
 
         return {
