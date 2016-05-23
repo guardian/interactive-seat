@@ -26,6 +26,11 @@ let Share = Vue.extend({
         emailUrl() {
             return `mailto:?subject=${ encodeURIComponent(this.text) }&body=${ encodeURIComponent(this.url) }/sbl`;
         }
+    },
+    methods: {
+        onClickLink(network, event) {
+            window.open(event.target.getAttribute('href'), `${ network }share`, 'menubar=no,location=no,resizable=no,scrollbars=no,status=no,width=640,height=320');
+        }
     }
 });
 
