@@ -1,7 +1,12 @@
 .c-interactive-results {
-    > * {
+    &__container {
         position: relative;
-        z-index: 2;
+        height: 100%;
+
+        > * {
+            position: relative;
+            z-index: 2;
+        }
     }
 
     &__interactive-info {
@@ -38,21 +43,21 @@
     }
 
     &__patrons {
-        overflow: hidden;
         position: absolute;
         bottom: 0;
         left: 0;
         z-index: 1;
         width: 100%;
 
-        @include mq($until: tablet) {
+        @include mq($until: desktop) {
             height: 100%;
         }
 
         > svg {
-            @include mq($until: tablet) {
+            @include mq($until: desktop) {
                 position: absolute;
                 width: 80%;
+                max-height: ((100% / 3) * 2);
 
                 &:nth-child(1) {
                     bottom: 0;
@@ -72,10 +77,18 @@
                 }
             }
 
-            @include mq($from: tablet) {
+            @include mq($from: desktop) {
                 float: left;
                 position: static;
                 width: (100% / 3);
+            }
+
+            @include mq($from: wide) {
+                width: 30%;
+
+                &:nth-child(n+2) {
+                    margin-left: 5%;
+                }
             }
         }
     }
