@@ -13,6 +13,7 @@ const CONTENT_URL = 'https://interactive.guim.co.uk/docsdata-test/1ukLv0mLRiysvs
 export let init = function(el, context, config) {
     let _isMobile = isMobile();
     let _isTablet = isTablet();
+    let _isHandheld = isHandheld();
     let bandwidth;
     let environment;
 
@@ -28,14 +29,16 @@ export let init = function(el, context, config) {
         bandwidth,
         isMobile: _isMobile,
         isTablet: _isTablet,
-        isHandheld: isHandheld(),
-        isGuardianAndroidApp: isGuardianAndroidApp()
+        isHandheld: _isHandheld,
+        isGuardianAndroidApp: isGuardianAndroidApp(),
+        isCapable: !_isHandheld && bandwidth > 2048
     };
 
     // console.log('(environment)', environment);
 
     getBandwidth().then((bandwidth) => {
         environment.bandwidth = bandwidth;
+        environment.isCapable = !_isHandheld && bandwidth > 2048;
     });
 
     fetchJSON(CONTENT_URL)

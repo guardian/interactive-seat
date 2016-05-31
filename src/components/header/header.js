@@ -194,8 +194,19 @@ let Header = Block.extend({
             }
         }
     },
+    watch: {
+        'config.isCapable'(isCapable, wasCapable) {
+            console.log('Alright: ', isCapable, wasCapable);
+
+            if (wasCapable && !isCapable) {
+                this.clearAutoPlayTimeout();
+
+                document.removeEventListener(visibilityChangeEventName, this.onVisibilityChange, false);
+            }
+        }
+    },
     ready() {
-        if (this.config.isHandheld) {
+        if (!this.config.isCapable) {
             return this;
         }
 
