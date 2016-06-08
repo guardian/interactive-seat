@@ -1,7 +1,7 @@
 <header class="c-header">
     <template v-if="config.isCapable">
         <video id="js-preview-video" class="c-header__video c-header__video--preview" autoplay loop muted :path="content.preview_path" :bandwidth="config.bandwidth"></video>
-        <video id="js-primary-video" class="c-header__video c-header__video--primary" preload="auto" has-controls :path="content.video_path" :bandwidth="config.bandwidth"></video>
+        <video id="js-primary-video" class="c-header__video c-header__video--primary" has-controls :path="content.video_path" :bandwidth="config.bandwidth"></video>
     </template>
     <template v-else>
         <responsive-image id="js-preview-image" class="l-cover" :path="content.image_path"></responsive-image>

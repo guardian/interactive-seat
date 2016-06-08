@@ -1,4 +1,12 @@
-<figure id="js-app" class="c-app" :class="{ 'is-mobile': config.isMobile, 'is-tablet': config.isTablet, 'is-handheld': config.isHandheld, 'is-android-app': config.isGuardianAndroidApp, 'is-capable': config.isCapable }">
+<figure id="js-app" class="c-app"
+    :class="{
+        'is-mobile': config.isMobile,
+        'is-tablet': config.isTablet,
+        'is-handheld': config.isHandheld,
+        'is-android-app': config.isGuardianAndroidApp,
+        'is-capable': config.isCapable,
+        'is-not-capable': !config.isCapable
+    }">
     <partial name="icons"></partial>
     <component v-for="block in blocks" :is="block.block" :content="block" :config="config"></component>
 </figure>

@@ -9,7 +9,7 @@ module.exports = function(grunt) {
         watch: {
             js: {
                 files: ['src/**/*.{js,html}'],
-                tasks: ['shell:interactive', 'shell:embed']
+                tasks: ['shell:interactive', 'shell:bandwidth', 'shell:embed']
             },
             css: {
                 files: ['src/**/*.scss'],
@@ -33,7 +33,7 @@ module.exports = function(grunt) {
             },
             templates: {
                 files: ['src/js/boot.js.tpl'],
-                tasks: ['template:bootjs']
+                tasks: ['template:boot']
             },
             livereload: {
                 options: {
@@ -44,7 +44,8 @@ module.exports = function(grunt) {
         },
 
         clean: {
-            build: ['build']
+            build: ['build'],
+            tmp: ['tmp']
         },
 
         stripDebug: {
@@ -124,12 +125,28 @@ module.exports = function(grunt) {
                     }
                 }
             },
+            bandwidth: {
+                command: './node_modules/.bin/jspm bundle-sfx <%= visuals.jspmFlags %> src/js/lib/bandwidth build/bandwidth.js --format amd',
+                options: {
+                    execOptions: {
+                        cwd: '.'
+                    }
+                }
+            },
             embed: {
                 command: './node_modules/.bin/jspm bundle-sfx <%= visuals.jspmFlags %> src/js/embed build/embed.js',
                 options: {
                     execOptions: {
                         cwd: '.'
                     }
+                }
+            }
+        },
+
+        uglify: {
+            boot: {
+                files: {
+                    'build/boot.js': 'build/boot.js'
                 }
             }
         },
@@ -182,7 +199,7 @@ module.exports = function(grunt) {
                     assetPath: '<%= visuals.assetPath %>'
                 }
             },
-            bootjs: {
+            boot: {
                 files: {
                     'build/boot.js': ['src/js/boot.js.tpl']
                 }
@@ -351,21 +368,21 @@ module.exports = function(grunt) {
             jspmFlags: '-m',
             assetPath: '<%= visuals.s3.domain %><%= visuals.s3.path %>/<%= visuals.timestamp %>'
         });
-    })
+    });
 
     grunt.registerTask('boot_url', function() {
-        grunt.log.write('\nBOOT URL: '['green'].bold)
-        grunt.log.writeln(grunt.template.process('<%= visuals.s3.domain %><%= visuals.s3.path %>/boot.js'))
+        grunt.log.write('\nBOOT URL: '['green'].bold);
+        grunt.log.writeln(grunt.template.process('<%= visuals.s3.domain %><%= visuals.s3.path %>/boot.js'));
 
-        grunt.log.write('\nEMBED URL: '['green'].bold)
-        grunt.log.writeln(grunt.template.process('<%= visuals.s3.domain %><%= visuals.s3.path %>/embed/embed.html'))
-    })
+        grunt.log.write('\nEMBED URL: '['green'].bold);
+        grunt.log.writeln(grunt.template.process('<%= visuals.s3.domain %><%= visuals.s3.path %>/embed/embed.html'));
+    });
 
     grunt.registerTask('embed', ['shell:embed', 'template:embed', 'sass:embed']);
-    grunt.registerTask('interactive', ['svgstore', 'svgmin', 'shell:interactive', 'template:bootjs', 'sass:interactive']);
+    grunt.registerTask('interactive', ['svgstore', 'svgmin', 'shell:interactive', 'shell:bandwidth', 'template:boot', 'sass:interactive']);
     grunt.registerTask('all', ['interactive', 'embed', 'postcss:autoprefixer', 'copy:assets'])
     grunt.registerTask('default', ['clean', 'copy:harness', 'all', 'connect', 'watch']);
-    grunt.registerTask('build', ['clean', 'all', 'stripDebug', 'postcss:minify']);
+    grunt.registerTask('build', ['clean', 'all', 'uglify:boot', 'stripDebug', 'postcss:minify']);
     grunt.registerTask('deploy', ['loadDeployConfig', 'prompt:visuals', 'build', 'copy:deploy', 'aws_s3', 'boot_url']);
 
     grunt.loadNpmTasks('grunt-aws');

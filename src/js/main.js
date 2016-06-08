@@ -4,42 +4,22 @@ import 'picturefill';
 import App from '../components/app/app';
 import cleanData from './lib/cleanData';
 import fetchJSON from './lib/fetch';
-import getBandwidth from './lib/bandwidth';
 import isGuardianAndroidApp from './lib/isGuardianAndroidApp';
 import { isMobile, isTablet, isHandheld } from './lib/browser';
 
 const CONTENT_URL = 'https://interactive.guim.co.uk/docsdata-test/1ukLv0mLRiysvsraIUv-izI4BFEsv42_OrwNGxQIOGwY.json';
 
 export let init = function(el, context, config) {
-    let _isMobile = isMobile();
-    let _isTablet = isTablet();
-    let _isHandheld = isHandheld();
-    let bandwidth;
-    let environment;
-
-    if (_isMobile) {
-        bandwidth = 0;
-    } else if (_isTablet) {
-        bandwidth  = 1024;
-    } else {
-        bandwidth = 4096;
-    }
-
-    environment = {
-        bandwidth,
-        isMobile: _isMobile,
-        isTablet: _isTablet,
-        isHandheld: _isHandheld,
+    const _isHandheld = isHandheld();
+    const environment = {
+        isMobile: isMobile(),
+        isTablet: isTablet(),
+        isHandheld: isHandheld(),
         isGuardianAndroidApp: isGuardianAndroidApp(),
-        isCapable: !_isHandheld && bandwidth > 2048
+        isCapable: !_isHandheld && config.bandwidth >= 2048
     };
 
     // console.log('(environment)', environment);
-
-    getBandwidth().then((bandwidth) => {
-        environment.bandwidth = bandwidth;
-        environment.isCapable = !_isHandheld && bandwidth > 2048;
-    });
 
     fetchJSON(CONTENT_URL)
         .then((content) => cleanData(content))

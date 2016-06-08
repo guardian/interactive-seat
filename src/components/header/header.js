@@ -16,7 +16,7 @@ import ResponsiveImage from '../responsive-image/responsive-image';
 import template from './header.html!text';
 import Video from '../video/video';
 
-const AUTOPLAY_TIMEOUT_DURATION = 4000;
+const AUTOPLAY_TIMEOUT_DURATION = 5000;
 
 let Header = Block.extend({
     template,
@@ -28,11 +28,14 @@ let Header = Block.extend({
     },
     data() {
         return {
-            events
+            events,
+            isPlaying: false
         };
     },
     methods: {
         play(wasAutoplayed) {
+            this.isPlaying = true;
+
             this.clearAutoPlayTimeout();
 
             if (wasAutoplayed) {
@@ -49,17 +52,19 @@ let Header = Block.extend({
 
             document.removeEventListener(visibilityChangeEventName, this.onVisibilityChange, false);
 
-            if (this.config.isHandheld) {
+            if (this.config.isCapable) {
                 return this.playVideo()
-                           .hidePreviewImage()
+                           .stopPreviewVideo()
                            .hideOverlay();
             }
 
             return this.playVideo()
-                       .stopPreviewVideo()
+                       .hidePreviewImage()
                        .hideOverlay();
         },
         pause() {
+            this.isPlaying = false;
+
             if (this.config.isMobile) {
                 this.showPreviewImage();
             }
@@ -185,20 +190,18 @@ let Header = Block.extend({
             this.pause();
         },
         'video-end': function () {
-            if (this.config.isHandheld) {
-                this.showPreviewImage()
+            if (this.config.isCapable) {
+                this.playPreviewVideo()
                     .showOverlay();
             } else {
-                this.playPreviewVideo()
+                this.showPreviewImage()
                     .showOverlay();
             }
         }
     },
     watch: {
-        'config.isCapable'(isCapable, wasCapable) {
-            console.log('Alright: ', isCapable, wasCapable);
-
-            if (wasCapable && !isCapable) {
+        'config.isCapable'(isCapable) {
+            if (!isCapable) {
                 this.clearAutoPlayTimeout();
 
                 document.removeEventListener(visibilityChangeEventName, this.onVisibilityChange, false);
