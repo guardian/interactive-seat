@@ -46,7 +46,7 @@
       "picturefill": "npm:picturefill@^3.0.2",
       "reqwest": "github:ded/reqwest@^1.1.5",
       "text": "github:systemjs/plugin-text@^0.0.2",
-      "vue": "npm:vue@^1.0.22"
+      "vue": "npm:vue@1.0.26"
     },
     "devDependencies": {
       "traceur": "github:jmcriffey/bower-traceur@0.0.93",
