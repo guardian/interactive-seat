@@ -1,6 +1,8 @@
 .c-header {
     overflow: hidden;
     position: relative;
+    height: (9 / 16 * 100vw);
+    max-height: 100vh;
     background: colour(black);
 
     .is-mobile & {
@@ -71,26 +73,6 @@
             @include fs-header(4);
             float: right;
             width: calc(100% - 110px);
-        }
-    }
-
-    .is-handheld & {
-        .c-header__video {
-            z-index: 0;
-        }
-    }
-
-    &__video {
-        position: relative;
-        z-index: 1;
-        width: 100%;
-        height: auto;
-
-        &--primary {
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 0;
         }
     }
 
