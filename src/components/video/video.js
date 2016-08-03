@@ -73,6 +73,18 @@ let Video = Vue.extend({
             this.isPlaying = true;
 
             this.$el.querySelector('.js-video-player').play();
+
+            if (this.hasControls) {
+                requestAnimationFrame(function checkTime() {
+                    if (!this.isPlaying) {
+                        return;
+                    }
+
+                    requestAnimationFrame(checkTime.bind(this));
+
+                    this.updateProgress();
+                }.bind(this));
+            }
         },
         pause() {
             this.isPlaying = false;
@@ -82,13 +94,15 @@ let Video = Vue.extend({
         setCurrentTime(currentTime) {
             this.$el.querySelector('.js-video-player').currentTime = currentTime;
         },
+        updateProgress() {
+            const $videoPlayer = this.$el.querySelector('.js-video-player');
+
+            this.progress = ($videoPlayer.currentTime / $videoPlayer.duration) * 100;
+        },
         onClickPauseButton() {
             this.hasBubbled = true;
 
             this.$dispatch('video-pause');
-        },
-        onTimeUpdate(event) {
-            this.progress = (event.target.currentTime / event.target.duration) * 100;
         },
         onClickSeekBar(event) {
             let rect = this.$el.querySelector('.js-seek-bar').getBoundingClientRect();
