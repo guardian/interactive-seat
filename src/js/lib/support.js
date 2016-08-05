@@ -4,13 +4,28 @@ export const supportsCssAnimation = (cssAnimationEndEventName !== undefined);
 
 export const supportsPageVisibility = (hiddenPropertyName !== undefined);
 
+export const supportsLocalStorage = (() => {
+    const test = 'test';
+
+    try {
+        localStorage.setItem(test, test);
+        localStorage.removeItem(test);
+
+        return true;
+    } catch(e) {
+        return false;
+    }
+})();
+
 export default {
     supportsCssAnimation,
-    supportsPageVisibility
+    supportsPageVisibility,
+    supportsLocalStorage
 };
 
 // console.log(
-//     '(supportsCssAnimation, supportsPageVisibility)',
+//     '(supportsCssAnimation, supportsPageVisibility, supportsLocalStorage)',
 //     supportsCssAnimation,
-//     supportsPageVisibility
+//     supportsPageVisibility,
+//     supportsLocalStorage
 // );
