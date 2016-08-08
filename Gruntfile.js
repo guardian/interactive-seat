@@ -163,14 +163,6 @@ module.exports = function(grunt) {
             }
         },
 
-        uglify: {
-            boot: {
-                files: {
-                    'build/boot.js': 'build/boot.js'
-                }
-            }
-        },
-
         svgmin: {
             options: {
                 plugins: [
