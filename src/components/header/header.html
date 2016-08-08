@@ -1,11 +1,11 @@
 <header class="c-header">
-    <template v-if="config.isHandheld">
-        <responsive-image id="js-preview-image" class="l-cover" :path="content.image_path"></responsive-image>
-        <video id="js-primary-video" class="c-video--primary" :class="{ 'l-cover': config.isMobile }" has-controls :path="content.video_path" :bandwidth="config.bandwidth"></video>
+    <template v-if="config.isCapable">
+        <video id="js-preview-video" class="c-video c-video--preview" autoplay loop muted :path="content.preview_path" :bandwidth="config.bandwidth"></video>
+        <video id="js-primary-video" class="c-video c-video--primary" has-controls :path="content.video_path" :bandwidth="config.bandwidth"></video>
     </template>
     <template v-else>
-        <video id="js-preview-video" class="c-video--preview" autoplay loop muted :path="content.preview_path" :bandwidth="config.bandwidth"></video>
-        <video id="js-primary-video" class="c-video--primary" preload="auto" has-controls :path="content.video_path" :bandwidth="config.bandwidth"></video>
+        <responsive-image id="js-preview-image" class="l-cover" :path="content.image_path"></responsive-image>
+        <video id="js-primary-video" class="c-video c-video--primary" :class="{ 'l-cover': config.isMobile }" has-controls preload="none" :path="content.video_path" :bandwidth="config.bandwidth"></video>
     </template>
 
     <div id="js-overlay" class="c-header__outer">

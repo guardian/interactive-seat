@@ -30,14 +30,14 @@ export function boot(el, context, config, mediator) {
     }
 
     config = {
-        assetPath: '<%= assetPath %>',
+        assetPath: '',
         bandwidth
     };
 
     // Load CSS asynchronously
-    loadCSS('<%= assetPath %>/main.css');
+    loadCSS('/main.css');
 
-    require(['<%= assetPath %>/bandwidth.js']).then((bandwidth) => {
+    require(['/bandwidth.js']).then((bandwidth) => {
         bandwidth.default().then((value) => {
             config.bandwidth = value;
 
@@ -46,7 +46,7 @@ export function boot(el, context, config, mediator) {
     });
 
     // Load JS and init
-    require(['<%= assetPath %>/main.js']).then(
+    require(['/main.js']).then(
         (main) => main.init(el, context, config, mediator),
         (err) => console.error('Error loading main:', err)
     );

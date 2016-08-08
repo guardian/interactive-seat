@@ -15,6 +15,10 @@ export function isHandheld() {
     return (isMobile() || isTablet());
 }
 
+export function isCapable(isHandheld, bandwidth) {
+    return (!isHandheld && bandwidth >= 2048);
+}
+
 export const cssAnimationEndEventName = (() => {
     const cssAnimationEndEventNames = {
         animation: 'animationend',

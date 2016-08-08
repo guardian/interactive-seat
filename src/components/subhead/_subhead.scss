@@ -1,4 +1,6 @@
 .c-subhead {
+    overflow: hidden;
+    position: relative;
     margin: 0;
     background: colour(white);
 
@@ -17,11 +19,9 @@
     }
 
     &--with-video {
-        overflow: hidden;
-        position: relative;
         color: colour(white);
 
-        .is-handheld & {
+        .is-not-capable & {
             height: 100vh;
             max-height: 550px;
         }

@@ -33,11 +33,16 @@
   "author": "",
   "license": "ISC",
   "jspm": {
+    "main": "js/main.js",
+    "configFiles": {
+      "jspm": "src/js/config.js"
+    },
     "configFile": "src/js/config.js",
     "dependencies": {
       "classlist-polyfill": "npm:classlist-polyfill@^1.0.3",
       "ded/bowser": "github:ded/bowser@^1.0.0",
       "fastclick": "npm:fastclick@^1.0.6",
+      "fg-loadcss": "npm:fg-loadcss@^1.2.0",
       "guardian/iframe-messenger": "github:guardian/iframe-messenger@master",
       "json": "github:systemjs/plugin-json@^0.1.0",
       "lodash.clonedeep": "npm:lodash.clonedeep@^4.3.2",
@@ -49,11 +54,58 @@
       "vue": "npm:vue@1.0.26"
     },
     "devDependencies": {
+      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.13",
+      "plugin-traceur": "npm:systemjs-plugin-traceur@^0.0.2",
       "traceur": "github:jmcriffey/bower-traceur@0.0.93",
       "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.93"
+    },
+    "peerDependencies": {
+      "assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",
+      "buffer": "github:jspm/nodelibs-buffer@^0.2.0-alpha",
+      "child_process": "github:jspm/nodelibs-child_process@^0.2.0-alpha",
+      "constants": "github:jspm/nodelibs-constants@^0.2.0-alpha",
+      "crypto": "github:jspm/nodelibs-crypto@^0.2.0-alpha",
+      "events": "github:jspm/nodelibs-events@^0.2.0-alpha",
+      "fs": "github:jspm/nodelibs-fs@^0.2.0-alpha",
+      "module": "github:jspm/nodelibs-module@^0.2.0-alpha",
+      "os": "github:jspm/nodelibs-os@^0.2.0-alpha",
+      "path": "github:jspm/nodelibs-path@^0.2.0-alpha",
+      "process": "github:jspm/nodelibs-process@^0.2.0-alpha",
+      "stream": "github:jspm/nodelibs-stream@^0.2.0-alpha",
+      "string_decoder": "github:jspm/nodelibs-string_decoder@^0.2.0-alpha",
+      "util": "github:jspm/nodelibs-util@^0.2.0-alpha",
+      "vm": "github:jspm/nodelibs-vm@^0.2.0-alpha"
+    },
+    "overrides": {
+      "github:ded/reqwest@1.1.5": {
+        "files": [
+          "reqwest.js"
+        ]
+      },
+      "github:jmcriffey/bower-traceur-runtime@0.0.93": {
+        "meta": {
+          "traceur-runtime.js": {
+            "exports": "$traceurRuntime",
+            "format": "global"
+          }
+        }
+      },
+      "github:jmcriffey/bower-traceur@0.0.93": {
+        "meta": {
+          "traceur.js": {
+            "exports": "traceur",
+            "format": "global"
+          }
+        }
+      },
+      "npm:inherits@2.0.1": {
+        "ignore": [
+          "test.js"
+        ]
+      }
     }
   },
   "dependencies": {
-    "jspm": "^0.16.34"
+    "jspm": "^0.17.0-beta.25"
   }
 }

@@ -1,7 +1,7 @@
 <div :id="content.id" class="c-subhead l-container" :class="{ 'l-horizontal-padding': !content.video_path, 'c-subhead--with-video': content.video_path, 'c-subhead--without-video': !content.video_path }">
     <template v-if="content.video_path">
-        <responsive-image v-if="config.isHandheld" class="l-cover" :path="content.image_path"></responsive-image>
-        <video v-else autoplay loop muted :path="content.video_path" :bandwidth="config.bandwidth"></video>
+        <video v-if="config.isCapable" autoplay loop muted :path="content.video_path" :bandwidth="config.bandwidth"></video>
+        <responsive-image v-else class="l-cover" :path="content.image_path"></responsive-image>
 
         <div class="c-subhead__outer c-subhead--with-video__outer">
             <div class="c-subhead__inner c-subhead--with-video__inner l-container l-horizontal-padding">

@@ -6,7 +6,7 @@ const SMALL_FILE_SIZE = 1024 * 8;
 const LARGE_FILE_SIZE = 102400 * 8;
 const FILE_SIZE_DELTA = LARGE_FILE_SIZE - SMALL_FILE_SIZE;
 const TIMEOUT_DURATION = 5000;
-const DEFAULT_BANDWIDTH = 1000;
+const DEFAULT_BANDWIDTH = 0;
 
 function timedFileLoad(url) {
     let startTime = Date.now();

@@ -27,7 +27,7 @@ let Video = Vue.extend({
         bandwidth: Number,
         preload: {
             type: String,
-            default: 'none'
+            default: 'auto'
         },
         hasControls: {
             type: Boolean,
