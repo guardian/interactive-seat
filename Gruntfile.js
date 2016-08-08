@@ -7,9 +7,21 @@ module.exports = function(grunt) {
         visuals: { },
 
         watch: {
-            js: {
-                files: ['src/**/*.{js,html}'],
-                tasks: ['shell:interactive', 'shell:bandwidth', 'shell:embed']
+            interactive: {
+                files: ['src/js/main.js', 'src/components/**/*.{js,html}', 'src/js/lib/**/*.js', 'src/js/modules/**/*.js'],
+                tasks: ['shell:interactive']
+            },
+            boot: {
+                files: ['src/js/boot.js'],
+                tasks: ['shell:boot']
+            },
+            bandwidth: {
+                files: ['src/js/lib/bandwidth.js'],
+                tasks: ['shell:bandwidth']
+            },
+            embed: {
+                files: ['src/js/embed.js'],
+                tasks: ['shell:embed']
             },
             css: {
                 files: ['src/**/*.scss'],
@@ -118,7 +130,7 @@ module.exports = function(grunt) {
 
         shell: {
             interactive: {
-                command: './node_modules/.bin/jspm bundle-sfx <%= visuals.jspmFlags %> src/js/main build/main.js --format amd',
+                command: './node_modules/.bin/jspm build <%= visuals.jspmFlags %> src/js/main.js build/main.js --format amd --skip-source-maps',
                 options: {
                     execOptions: {
                         cwd: '.'
@@ -126,7 +138,15 @@ module.exports = function(grunt) {
                 }
             },
             bandwidth: {
-                command: './node_modules/.bin/jspm bundle-sfx <%= visuals.jspmFlags %> src/js/lib/bandwidth build/bandwidth.js --format amd',
+                command: './node_modules/.bin/jspm build <%= visuals.jspmFlags %> src/js/lib/bandwidth.js build/bandwidth.js --format amd --skip-source-maps',
+                options: {
+                    execOptions: {
+                        cwd: '.'
+                    }
+                }
+            },
+            boot: {
+                command: './node_modules/.bin/jspm build <%= visuals.jspmFlags %> src/js/boot.js build/boot.js --format amd --skip-source-maps',
                 options: {
                     execOptions: {
                         cwd: '.'
@@ -134,7 +154,7 @@ module.exports = function(grunt) {
                 }
             },
             embed: {
-                command: './node_modules/.bin/jspm bundle-sfx <%= visuals.jspmFlags %> src/js/embed build/embed.js',
+                command: './node_modules/.bin/jspm build <%= visuals.jspmFlags %> src/js/embed.js build/embed.js --skip-source-maps',
                 options: {
                     execOptions: {
                         cwd: '.'
@@ -201,7 +221,7 @@ module.exports = function(grunt) {
             },
             boot: {
                 files: {
-                    'build/boot.js': ['src/js/boot.js.tpl']
+                    'src/js/boot.js': ['src/js/boot.js.tpl']
                 }
             },
             embed: {
@@ -365,7 +385,7 @@ module.exports = function(grunt) {
         grunt.config('visuals', {
             s3: grunt.file.readJSON('./cfg/s3.json'),
             timestamp: Date.now(),
-            jspmFlags: '-m',
+            jspmFlags: '--minify --skip-source-maps',
             assetPath: '<%= visuals.s3.domain %><%= visuals.s3.path %>/<%= visuals.timestamp %>'
         });
     });
@@ -379,10 +399,10 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask('embed', ['shell:embed', 'template:embed', 'sass:embed']);
-    grunt.registerTask('interactive', ['svgstore', 'svgmin', 'shell:interactive', 'shell:bandwidth', 'template:boot', 'sass:interactive']);
+    grunt.registerTask('interactive', ['svgstore', 'svgmin', 'template:boot', 'shell:interactive', 'shell:boot', 'shell:bandwidth', 'sass:interactive']);
     grunt.registerTask('all', ['interactive', 'embed', 'postcss:autoprefixer', 'copy:assets'])
     grunt.registerTask('default', ['clean', 'copy:harness', 'all', 'connect', 'watch']);
-    grunt.registerTask('build', ['clean', 'all', 'uglify:boot', 'stripDebug', 'postcss:minify']);
+    grunt.registerTask('build', ['clean', 'all', 'stripDebug', 'postcss:minify']);
     grunt.registerTask('deploy', ['loadDeployConfig', 'prompt:visuals', 'build', 'copy:deploy', 'aws_s3', 'boot_url']);
 
     grunt.loadNpmTasks('grunt-aws');

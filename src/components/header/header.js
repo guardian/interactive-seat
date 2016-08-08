@@ -199,15 +199,6 @@ let Header = Block.extend({
             }
         }
     },
-    watch: {
-        'config.isCapable'(isCapable) {
-            if (!isCapable) {
-                this.clearAutoPlayTimeout();
-
-                document.removeEventListener(visibilityChangeEventName, this.onVisibilityChange, false);
-            }
-        }
-    },
     ready() {
         if (!this.config.isCapable) {
             return this;

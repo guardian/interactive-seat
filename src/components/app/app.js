@@ -4,6 +4,7 @@ import Vue from 'vue';
 import '../../js/modules/transitions';
 import template from './app.html!text';
 import loadScript from '../../js/lib/loadScript';
+import { isCapable } from '../../js/lib/browser';
 
 // Components
 import Byline from '../byline/byline';
@@ -51,6 +52,11 @@ let App = Vue.extend({
     },
     ready() {
         loadScript(OPHAN_TRACKING_SCRIPT_URL);
+    },
+    watch: {
+        'config.bandwidth'(bandwidth) {
+            this.config.isCapable = isCapable(this.config.isHandheld, bandwidth);
+        }
     }
 });
 
