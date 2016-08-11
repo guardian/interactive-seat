@@ -3,6 +3,11 @@ Guardian interactive ES6 template
 
 An interactive template & test harness, set up with commonly used components and example code
 
+Links
+=====
+[Preview](https://preview.gutools.co.uk/lifeandstyle/ng-interactive/2016/may/21/neuro-cuisine-exploring-the-science-of-flavour)
+[Native Preview](gnmguardian://lifeandstyle/ng-interactive/2016/may/21/neuro-cuisine-exploring-the-science-of-flavour)
+
 Usage
 =====
 
