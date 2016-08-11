@@ -3,11 +3,19 @@ import isString from 'lodash.isstring';
 import { cssAnimationEndEventName } from './browser';
 import { supportsCssAnimation } from './support';
 
-export default function animate (el, className) {
+export default function animate(el, className) {
     // guard against lack of CSS animation support
     if (!supportsCssAnimation) {
         return new Promise((resolve) => resolve());
     }
+
+    [].forEach.call(el.classList, (className) => {
+        if (isString(className) && className.indexOf('animate--') !== -1) {
+            el.classList.remove(className);
+        }
+    });
+
+    el.classList.add(className);
 
     let promise = new Promise((resolve) => {
         let eventHandler = () => {
@@ -18,14 +26,6 @@ export default function animate (el, className) {
 
         el.addEventListener(cssAnimationEndEventName, eventHandler, false);
     });
-
-    [].forEach.call(el.classList, (className) => {
-        if (isString(className) && className.indexOf('animate--') !== -1) {
-            el.classList.remove(className);
-        }
-    });
-
-    el.classList.add(className);
 
     return promise;
 }
