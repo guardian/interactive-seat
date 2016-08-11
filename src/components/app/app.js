@@ -10,7 +10,6 @@ import { isCapable } from '../../js/lib/browser';
 import Byline from '../byline/byline';
 import Copy from '../copy/copy';
 import Credits from '../credits/credits';
-import Experiment from '../experiment/experiment';
 import Header from '../header/header';
 import Icon from '../icon/icon';
 import Interactive from '../interactive/interactive';
@@ -33,7 +32,6 @@ let App = Vue.extend({
         Byline,
         Copy,
         Credits,
-        Experiment,
         Header,
         Icon,
         Interactive,
