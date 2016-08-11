@@ -77,7 +77,9 @@ let Video = Vue.extend({
     },
     methods: {
         play() {
-            this.isPlaying = true;
+            if (this.isPlaying) {
+                return this;
+            }
 
             this.$el.querySelector('.js-video-player').play();
 
@@ -94,7 +96,9 @@ let Video = Vue.extend({
             }
         },
         pause() {
-            this.isPlaying = false;
+            if (!this.isPlaying) {
+                return this;
+            }
 
             this.$el.querySelector('.js-video-player').pause();
         },
@@ -120,7 +124,12 @@ let Video = Vue.extend({
 
             this.setCurrentTime(currentTime);
         },
+        onPlay() {
+            this.isPlaying = true;
+        },
         onPause() {
+            this.isPlaying = false;
+
             if (this.hasBubbled) {
                 this.hasBubbled = false;
 
