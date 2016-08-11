@@ -1,3 +1,5 @@
+import Vue from 'vue';
+
 import animate from '../../js/lib/animate';
 import events from '../../js/modules/events';
 import isElementInViewport from '../../js/lib/isElementInViewport';
@@ -32,8 +34,19 @@ let Header = Block.extend({
             isPlaying: false
         };
     },
+    watch: {
+        'config.isCapable'(isCapable, wasCapable) {
+            if (!isCapable && wasCapable) {
+                this.clearAutoPlayTimeout();
+            }
+        }
+    },
     methods: {
         play(wasAutoplayed) {
+            if (this.isPlaying) {
+                return this;
+            }
+
             this.isPlaying = true;
 
             this.clearAutoPlayTimeout();
@@ -61,14 +74,18 @@ let Header = Block.extend({
                        .hideOverlay();
         },
         pause() {
+            if (!this.isPlaying) {
+                return this;
+            }
+
             this.isPlaying = false;
 
             if (this.config.isMobile) {
                 this.showPreviewImage();
             }
 
-            this.stopVideo()
-                .showOverlay();
+            return this.stopVideo()
+                       .showOverlay();
         },
         playVideo() {
             let primaryVideo = this.$children.filter((child) => child.$el.id === 'js-primary-video')[0];
@@ -82,7 +99,7 @@ let Header = Block.extend({
 
             primaryVideo.pause();
 
-            return this.showOverlay();
+            return this;
         },
         playPreviewVideo() {
             let previewVideo = this.$children.filter((child) => child.$el.id === 'js-preview-video')[0];
@@ -93,9 +110,9 @@ let Header = Block.extend({
 
             previewVideo.play();
 
-            previewVideo.$el.classList.remove('u-to-the-back');
-
             animate(previewVideo.$el, 'animate--fade-in');
+
+            previewVideo.$el.classList.remove('u-to-the-back');
 
             return this;
         },
@@ -140,9 +157,9 @@ let Header = Block.extend({
         showOverlay() {
             let overlayEl = this.$el.querySelector('#js-overlay');
 
-            overlayEl.classList.remove('u-to-the-back');
-
             animate(overlayEl, 'animate--fade-in');
+
+            Vue.nextTick(() => overlayEl.classList.remove('u-to-the-back'));
 
             return this;
         },
@@ -158,7 +175,9 @@ let Header = Block.extend({
         clearAutoPlayTimeout() {
             clearTimeout(this.autoplayTimeout);
 
-            this.cancelOnWindowScroll();
+            if (typeof this.cancelOnWindowScroll === 'function') {
+                this.cancelOnWindowScroll();
+            }
 
             return this;
         },
