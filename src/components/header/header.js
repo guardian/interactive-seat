@@ -117,9 +117,7 @@ let Header = Block.extend({
         hidePreviewImage() {
             let previewImageEl = this.$el.querySelector('#js-preview-image');
 
-            animate(previewImageEl, 'animate--fade-out').then(() => {
-                previewImageEl.classList.add('u-to-the-back');
-            });
+            animate(previewImageEl, 'animate--fade-out').then(() => previewImageEl.classList.add('u-to-the-back'));
 
             return this;
         },
@@ -135,9 +133,7 @@ let Header = Block.extend({
         hideOverlay() {
             let overlayEl = this.$el.querySelector('#js-overlay');
 
-            animate(overlayEl, 'animate--fade-out').then(() => {
-                overlayEl.classList.add('u-to-the-back');
-            });
+            animate(overlayEl, 'animate--fade-out').then(() => overlayEl.classList.add('u-to-the-back'));
 
             return this;
         },
