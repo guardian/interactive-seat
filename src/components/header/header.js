@@ -178,10 +178,10 @@ let Header = Block.extend({
         }
     },
     events: {
-        'video-pause': function () {
+        'video-pause'() {
             this.pause();
         },
-        'video-end': function () {
+        'video-end'() {
             if (this.config.isCapable) {
                 this.playPreviewVideo()
                     .showOverlay();
