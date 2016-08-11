@@ -1,8 +1,7 @@
-import throttle from 'lodash.throttle';
-
 import animate from '../../js/lib/animate';
 import events from '../../js/modules/events';
 import isElementInViewport from '../../js/lib/isElementInViewport';
+import onWindowScroll from '../../js/mixins/onWindowScroll';
 import pageIsVisible from '../../js/lib/pageIsVisible';
 
 import { visibilityChangeEventName } from '../../js/lib/browser';
@@ -19,6 +18,7 @@ import Video from '../video/video';
 const AUTOPLAY_TIMEOUT_DURATION = 5000;
 
 let Header = Block.extend({
+    mixins: [onWindowScroll],
     template,
     components: {
         Button,
@@ -39,15 +39,13 @@ let Header = Block.extend({
             this.clearAutoPlayTimeout();
 
             if (wasAutoplayed) {
-                this.onWindowScroll = throttle(() => {
-                    if (!isElementInViewport(this.$el)) {
+                this.cancelOnWindowScroll = this.onWindowScroll(() => {
+                    if (!isElementInViewport(this.$el, 1/3)) {
                         this.pause();
 
-                        window.removeEventListener('scroll', this.onWindowScroll, false);
+                        this.cancelOnWindowScroll();
                     }
-                }, 100);
-
-                window.addEventListener('scroll', this.onWindowScroll, false);
+                });
             }
 
             document.removeEventListener(visibilityChangeEventName, this.onVisibilityChange, false);
@@ -153,25 +151,23 @@ let Header = Block.extend({
             return this;
         },
         setAutoPlayTimeout() {
-            this.onWindowScroll = throttle(() => {
-                if (!isElementInViewport(this.$el)) {
+            this.cancelOnWindowScroll = this.onWindowScroll(() => {
+                if (!isElementInViewport(this.$el, 1/3)) {
                     this.clearAutoPlayTimeout();
                 }
-            }, 100);
+            });
 
             this.autoplayTimeout = setTimeout(() => this.play(true), AUTOPLAY_TIMEOUT_DURATION);
-
-            window.addEventListener('scroll', this.onWindowScroll, false);
         },
         clearAutoPlayTimeout() {
             clearTimeout(this.autoplayTimeout);
 
-            window.removeEventListener('scroll', this.onWindowScroll, false);
+            this.cancelOnWindowScroll();
 
             return this;
         },
         onVisibilityChange() {
-            if (pageIsVisible() && isElementInViewport(this.$el)) {
+            if (pageIsVisible() && isElementInViewport(this.$el, 1/3)) {
                 this.setAutoPlayTimeout();
 
                 return this;

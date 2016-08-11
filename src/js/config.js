@@ -63,7 +63,6 @@ SystemJS.config({
     "json": "github:systemjs/plugin-json@0.1.2",
     "lodash.clonedeep": "npm:lodash.clonedeep@4.3.2",
     "lodash.isstring": "npm:lodash.isstring@4.0.1",
-    "lodash.throttle": "npm:lodash.throttle@4.0.1",
     "lodash.without": "npm:lodash.without@4.3.0",
     "module": "github:jspm/nodelibs-module@0.2.0-alpha",
     "os": "github:jspm/nodelibs-os@0.2.0-alpha",
@@ -304,14 +303,6 @@ SystemJS.config({
     "npm:lodash.clonedeep@4.3.2": {
       "map": {
         "lodash._baseclone": "npm:lodash._baseclone@4.5.7"
-      }
-    },
-    "npm:lodash.debounce@4.0.6": {
-      "map": {}
-    },
-    "npm:lodash.throttle@4.0.1": {
-      "map": {
-        "lodash.debounce": "npm:lodash.debounce@4.0.6"
       }
     },
     "npm:miller-rabin@4.0.0": {
