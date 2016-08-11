@@ -62,7 +62,6 @@ SystemJS.config({
     "guardian/iframe-messenger": "github:guardian/iframe-messenger@master",
     "json": "github:systemjs/plugin-json@0.1.2",
     "lodash.clonedeep": "npm:lodash.clonedeep@4.3.2",
-    "lodash.isstring": "npm:lodash.isstring@4.0.1",
     "lodash.without": "npm:lodash.without@4.3.0",
     "module": "github:jspm/nodelibs-module@0.2.0-alpha",
     "os": "github:jspm/nodelibs-os@0.2.0-alpha",
