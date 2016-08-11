@@ -61,7 +61,9 @@ let Video = Vue.extend({
         return {
             events,
             isPlaying: false,
-            hasBubbled: false
+            hasBubbled: false,
+            canPlay: false,
+            playWhenReady: false
         };
     },
     computed: {
@@ -77,6 +79,12 @@ let Video = Vue.extend({
     },
     methods: {
         play() {
+            if (this.preload !== 'none' && !this.canPlay && !this.playWhenReady) {
+                this.playWhenReady = true;
+
+                return this;
+            }
+
             if (this.isPlaying) {
                 return this;
             }
@@ -84,18 +92,24 @@ let Video = Vue.extend({
             this.$el.querySelector('.js-video-player').play();
 
             if (this.hasControls) {
-                requestAnimationFrame(function checkTime() {
+                this.animationFrameRequest = requestAnimationFrame(function checkTime() {
                     if (!this.isPlaying) {
                         return;
                     }
 
-                    requestAnimationFrame(checkTime.bind(this));
+                    this.animationFrameRequest = requestAnimationFrame(checkTime.bind(this));
 
                     this.updateProgress();
                 }.bind(this));
             }
         },
         pause() {
+            if (!this.canPlay && this.playWhenReady) {
+                this.playWhenReady = false;
+
+                return this;
+            }
+
             if (!this.isPlaying) {
                 return this;
             }
@@ -103,10 +117,12 @@ let Video = Vue.extend({
             this.$el.querySelector('.js-video-player').pause();
         },
         setCurrentTime(currentTime) {
-            this.$el.querySelector('.js-video-player').currentTime = currentTime;
+            Vue.nextTick(() => {
+                this.$el.querySelector('.js-video-player').currentTime = currentTime;
+            });
         },
         updateProgress() {
-            const $videoPlayer = this.$el.querySelector('.js-video-player');
+            let $videoPlayer = this.$el.querySelector('.js-video-player');
 
             this.progress = ($videoPlayer.currentTime / $videoPlayer.duration) * 100;
         },
@@ -124,6 +140,19 @@ let Video = Vue.extend({
 
             this.setCurrentTime(currentTime);
         },
+        onCanPlay() {
+            if (this.canPlay) {
+                return;
+            }
+
+            this.canPlay = true;
+
+            if (this.playWhenReady) {
+                this.playWhenReady = false;
+
+                this.play();
+            }
+        },
         onPlay() {
             this.isPlaying = true;
         },
@@ -138,6 +167,9 @@ let Video = Vue.extend({
 
             this.$dispatch('video-pause');
         },
+        onAlternatePause() {
+            this.isPlaying = false;
+        },
         onEnded() {
             this.$dispatch('video-end');
         }
@@ -150,13 +182,16 @@ let Video = Vue.extend({
             return this;
         }
 
-        const cancelOnWindowScroll = this.onWindowScroll(() => {
+        this.cancelOnWindowScroll = this.onWindowScroll(() => {
             if (isElementInViewport(this.$el)) {
                 this.play();
 
-                cancelOnWindowScroll();
+                this.cancelOnWindowScroll();
             }
         });
+    },
+    beforeDestroy() {
+        cancelAnimationFrame(this.animationFrameRequest);
     }
 });
 
