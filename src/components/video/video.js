@@ -1,6 +1,8 @@
 import Vue from 'vue';
 
 import events from '../../js/modules/events';
+import isElementInViewport from '../../js/lib/isElementInViewport';
+import onWindowScroll from '../../js/mixins/onWindowScroll';
 import template from './video.html!text';
 
 // Components
@@ -17,6 +19,7 @@ const OGG_SUFFIXES = {
 };
 
 let Video = Vue.extend({
+    mixins: [onWindowScroll],
     template,
     components: {
         Button,
@@ -27,7 +30,11 @@ let Video = Vue.extend({
         bandwidth: Number,
         preload: {
             type: String,
-            default: 'auto'
+            default: 'none'
+        },
+        lazyLoad: {
+            type: Boolean,
+            default: true
         },
         hasControls: {
             type: Boolean,
@@ -53,7 +60,7 @@ let Video = Vue.extend({
     data() {
         return {
             events,
-            isPlaying: this.autoplay,
+            isPlaying: false,
             hasBubbled: false
         };
     },
@@ -125,6 +132,22 @@ let Video = Vue.extend({
         onEnded() {
             this.$dispatch('video-end');
         }
+    },
+    created() {
+        this.isPlaying = this.autoplay = (this.autoplay && !this.lazyLoad);
+    },
+    ready() {
+        if (!this.lazyLoad) {
+            return this;
+        }
+
+        const cancelOnWindowScroll = this.onWindowScroll(() => {
+            if (isElementInViewport(this.$el)) {
+                this.play();
+
+                cancelOnWindowScroll();
+            }
+        });
     }
 });
 
