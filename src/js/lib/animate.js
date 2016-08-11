@@ -34,6 +34,8 @@ export default function animate(el, className) {
 
             el.removeEventListener(cssAnimationEndEventName, eventHandler, false);
 
+            el.classList.remove(className);
+
             delete eventHandlers[el._animateId];
         };
 
