@@ -8,7 +8,13 @@ module.exports = function(grunt) {
 
         watch: {
             interactive: {
-                files: ['src/js/main.js', 'src/components/**/*.{js,html}', 'src/js/lib/**/*.js', 'src/js/modules/**/*.js'],
+                files: [
+                    'src/js/main.js',
+                    'src/components/**/*.{js,html}',
+                    'src/js/mixins/**/*.js',
+                    'src/js/lib/**/*.js',
+                    'src/js/modules/**/*.js'
+                ],
                 tasks: ['shell:interactive']
             },
             boot: {
